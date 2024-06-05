@@ -83,8 +83,11 @@ export const userSlice = createSlice({
     showAuthScreen: (state, action: PayloadAction<boolean>) => {
       state.guestUser = false;
       state.isLoggedIn = false
-
-    }
+    },
+    skipFirstLogin: (state) => {
+      state.guestUser = true;
+      state.isLoggedIn = false
+    },
   },
 });
 
@@ -94,7 +97,8 @@ export const {
   logoutUser,
   updateProfilePicture,
   updateIsLoggedIn,
-  showAuthScreen
+  showAuthScreen,
+  skipFirstLogin
 } = userSlice.actions;
 
 export default userSlice.reducer;

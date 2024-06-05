@@ -36,7 +36,6 @@ const App = () => {
             <StatusBar
               backgroundColor={COLORS.primaryOrangeHex}
             />
-
             <Base />
           </QueryClientProvider>
           <FlashMessage position="top" animated />

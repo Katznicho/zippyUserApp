@@ -17,7 +17,6 @@ import PropertyDetails from '../screens/PropertyDetails';
 import UserDetails from '../screens/UserDetails';
 import AllUsers from '../screens/AllUsers';
 import PropertyImages from '../screens/PropertyImages';
-import EditPropertyServices from '../screens/EditPropertyServices';
 import HeaderBar from '../components/HeaderBar';
 import ZippyAlert from '../screens/ZippyAlert';
 import MyWebView from '../screens/MyWebView';
@@ -202,22 +201,6 @@ const HomeStack = () => {
             </Stack.Screen>
             {/* user details */}
 
-            {/* edit property services */}
-            <Stack.Screen
-                name="EditServices"
-                component={EditPropertyServices}
-                options={{
-                    title: 'Edit Services',
-                    animation: 'slide_from_bottom',
-                    // headerShown: false
-                    headerStyle: generalStyles.headerStyle,
-                    headerTitleStyle: generalStyles.titleHeaderStyles,
-                    headerTintColor: COLORS.primaryBlackHex,
-                    headerTitleAlign: 'center',
-                    headerLeft: () => <ArrowBack />
-                }}>
-            </Stack.Screen>
-            {/* edit property services */}
 
             {/* load points */}
             <Stack.Screen

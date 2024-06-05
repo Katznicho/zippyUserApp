@@ -8,7 +8,7 @@ import { ActivityIndicator } from '../../components/ActivityIndicator';
 import { showMessage } from 'react-native-flash-message';
 import { LOGIN } from '../utils/constants/routes';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { updateUserState } from '../../redux/store/slices/UserSlice';
+import { skipFirstLogin, updateUserState } from '../../redux/store/slices/UserSlice';
 import { useDispatch } from 'react-redux';
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 import PhoneInput from "react-native-phone-number-input";
@@ -142,6 +142,7 @@ const Login = () => {
                   pooints: result?.user?.points
                 },
                 authToken: result?.authToken,
+                guestUser: false
               }),
             );
 
@@ -222,8 +223,8 @@ const Login = () => {
             onChangeFormattedText={(text) => {
               setPhoneNumber(text);
             }}
-            placeholder={'enter phone number'}
-            containerStyle={[generalStyles.formInput, { backgroundColor: COLORS.primaryLightWhiteGrey, }]}
+            placeholder={'Enter Phone Number'}
+            containerStyle={[generalStyles.formInput, generalStyles.borderStyles, { backgroundColor: COLORS.primaryBlackHex, }]}
             textContainerStyle={{ paddingVertical: 0, backgroundColor: COLORS.primaryLightWhiteGrey }}
             textInputProps={{
               placeholderTextColor: COLORS.primaryWhiteHex
@@ -237,17 +238,18 @@ const Login = () => {
         {/* phone number */}
 
 
-        <View style={generalStyles.formContainer}>
+        <View style={[generalStyles.formContainer, { marginVertical: 10 }]}>
           <View>
             <Text style={generalStyles.formInputTextStyle}>
-              Password</Text>
-          </View >
-          <View style={[generalStyles.flexStyles, styles.viewStyles]}>
+              Password </Text>
+          </View>
+
+          <View style={[generalStyles.flexStyles, generalStyles.borderStyles, { alignItems: "center" }]}>
             <TextInput
-              style={[generalStyles.formInput, { flex: 1 }]}
+              style={[generalStyles.formInput]}
               placeholderTextColor={COLORS.primaryWhiteHex}
               secureTextEntry={!showPassword}
-              placeholder={'enter password'}
+              placeholder={'Enter Password'}
               onChangeText={text => setPassword(text)}
               value={password}
               underlineColorAndroid="transparent"
@@ -271,10 +273,10 @@ const Login = () => {
 
 
 
-        <View style={generalStyles.forgotPasswordContainer}>
+        <View style={[generalStyles.forgotPasswordContainer]}>
           <TouchableOpacity
             activeOpacity={1}
-            onPress={() => navigation.navigate("ForgotPassword")}
+            onPress={() => navigation.navigate("ForgotPasswordEmail")}
           >
             <Text style={generalStyles.forgotText}>
               {'Forgot password?'}
@@ -288,6 +290,35 @@ const Login = () => {
           onPress={() => onPressLogin()}>
           <Text style={generalStyles.loginText}>{'Login'}</Text>
         </TouchableOpacity>
+
+        {/* register */}
+        {/* already have an account login */}
+        <View style={[generalStyles.centerContent, { marginTop: 20 }]}>
+          <TouchableOpacity
+            activeOpacity={1}
+            onPress={() => navigation.navigate("Register")}
+            style={[generalStyles.centerContent, { flexDirection: 'row' }]}
+          >
+            <Text style={generalStyles.CardTitle}>Dont have an account? </Text>
+            <Text style={generalStyles.forgotText}>
+              {'Register'}
+            </Text>
+          </TouchableOpacity>
+        </View>
+        {/* already have an account login */}
+        {/* register */}
+
+        {/* skip for now */}
+        {/* add skip  word */}
+        <TouchableOpacity
+          activeOpacity={1}
+          onPress={() => dispatch(skipFirstLogin())}
+          style={[generalStyles.centerContent, { flexDirection: 'row' }]}
+        >
+          <Text style={[generalStyles.forgotText, { marginTop: 10 }]}>Skip for now</Text>
+        </TouchableOpacity>
+        {/* add skip  word */}
+        {/* skip for now */}
 
 
         {loading && <ActivityIndicator />}

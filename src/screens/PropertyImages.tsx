@@ -4,7 +4,7 @@ import { generalStyles } from './utils/generatStyles'
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 import { useBottomTabBarHeight } from '@react-navigation/bottom-tabs'
 import { useNavigation, useRoute } from '@react-navigation/native'
-import { COLORS, FONTSIZE, SPACING } from '../theme/theme'
+import {  SPACING } from '../theme/theme'
 import { PUBLIC_STORAGE } from './utils/constants/constants'
 import ArrowBack from '../components/ArrowBack'
 

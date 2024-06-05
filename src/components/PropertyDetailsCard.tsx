@@ -7,6 +7,7 @@ import AntDesign from 'react-native-vector-icons/AntDesign';
 import { calculateDistance, formatCurrency, limitDescription } from '../screens/utils/helpers/helpers';
 import { useNavigation } from '@react-navigation/native';
 import useGetUserLocation from '../hooks/useGetUserLocation';
+import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 
 
 const PropertyDetailsCard = ({ property }: any) => {
@@ -32,7 +33,9 @@ const PropertyDetailsCard = ({ property }: any) => {
         <TouchableOpacity
             activeOpacity={1}
             style={[styles.container]}
-            onPress={() => navigation.navigate("PropertyDetails", { data: property, position: position })}
+            // onPress={() => navigation.navigate("PropertyDetails", { data: property, position: position })}
+            onPress={() => navigation.navigate("PropertyStack", { screen: "PropertyDetails", params: { data: property, position: position } })}
+
         >
             <View
                 style={[styles.imageContainer]}
@@ -47,7 +50,7 @@ const PropertyDetailsCard = ({ property }: any) => {
             {/* </View> */}
             <View>
 
-                <View style={[styles.viewStyles]}>
+                <View style={[styles.viewStyles, styles.verticalPadding]}>
                     <Text style={[generalStyles.CardTitle]}>{property?.name}</Text>
 
                 </View>
@@ -82,14 +85,14 @@ const PropertyDetailsCard = ({ property }: any) => {
                 </View>
 
                 <View style={[generalStyles.flexStyles, { alignItems: "center" }]}>
-                    <Entypo name="location-pin"
+                    <FontAwesome5 name="ruler-horizontal"
                         size={20}
                         color={COLORS.primaryOrangeHex}
                     />
                     <Text style={[generalStyles.CardTitle, { fontSize: FONTSIZE.size_10 }]}>
                         {calculateDistance(position?.latitude, position?.longitude, property.lat, property.long)}
-                         km(s) from you
-                        </Text>
+                        km(s) from you
+                    </Text>
                 </View>
 
                 {/* <View style={[generalStyles.flexStyles, { alignItems: "center" }]}>
@@ -145,7 +148,7 @@ const styles = StyleSheet.create({
     },
     imageContainer: {
         width: 220,
-        height: 100,
+        height: 150,
         elevation: 10,
         // marginHorizontal: 10,
         // marginVertical: 10,
@@ -160,7 +163,7 @@ const styles = StyleSheet.create({
     },
     container: {
         width: 220,
-        height: 230,
+        height: 280,
         elevation: 10,
         marginHorizontal: 3,
         marginVertical: 10,
@@ -176,5 +179,8 @@ const styles = StyleSheet.create({
     viewStyles: {
         // marginHorizontal: 5,
         // marginVertical: 2
+    },
+    verticalPadding: {
+        paddingVertical: 5
     }
 })

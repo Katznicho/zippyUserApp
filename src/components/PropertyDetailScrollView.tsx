@@ -1,7 +1,8 @@
-import {  ScrollView } from 'react-native'
+import { ScrollView, ActivityIndicator } from 'react-native'
 import React from 'react'
 import PropertyDetailsCard from './PropertyDetailsCard'
 import { useApi } from '../hooks/useApi'
+import { COLORS } from '../theme/theme';
 
 
 
@@ -27,7 +28,12 @@ const PropertyDetailScrollView = () => {
             showsVerticalScrollIndicator={false}
         >
             {
-                isLoading ? null : data?.data?.data.map((item: any) => (
+                isLoading ?
+                 <ActivityIndicator
+                    size={'large'}
+                    color={COLORS.primaryOrangeHex}
+                /> 
+                : data?.data?.data.map((item: any) => (
                     <PropertyDetailsCard
                         key={item.id}
                         property={item}

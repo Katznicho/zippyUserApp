@@ -8,7 +8,6 @@ import { RootState } from '../redux/store/dev';
 import { useDispatch, useSelector } from 'react-redux';
 import { generalStyles } from '../screens/utils/generatStyles';
 import HeadProfileCard from './HeadProfileCard';
-import CustomIcon from './CustomIcon';
 import { COLORS, FONTFAMILY } from '../theme/theme';
 import { useNavigation } from '@react-navigation/native';
 import AntDesign from 'react-native-vector-icons/AntDesign';
@@ -135,7 +134,7 @@ const DrawerContent = (props: any) => {
                 <View style={[generalStyles.bottomHairline, styles.hairLineStyles]} />
                 <DrawerItem
                     label="Home"
-                    icon={() => <CustomIcon
+                    icon={() => <AntDesign
                         name="home"
                         size={25}
                         color={selectedItem === 'Home' ? COLORS.primaryBlackHex : COLORS.primaryWhiteHex}
@@ -454,7 +453,7 @@ const HeaderExpandableSection = ({ expanded, setExpanded }: any) => {
     return <View>
         <View style={[generalStyles.flexStyles, { alignItems: "center", justifyContent: "space-between" }, styles.tabStyles]}>
             <View>
-                <Text style={[styles.labelStyle, { fontFamily: FONTFAMILY.poppins_semibold, fontSize: 18 }]}>More Options</Text>
+                <Text style={[styles.labelStyle, { fontFamily: FONTFAMILY.roboto_bold, fontSize: 18 }]}>More Options</Text>
             </View>
             <TouchableOpacity>
                 <Ionicons name={expanded ? "chevron-up" : "chevron-down"}
@@ -474,7 +473,7 @@ export default DrawerContent
 
 const styles = StyleSheet.create({
     labelStyle: {
-        color: COLORS.primaryWhiteHex, fontFamily: FONTFAMILY.poppins_light, fontSize: 14
+        color: COLORS.primaryWhiteHex, fontFamily: FONTFAMILY.roboto_regular, fontSize: 14
     },
     tabStyles: {
         marginVertical: 5,

@@ -1,7 +1,6 @@
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import TabNavigator from './TabNavigator';
 import { COLORS } from '../theme/theme';
-import CustomIcon from '../components/CustomIcon';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import DrawerContent from '../components/DrawerContent';
 import SupportStack from './SupportStack';
@@ -13,6 +12,7 @@ import ZippyAlertStack from './ZippyAlertStack';
 import PaymentStack from './PaymentStack';
 import BookingStack from './BookingStack';
 import PointStack from './PointStack';
+import PropertyStack from './PropertyStack';
 
 
 const Drawer = createDrawerNavigator();
@@ -62,7 +62,7 @@ const DrawerNavigator = () => {
 
         options={{
           drawerIcon: ({ focused, color, size }) => (
-            <CustomIcon
+            <AntDesign
               name="home"
               size={25}
               color={COLORS.primaryWhiteHex}
@@ -122,6 +122,11 @@ const DrawerNavigator = () => {
       <Drawer.Screen
         name="LoadPoints"
         component={PointStack}
+      />
+
+      <Drawer.Screen
+        name="PropertyStack"
+        component={PropertyStack}
       />
 
     </Drawer.Navigator>

@@ -1,4 +1,4 @@
-import { StyleSheet } from "react-native";
+import { Platform, StyleSheet } from "react-native";
 import { BORDERRADIUS, COLORS, FONTFAMILY, FONTSIZE, SPACING } from "../../theme/theme";
 
 export const generalStyles = StyleSheet.create({
@@ -110,21 +110,7 @@ export const generalStyles = StyleSheet.create({
     marginVertical: 10
   },
 
-  formInput: {
-    color: COLORS.primaryWhiteHex,
-    fontSize: 15,
-    borderBottomColor: COLORS.primaryWhiteHex,
-    borderBottomWidth: 1,
-    // paddingBottom: 2,
-    paddingHorizontal: 0,
-    paddingVertical: 0,
-    marginTop: 5,
-    // marginHorizontal: 20
-  },
-  formContainer: {
-    marginVertical: 10,
-    marginHorizontal: 25
-  },
+
   titleHeaderStyles: {
     fontSize: 25,
     fontFamily: FONTFAMILY.roboto_bold,
@@ -173,7 +159,32 @@ export const generalStyles = StyleSheet.create({
     alignItems: 'center',
     marginHorizontal: 5
   },
-
-
+  borderStyles: {
+    borderWidth: 0.5,
+    borderBottomWidth: 0.5,
+    height: 45,
+    borderColor: COLORS.primaryLightGreyHex,
+    borderRadius: 10,
+    paddingLeft: 10,
+    paddingRight: 10
+  },
+  formInput: {
+    color: COLORS.primaryWhiteHex,
+    fontSize: 15,
+    fontFamily: FONTFAMILY.roboto_regular,
+    paddingHorizontal: 0,
+    paddingVertical: Platform.OS === 'android' ? 0 : 10,
+    marginTop: 5,
+    width: "100%",
+    // marginHorizontal:10
+  },
+  formContainer: {
+    marginVertical: Platform.OS === 'android' ? 5 : 10,
+    marginHorizontal: 10
+  },
+  errorInput: {
+    borderColor: COLORS.primaryRedHex,
+    fontFamily: FONTFAMILY.roboto_regular
+  },
 
 });

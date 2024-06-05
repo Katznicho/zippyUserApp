@@ -2,8 +2,8 @@ import { StyleSheet, View, TouchableOpacity, TextInput } from 'react-native'
 import React from 'react'
 import { BORDERRADIUS, COLORS, FONTFAMILY, FONTSIZE, SPACING } from '../theme/theme';
 import { generalStyles } from '../screens/utils/generatStyles';
-import CustomIcon from './CustomIcon';
 import EvilIcons from 'react-native-vector-icons/EvilIcons';
+import AntDesign from 'react-native-vector-icons/AntDesign';
 
 
 const SearchBar = ({ placeholder = "Search for properties", searchText, setSearchText, resetSearch }: any) => {
@@ -45,7 +45,7 @@ const SearchBar = ({ placeholder = "Search for properties", searchText, setSearc
                         onPress={() => {
                             return resetSearch();
                         }}>
-                        <CustomIcon
+                        <AntDesign
                             style={styles.InputIcon}
                             name="close"
                             size={FONTSIZE.size_16}
@@ -82,7 +82,7 @@ const styles = StyleSheet.create({
     TextInputContainer: {
         flex: 1,
         height: SPACING.space_20 * 2.7,
-        fontFamily: FONTFAMILY.poppins_medium,
+        fontFamily: FONTFAMILY.roboto_regular,
         fontSize: FONTSIZE.size_14,
         color: COLORS.primaryWhiteHex,
     },

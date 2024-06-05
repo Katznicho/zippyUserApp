@@ -1,11 +1,11 @@
-import { StyleSheet, Text, View, ScrollView, TouchableOpacity, ImageBackground, Linking, Alert, Platform } from 'react-native'
+import { StyleSheet, Text, View, ScrollView, TouchableOpacity, ImageBackground, Linking, Alert, Platform, Image } from 'react-native'
 import React, { useState } from 'react'
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 import { useNavigation, useRoute } from '@react-navigation/native'
 import { generalStyles } from './utils/generatStyles'
 import { COLORS, FONTFAMILY, FONTSIZE, SPACING } from '../theme/theme'
 import QRCode from 'react-native-qrcode-svg';
-import { onMakeCall } from './utils/helpers/helpers'
+import { calculateDistance, formatCurrency, onMakeCall } from './utils/helpers/helpers'
 import { showAuthScreen } from '../redux/store/slices/UserSlice'
 import { useDispatch, useSelector } from 'react-redux'
 import { RootState } from '../redux/store/dev'
@@ -14,6 +14,8 @@ import { showMessage } from 'react-native-flash-message'
 import { ActivityIndicator } from '../components/ActivityIndicator'
 import ArrowBack from '../components/ArrowBack'
 import Entypo from 'react-native-vector-icons/Entypo'
+import AntDesign from 'react-native-vector-icons/AntDesign'
+import useGetUserLocation from '../hooks/useGetUserLocation'
 
 
 
@@ -24,10 +26,14 @@ const StationDetails = () => {
     const { data } = useRoute<any>().params;
 
     const { guestUser, authToken } = useSelector((state: RootState) => state.user);
+    // const {position} = usePo
+    const { position } = useGetUserLocation();
 
     const dispatch = useDispatch<any>();
 
     const [loading, setLoading] = useState<boolean>(false);
+
+
 
 
 
@@ -79,7 +85,6 @@ const StationDetails = () => {
             fetch(`${CREATE_BOOKING}`, requestOptions)
                 .then((response) => response.json())
                 .then((result) => {
-                    console.log(result)
                     showMessage({
                         message: "Booked Successfully",
                         description: "We will get back to you soon",
@@ -90,7 +95,6 @@ const StationDetails = () => {
                     return navigation.navigate("Bookings")
                 })
                 .catch((error) => {
-                    console.log(error)
                     setLoading(false)
                     showMessage({
                         message: "Booked Failed",
@@ -105,18 +109,44 @@ const StationDetails = () => {
     }
 
 
+    const handleRequestCall = () => {
+        try {
+            setLoading(true)
+            showMessage({
+                message: "Request Sent",
+                description: "We will get back to you soon",
+                type: "success",
+                icon: "success",
+            });
+            setLoading(false)
+            return navigation.navigate("HomeTab")
+
+        } catch (error) {
+
+            setLoading(false)
+            return showMessage({
+                message: "Request Failed",
+                description: "Please try again",
+                type: "info",
+                icon: "info",
+            })
+
+        }
+    }
+
+
+
 
     return (
-        <KeyboardAwareScrollView
+        <View
             style={[{ flex: 1, width: '100%' }, generalStyles.ScreenContainer]}
-            keyboardShouldPersistTaps="always"
-            contentContainerStyle={{ paddingBottom: 100 }}
         >
 
             <ScrollView
                 showsVerticalScrollIndicator={false}
                 // contentContainerStyle={{ paddingBottom: tabBarHeight }}
                 keyboardShouldPersistTaps="always"
+                style={{ paddingBottom: 50 }}
             >
                 {/* show background image */}
                 <ImageBackground
@@ -158,7 +188,7 @@ const StationDetails = () => {
                     <View style={[generalStyles.bottomHairline, styles.hairLineStyles]} />
 
                     <View style={[generalStyles.flexStyles, { justifyContent: 'space-between', alignItems: "center" }]}>
-                        <View>
+                        <View style={{ flex: 1 }}>
                             <Text style={styles.CardTitle}>{data?.name}</Text>
                             <View style={[generalStyles.flexStyles]}>
                                 <Entypo name="location-pin"
@@ -169,21 +199,57 @@ const StationDetails = () => {
                                 <Text style={styles.CardSubtitle}>{data?.location}</Text>
 
                             </View>
+                            <View style={[generalStyles.flexStyles]}>
+                                <Entypo name="location-pin"
+                                    size={15}
+                                    color={"#ff5b6e"}
+                                    style={{ marginLeft: -5 }}
+                                />
+                                <Text style={[generalStyles.CardTitle, { fontSize: FONTSIZE.size_10 }]}>
+                                    {calculateDistance(position?.latitude, position?.longitude, data.lat, data.long)}
+                                    km(s) from you
+                                </Text>
+
+                            </View>
+                            <View style={[generalStyles.flexStyles, { paddingVertical: 5 }]}>
+                                <AntDesign
+                                    name="star"
+                                    size={12}
+                                    color={"#FCB72B"}
+                                    style={{ marginLeft: -5 }}
+                                />
+                                <Text style={styles.CardSubtitle}>{'4.6'}(103) reviews</Text>
+
+                            </View>
+
 
                         </View>
-                        <View>
-                            <QRCode value={data?.zippy_id}
+                        <View style={{ alignItems: "flex-end" }}>
+                            <QRCode
+                                value={data?.zippy_id}
                                 size={40}
                             />
+                            <View style={[generalStyles.flexStyles, { paddingVertical: 5 }]}>
+                                <Text style={styles.CardSubtitle}>{data?.number_of_beds} bedroom(s)</Text>
+                                <Text style={styles.CardSubtitle}>{data?.number_of_baths} bathroom(s)</Text>
 
+                            </View>
                         </View>
 
                     </View>
                     {/* category and book now */}
-                    <View style={[generalStyles.flexStyles, { justifyContent: 'space-between', alignItems: "center" }]}>
-                        <View>
-                            <Text style={styles.CardTitle} >Category</Text>
-                            <Text style={styles.CardSubtitle}>{data?.category?.name}</Text>
+                    <View style={[generalStyles.flexStyles, { justifyContent: 'space-between', alignItems: "center", marginVertical: 10 }]}>
+                        <View style={[generalStyles.flexStyles, { alignItems: "center" }]}>
+                            <Image
+                                source={{ uri: "https://plus.unsplash.com/premium_photo-1658506615399-d1280310ad6c?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTN8fGFmcmljYW4lMjBwcm9wZXJ0eSUyMGFnZW50fGVufDB8fDB8fHww" }}
+                                style={styles.imageStyles}
+
+                            />
+                            <View style={{ marginHorizontal: 5 }}>
+                                <Text style={[styles.CardTitle, {}]} >{data.agent.name}</Text>
+                                <Text style={styles.CardSubtitle}>{'Property Agent'}</Text>
+                            </View>
+
                         </View>
                         <View>
                             {/* <Text style={styles.CardTitle} >Distance</Text> */}
@@ -191,10 +257,10 @@ const StationDetails = () => {
                             <View>
                                 <TouchableOpacity
                                     activeOpacity={1}
-                                    style={[generalStyles.loginContainer, { width: "100%" }]}
-                                    onPress={() => handleBookNow()}
+                                    style={[generalStyles.loginContainer, { width: "100%", marginTop: 0 }]}
+                                    onPress={() => handleRequestCall()}
                                 >
-                                    <Text style={generalStyles.loginText}>{'Book Now'}</Text>
+                                    <Text style={generalStyles.loginText}>{'Request Call'}</Text>
                                 </TouchableOpacity>
                             </View>
                             {/* book now button */}
@@ -203,96 +269,27 @@ const StationDetails = () => {
                     </View>
 
                     {/* category and book now */}
-                    <View>
-                        <View>
-                            <Text style={styles.CardTitle} >Location</Text>
-                            <Text style={styles.CardSubtitle}>{data?.location}</Text>
-                        </View>
+                    {/* <View>
+
                         <View>
                             <Text style={styles.CardTitle} >Payment Period</Text>
                             <Text style={styles.CardSubtitle}>{data?.payment_period?.name}</Text>
                         </View>
 
-                    </View>
+                    </View> */}
 
-                    <View>
+                    {/* <View>
                         <View>
                             <Text style={styles.CardTitle} >Price</Text>
                             <Text style={styles.CardSubtitle}>{data?.currency?.name} {data?.price}</Text>
                         </View>
 
 
-                    </View>
-
-                    {/* actions and total bookings */}
-
-                    <View style={[generalStyles.flexStyles, { justifyContent: 'space-between', alignItems: "center" }]} >
-                        <View>
-                            <Text style={styles.CardTitle} >Total Bookings</Text>
-                            <Text style={styles.CardSubtitle}>0</Text>
-                        </View>
-                        <View>
-                            <Text style={styles.CardTitle} >Scan Me</Text>
-                            {/* actions area */}
-                            <QRCode value={data?.zippy_id}
-                                size={50}
-                            />
-                            {/* actions area */}
-                        </View>
-
-                    </View>
-                    {/* actions and total bookings */}
-
-                    <View >
-                        <View>
-                            <Text style={styles.CardTitle} >Total Bedrooms</Text>
-                            <Text style={styles.CardSubtitle}>{data?.number_of_beds}</Text>
-                        </View>
-                        <View>
-                            <Text style={styles.CardTitle} >Total Bathrooms</Text>
-                            <Text style={styles.CardSubtitle}>{data?.number_of_baths}</Text>
-                        </View>
-
-                    </View>
-                    <View style={[generalStyles.flexStyles, { justifyContent: 'space-between', alignItems: "center" }]}>
-                        <View>
-                            <Text style={styles.CardTitle} >Status</Text>
-                            <Text style={styles.CardSubtitle}>{data?.status?.name}</Text>
-                        </View>
-                        <View>
-                            <Text style={styles.CardTitle} >Zippy ID</Text>
-                            <Text style={styles.CardSubtitle}>{data?.zippy_id}</Text>
-                        </View>
-
-                    </View>
-
-                    <View >
-                        <View>
-                            <Text style={styles.CardTitle} >Description</Text>
-                            <Text style={styles.CardSubtitle}>{data?.description}</Text>
-                        </View>
-                        <View>
-                            <Text style={styles.CardTitle} >Year Built</Text>
-                            <Text style={styles.CardSubtitle}>{data?.year_built}</Text>
-                        </View>
-
-                    </View>
-
-                    <View >
-                        <View>
-                            <Text style={styles.CardTitle} >Furnishing Status</Text>
-                            <Text style={styles.CardSubtitle}>{data?.furnishing_status}</Text>
-                        </View>
-                        <View>
-                            <Text style={styles.CardTitle} >Property Size</Text>
-                            <Text style={styles.CardSubtitle}>{data?.property_size}</Text>
-                        </View>
-
-                    </View>
+                    </View> */}
 
 
-                    <View style={[generalStyles.bottomHairline, styles.hairLineStyles]} />
-                    <View style={[generalStyles.flexStyles, { justifyContent: 'space-between', alignItems: "center" }]} >
+
+                    <View>
                         <View>
                             <Text style={styles.CardTitle} >Services</Text>
                             {/* <Text style={styles.CardSubtitle}>{data?.is_approved ? 'Yes' : "No"}</Text> */}
@@ -304,6 +301,10 @@ const StationDetails = () => {
                                 })
                             }
                         </View>
+                    </View>
+
+                    {/* amentities */}
+                    <View style={{ marginTop: 10 }}>
                         <View>
                             <Text style={styles.CardTitle} >Amentities</Text>
                             {
@@ -314,14 +315,12 @@ const StationDetails = () => {
                                 })
                             }
                         </View>
-
                     </View>
-                    <View style={[generalStyles.bottomHairline, styles.hairLineStyles]} />
-
+                    {/* amentities */}
                     {/* public facilties */}
-                    <View >
+                    <View style={{ marginVertical: 10 }}>
                         <View>
-                            <Text style={styles.CardTitle} >Public facilties</Text>
+                            <Text style={styles.CardTitle} >Nearest Public facilties</Text>
                             {/* <Text style={styles.CardSubtitle}>{data?.is_approved ? 'Yes' : "No"}</Text> */}
                             {
                                 data?.public_facilities?.map((facility: any, index: number) => {
@@ -334,33 +333,31 @@ const StationDetails = () => {
 
 
                     </View>
-                    <View style={[generalStyles.bottomHairline, styles.hairLineStyles]} />
-                    {/* public facilties */}
 
-                    {/* owner details */}
-
-                    <View style={[generalStyles.flexStyles, { justifyContent: 'space-between', alignItems: "center" }]} >
-                        <View>
-                            <Text style={styles.CardTitle} >Owner</Text>
-                            <Text style={styles.CardSubtitle}>{data?.owner?.name}</Text>
-                        </View>
-                        <View>
-                            <Text style={styles.CardTitle} >Phone Number</Text>
-                            <Text style={styles.CardSubtitle}>{data?.owner?.phone_number}</Text>
-                        </View>
-
+                    <View>
+                        <Text style={styles.CardTitle} >About Property</Text>
+                        <Text style={styles.CardSubtitle}>{data?.description}</Text>
                     </View>
-                    <TouchableOpacity
-                        activeOpacity={1}
-                        style={[generalStyles.loginContainer, { marginTop: 0, padding: 10 }]}
-                        onPress={() => onMakeCall(data?.owner?.phone_number)}>
-                        <Text style={generalStyles.loginText}>{'Call Owner'}</Text>
-                    </TouchableOpacity>
-                    {/* owner details */}
+
+
                 </View>
                 {loading && <ActivityIndicator style={{ marginTop: 20 }} size="large" color={COLORS.primaryWhiteHex} />}
+
             </ScrollView>
-        </KeyboardAwareScrollView>
+            {/* Fixed bottom bar */}
+            <View style={styles.fixedBottomBar}>
+                <Text style={styles.priceText}>{data?.currency?.name} {formatCurrency(data?.price)}</Text>
+                <TouchableOpacity
+                    activeOpacity={1}
+                    style={[generalStyles.loginContainer, styles.bookNowButton]}
+                    onPress={() => handleBookNow()}
+                >
+                    <Text style={generalStyles.loginText}>{'Book Now'}</Text>
+                </TouchableOpacity>
+            </View>
+            {/* fixed bottom */}
+
+        </View >
     )
 }
 
@@ -368,15 +365,15 @@ export default StationDetails
 
 const styles = StyleSheet.create({
     cardContainer: {
-        backgroundColor: COLORS.primaryBlackHex,
+        // backgroundColor: COLORS.primaryBlackHex,
         borderRadius: 10,
         padding: 10,
-        shadowColor: 'rgba(0, 0, 0, 0.1)',
-        shadowOffset: { width: 0, height: 1 },
-        shadowOpacity: 1,
-        shadowRadius: 4,
-        elevation: 5,
-        margin: 5,
+        // shadowColor: 'rgba(0, 0, 0, 0.1)',
+        // shadowOffset: { width: 0, height: 1 },
+        // shadowOpacity: 1,
+        // shadowRadius: 4,
+        // elevation: 5,
+        // margin: 5,
         // marginHorizontal: 5
     },
     hairLineStyles: {
@@ -384,16 +381,21 @@ const styles = StyleSheet.create({
         // marginHorizontal: 40,
         marginVertical: 10
     },
+    textPadding: {
+        padding: 5,
+        fontSize: 18
+    },
     CardTitle: {
         fontFamily: FONTFAMILY.roboto_medium,
         color: COLORS.primaryWhiteHex,
         fontSize: FONTSIZE.size_14,
+        // padding: 5
     },
     CardSubtitle: {
-        fontFamily: FONTFAMILY.roboto_light,
-        color: COLORS.primaryWhiteHex,
+        fontFamily: FONTFAMILY.roboto_regular,
+        color: COLORS.primaryLightGreyHex,
         fontSize: FONTSIZE.size_10,
-        // marginHorizontal: SPACING.space_10
+        // padding: 5
     },
     ImageHeaderBarContainerWithBack: {
         padding: SPACING.space_30,
@@ -406,13 +408,33 @@ const styles = StyleSheet.create({
         aspectRatio: 25 / 15,
         justifyContent: 'space-between',
     },
-    // Add a style for the map
-    map: {
-        height: 300,
-        marginVertical: 10,
+    imageStyles: {
+        width: 35,
+        height: 35,
+        borderRadius: 20,
+        // resizeMode: "contain",
+        // borderRadius: 10
     },
-    spacingStyles: {
-        marginHorizontal: 5,
-        // marginVertical: 5
+    fixedBottomBar: {
+        position: 'absolute',
+        bottom: 0,
+        left: 0,
+        right: 0,
+        backgroundColor: 'white',
+        padding: 20,
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        borderTopWidth: 1,
+        borderTopColor: '#ccc',
     },
+    priceText: {
+        fontSize: 18,
+        fontWeight: 'bold',
+    },
+    bookNowButton: {
+        width: '40%',
+        marginTop: 0,
+    },
+
 })
