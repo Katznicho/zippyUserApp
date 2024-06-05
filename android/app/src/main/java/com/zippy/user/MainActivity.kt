@@ -1,4 +1,4 @@
-package com.zippy
+package com.zippy.user
 
 import com.facebook.react.ReactActivity
 import com.facebook.react.ReactActivityDelegate
@@ -16,7 +16,7 @@ class MainActivity : ReactActivity() {
     super.onCreate(null)
   }
 
-  override fun getMainComponentName(): String = "zippy"
+  override fun getMainComponentName(): String = "Zippy"
 
   /**
    * Returns the instance of the [ReactActivityDelegate]. We use [DefaultReactActivityDelegate]

@@ -7,11 +7,11 @@
 #define TIMEOUT_SECONDS 600
 #define TEXT_TO_LOOK_FOR @"Welcome to React"
 
-@interface zippyTests : XCTestCase
+@interface ZippyTests : XCTestCase
 
 @end
 
-@implementation zippyTests
+@implementation ZippyTests
 
 - (BOOL)findSubviewInView:(UIView *)view matching:(BOOL (^)(UIView *view))test
 {
