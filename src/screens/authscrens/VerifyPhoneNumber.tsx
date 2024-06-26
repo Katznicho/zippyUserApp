@@ -17,19 +17,20 @@ import Animated, {
     withSequence,
     withTiming,
 } from 'react-native-reanimated';
-import AsyncStorage from '@react-native-async-storage/async-storage';
-import { VERIFY_EMAIL, VERIFY_EMAIL_OTP } from '../utils/constants/routes';
+
+import { VERIFY_EMAIL, VERIFY_PHONE_OTP } from '../utils/constants/routes';
 import { causeVibration, getErrorMessage } from '../utils/helpers/helpers';
 import { showMessage } from 'react-native-flash-message';
 import { COLORS } from '../../theme/theme';
 import { generalStyles } from '../utils/generatStyles';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import { ActivityIndicator } from '../../components/ActivityIndicator';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import { updateUserState } from '../../redux/store/slices/UserSlice';
 import { useDispatch } from 'react-redux';
 
 
-const VerificationScreen = () => {
+const VerifyPhoneNumber = () => {
 
     const [otpCode, setOtpCode] = useState<any>('');
     const [loading, setLoading] = useState<boolean>(false);
@@ -39,7 +40,7 @@ const VerificationScreen = () => {
     const [timer, setTimer] = useState(120); // Initial timer value in seconds
 
     const { params } = useRoute<any>();
-    const { email, provider } = params;
+    const { phoneNumber, provider } = params;
     const [errors, setErrors] = useState<any>({});
 
     const rotation = useSharedValue(0);
@@ -106,17 +107,17 @@ const VerificationScreen = () => {
 
 
         const body = new FormData();
-        body.append('email', email.toLowerCase());
+        body.append('phone_number', phoneNumber.toLowerCase());
         body.append('otp', otpCode);
 
-        fetch(`${VERIFY_EMAIL_OTP}`, {
+        fetch(`${VERIFY_PHONE_OTP}`, {
             method: 'POST',
             headers,
             body,
         })
             .then(response => response.json())
             .then(async result => {
-                // console.log(result);
+                console.log(result);
 
                 if (result?.errors) {
                     setErrors(result.errors);
@@ -126,9 +127,10 @@ const VerificationScreen = () => {
                 }
 
                 if (result.response === 'failure') {
-
-                    causeVibration();
-                    triggerErrorAnimation();
+                    // setErrors({
+                    //   // email: [result?.message],
+                    //   password: [result?.message],
+                    // });
                     setErrors((prevErrors: any) => ({
                         ...prevErrors,
                         otpCode: "Code is invalid",
@@ -149,17 +151,15 @@ const VerificationScreen = () => {
 
                 if (result.response === 'success') {
                     //dispatch(loginUser());
-
                     showMessage({
-                        message: "Email Verified",
-                        description: "Your email has been verified",
+                        message: "Phone Number Verified",
+                        description: "Your phone number has been verified",
                         icon: "success",
                         type: "success",
                         autoHide: true,
                         duration: 3000
 
                     })
-
                     let name = result?.data?.user?.name || '';
                     let firstName = name.split(' ')[0] || null;
                     let lastName = name.split(' ')[1] || null;
@@ -191,7 +191,6 @@ const VerificationScreen = () => {
                     );
 
                     return await AsyncStorage.setItem('token', result?.data.authToken);
-                    //store token
                     //navigation.navigate("Login");
                 }
 
@@ -223,14 +222,15 @@ const VerificationScreen = () => {
 
                 <View style={styles.contentRow}>
                     <Text style={[generalStyles.textStyle]}>
-                        Check your email. We have sent you a code
+                        Check your phone. We have sent you a code
                     </Text>
                 </View>
 
                 <View>
                     <View style={generalStyles.formContainer}>
-
+                        
                         <TextInput
+
                             style={[generalStyles.formInput, generalStyles.borderStyles, errors.code && generalStyles.errorInput]}
                             placeholder="Code"
                             placeholderTextColor={COLORS.primaryLightGreyHex}
@@ -272,11 +272,11 @@ const VerificationScreen = () => {
                                     ...errors,
                                     otp: '',
                                 });
-                                navigation.navigate('ResendEmail');
+                                navigation.navigate('ResendPhoneNumber');
                             }}
                         >
                             <Text style={{ color: COLORS.primaryOrangeHex }}>
-                                Click here to Resend OTP
+                                Click here to Resend Otp
                             </Text>
                         </TouchableOpacity>
                     )}
@@ -287,7 +287,7 @@ const VerificationScreen = () => {
                             style={[generalStyles.centerContent]}
                         >
                             <Text style={{ color: COLORS.primaryOrangeHex }}>
-                                Resend OTP in {timer} seconds
+                                Resend Otp in {timer} seconds
                             </Text>
                         </TouchableOpacity>
                     )}
@@ -308,7 +308,7 @@ const VerificationScreen = () => {
     );
 };
 
-export default VerificationScreen;
+export default VerifyPhoneNumber;
 
 const styles = StyleSheet.create({
 

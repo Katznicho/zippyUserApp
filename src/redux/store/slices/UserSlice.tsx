@@ -6,6 +6,7 @@ export interface UserState {
   guestUser: boolean
   user: User
   authToken: string,
+  isSetupComplete: boolean
 }
 
 interface User {
@@ -17,13 +18,14 @@ interface User {
   role: string,
   // is_new_user: boolean,
   displayPicture: string;
-  pooints: string | number
+  points: string | number
   // guestUser: boolean
 }
 
 const initialState: UserState = {
   isLoggedIn: false,
   guestUser: true,
+  isSetupComplete: false,
   user: {
     UID: '',
     fname: '',
@@ -32,7 +34,7 @@ const initialState: UserState = {
     displayPicture: '',
     role: "",
     phone: "",
-    pooints: 0
+    points: 0
     // is_new_user: true,
 
   },
@@ -54,6 +56,7 @@ export const userSlice = createSlice({
     logoutUser: state => {
       state.isLoggedIn = false;
       state.guestUser = true;
+      state.authToken = '';
       state.user = {
         UID: '',
         fname: '',
@@ -62,13 +65,17 @@ export const userSlice = createSlice({
         displayPicture: '',
         role: "",
         phone: "",
-        pooints: 0
+        points: 0
       }
     },
 
 
     updateIsLoggedIn: (state, action: PayloadAction<boolean>) => {
       state.isLoggedIn = action.payload;
+    },
+    updateSetupToTrue: (state) => {
+
+      state.isSetupComplete = true
     },
 
     updateProfilePicture: (state, action: PayloadAction<string>) => {
@@ -85,7 +92,7 @@ export const userSlice = createSlice({
       state.isLoggedIn = false
     },
     skipFirstLogin: (state) => {
-      state.guestUser = true;
+      state.guestUser = false;
       state.isLoggedIn = false
     },
   },
@@ -98,7 +105,8 @@ export const {
   updateProfilePicture,
   updateIsLoggedIn,
   showAuthScreen,
-  skipFirstLogin
+  skipFirstLogin,
+  updateSetupToTrue
 } = userSlice.actions;
 
 export default userSlice.reducer;

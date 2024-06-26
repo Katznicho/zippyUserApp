@@ -1,4 +1,4 @@
-package com.zippy.user
+package com.zippyUser
 
 import com.facebook.react.ReactActivity
 import com.facebook.react.ReactActivityDelegate

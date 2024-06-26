@@ -1,8 +1,22 @@
-export const BASE_URL = "https://dashboard.zippyug.com/api/v1";
+export const BASE_URL:string = "https://dashboard.zippyug.com/api/v1";
+
+
+//app users
+export const LOGIN_OR_REGISTER_WITH_EMAIL = `${BASE_URL}/app-user/loginOrRegisterByEmail`;
+export const LOGIN_OR_REGISTER_WITH_PHONE = `${BASE_URL}/app-user/loginOrRegisterByPhone`;
+export const VERIFY_EMAIL_OTP  = `${BASE_URL}/app-user/verifyEmailOtp`;
+export const VERIFY_PHONE_OTP = `${BASE_URL}/app-user/verifyOtpPhoneNumber`;
+export const RESEND_EMAIL_OTP = `${BASE_URL}/app-user/resendEmailOtpVerification`;
+export const RESEND_PHONE_OTP = `${BASE_URL}/app-user/resendPhoneNumberOtp`;
+export const SETUP_ACCOUNT = `${BASE_URL}/app-user/updateUserDetails`;
+export  const LOGGED_IN_USER = `${BASE_URL}/app-user/fetchLoggedInUserDetails`;
+export const LOGOUT = `${BASE_URL}/app-user/logout`;
+export const LOGIN_OR_REGISTER_WITH_GOOGLE = `${BASE_URL}/app-user/loginOrRegisterByGoogle`;
+//app users
 
 export const LOGIN = `${BASE_URL}/auth/login`;
 export const REGISTER = `${BASE_URL}/auth/registerCommunity`;
-export const LOGOUT = `${BASE_URL}/auth/logout`;
+
 export const FORGOT_PASSWORD = `${BASE_URL}/auth/requestPasswordReset`;
 export const RESET_PASSWORD = `${BASE_URL}/auth/resetPassword`;
 export const RESEND_OTP = `${BASE_URL}/auth/resendOTP`
@@ -15,16 +29,16 @@ export const UPDATE_USER_LOCATION = `${BASE_URL}/auth/updateUserLocation`;
 export const UPDATE_PASSWORD_FIRST_USER = `${BASE_URL}/auth/resetPasswordFirstUser`;
 
 //payments
-export const PROCESSORDER = `${BASE_URL}/processOrder`;
-export const USERPAYMENTS = `${BASE_URL}/getUserPayments`;
-export const USERPRODUCTS = `${BASE_URL}/getUserProducts`;
-export const USERBOOKINGS =  `${BASE_URL}/getUserBookings`;
+export const PROCESSORDER = `${BASE_URL}/app-user/processOrder`;
+export const USERPAYMENTS = `${BASE_URL}/app-user/getUserPayments`;
+export const USERPRODUCTS = `${BASE_URL}/app-user/getUserProducts`;
+export const USERBOOKINGS =  `${BASE_URL}/app-user/getUserBookings`;
 
-export const USERDELIVERIES = `${BASE_URL}/getUserDelivries`
-export const USERNOTIFICATIONS = `${BASE_URL}/getUserNotifications`
+export const USERDELIVERIES = `${BASE_URL}/app-user/getUserDelivries`
+export const USERNOTIFICATIONS = `${BASE_URL}/app-user/getUserNotifications`
 
 //booking
-export const CREATE_BOOKING = `${BASE_URL}/createUserBooking`;
+export const CREATE_BOOKING = `${BASE_URL}/app-user/createUserBooking`;
 
 //uploads
 export const PROFILE_UPLOAD = `${BASE_URL}/profileUpload`;
@@ -47,11 +61,11 @@ export const GET_ALL_PROPERTIES_BY_PAGINATION = `${BASE_URL}/getAllPropertiesByP
 export const GET_REGISTERED_OWNER_PROPERTY_BY_PAGE = `${BASE_URL}/getRegisterPropertyOfOwnerByPage`;
 
 //zippy alert
-export const CREATE_ZIPPY_ALERT = `${BASE_URL}/createPropertyAlert`
+export const CREATE_ZIPPY_ALERT = `${BASE_URL}/app-user/createPropertyAlert`
 //https://zippy.risidev.com/api/v1/createPropertyAlert
-export const GET_ALL_ZIPPY_ALERTS = `${BASE_URL}/getUserAlerts`
-export const ACTIVATE_ZIPPY_ALERT = `${BASE_URL}/ActivateAlert`
-export const DEACTIVATE_ZIPPY_ALERT = `${BASE_URL}/deActivateAlert`
+export const GET_ALL_ZIPPY_ALERTS = `${BASE_URL}/app-user/getUserAlerts`
+export const ACTIVATE_ZIPPY_ALERT = `${BASE_URL}/app-user/ActivateAlert`
+export const DEACTIVATE_ZIPPY_ALERT = `${BASE_URL}/app-user/deActivateAlert`
 
 
 

@@ -10,7 +10,7 @@ import { useNavigation } from '@react-navigation/native'
 
 const AllAlerts = () => {
     const { data, error, isLoading, } = useApi<any>({
-        endpoint: '/getUserAlerts',
+        endpoint: '/app-user/getUserAlerts',
         params: {
             "account": "hasWalletAccount"
         },

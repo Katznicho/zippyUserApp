@@ -596,7 +596,7 @@
 					"-lc++",
 					"$(inherited)",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.zippy.user";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.zippyUser";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Zippy.app/Zippy";
 			};
@@ -620,7 +620,7 @@
 					"-lc++",
 					"$(inherited)",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.zippy.user";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.zippyUser";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Zippy.app/Zippy";
 			};
@@ -647,7 +647,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.zippy.user";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.zippyUser";
 				"PRODUCT_BUNDLE_IDENTIFIER[sdk=iphoneos*]" = org.reactjs.native.example.zippyUser;
 				PRODUCT_NAME = "Zippy";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -676,7 +676,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.zippy.user";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.zippyUser";
 				"PRODUCT_BUNDLE_IDENTIFIER[sdk=iphoneos*]" = org.reactjs.native.example.zippyUser;
 				PRODUCT_NAME = "Zippy";
 				SWIFT_VERSION = 5.0;

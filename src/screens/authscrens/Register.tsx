@@ -27,6 +27,7 @@ const Register = () => {
   const [confirmPassword, setConfirmPassword] = React.useState<any>('');
 
   const [loading, setLoading] = useState(false);
+  
   const [errors, setErrors] = useState<any>({
     firstName: '',
     secondName: "",

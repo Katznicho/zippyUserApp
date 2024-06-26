@@ -20,7 +20,7 @@ import { logoutUser } from '../redux/store/slices/UserSlice';
 const ProfileDetailsCard = ({
     details,
 }: any) => {
-    const { authToken } = useSelector((state: RootState) => state.user);
+    const { authToken , isLoggedIn} = useSelector((state: RootState) => state.user);
     const dispatch = useDispatch<any>()
 
 
@@ -28,9 +28,9 @@ const ProfileDetailsCard = ({
 
         try {
             const result = await Share.open({
-                title: 'Install Reuse App',
-                message: 'Check out Reuse App and install it',
-                url: 'https://play.google.com/apps/internaltest/4699919634175995763',
+                title: 'Install Zippy App',
+                message: 'Check out Zippy App and install it',
+                url: 'https://play.google.com/apps/testing/com.zippyUser',
             });
             console.log(result);
         } catch (error) {
@@ -129,15 +129,16 @@ const ProfileDetailsCard = ({
                                     <Text style={styles.textStyle}>{item.name}</Text>
                                 </View>
                                 <TouchableOpacity
-                                    onPress={() => navigation.navigate('ProfileScreen')}
+                                    // onPress={() => navigation.navigate('ProfileScreen')}
                                     style={{ marginLeft: 10 }}
+                                    onPress={() => navigation.navigate(item.screen)}
                                 >
                                     <Entypo
                                         name="chevron-right"
                                         color={COLORS.primaryWhiteHex}
                                         size={28}
                                         style={{
-                                            fontFamily: FONTFAMILY.poppins_light,
+                                            fontFamily: FONTFAMILY.roboto_medium,
                                         }}
                                     />
                                 </TouchableOpacity>
@@ -157,11 +158,11 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         marginHorizontal: 15,
         borderBottomColor: "red",
-        borderBottowWidth: 10,
+        // borderBottowWidth: 10,
     },
     textStyle: {
         // fontWeight: 'bold',
-        fontFamily: FONTFAMILY.poppins_light,
+        fontFamily: FONTFAMILY.roboto_medium,
         color: COLORS.primaryWhiteHex,
         fontSize: 15,
     },

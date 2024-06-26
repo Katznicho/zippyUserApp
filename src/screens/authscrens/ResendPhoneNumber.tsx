@@ -3,8 +3,9 @@ import {
     View,
     TextInput,
     ScrollView,
+    StyleSheet,
 } from 'react-native';
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import Animated, {
     useAnimatedStyle,
@@ -13,21 +14,24 @@ import Animated, {
     withSequence,
     withTiming,
 } from 'react-native-reanimated';
-import { causeVibration, validateEmail } from '../utils/helpers/helpers';
-import { RESEND_EMAIL_OTP, RESEND_OTP } from '../utils/constants/routes';
+import { causeVibration } from '../utils/helpers/helpers';
+import { RESEND_OTP, RESEND_PHONE_OTP } from '../utils/constants/routes';
 import { generalStyles } from '../utils/generatStyles';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import { TouchableOpacity } from 'react-native';
 import { COLORS } from '../../theme/theme';
 import { ActivityIndicator } from '../../components/ActivityIndicator';
 import { showMessage } from 'react-native-flash-message';
+import PhoneInput from 'react-native-phone-number-input';
 
 
-const ResendEmailScreen = () => {
+const ResendPhoneNumberScreen = () => {
     const navigation = useNavigation<any>();
+    const phoneInput = useRef(null);
 
-    const [email, setEmail] = useState<string>('');
+
     const [loading, setLoading] = useState<boolean>(false);
+    const [phoneNumber, setPhoneNumber] = useState('');
 
     const [errors, setErrors] = useState<any>({});
 
@@ -56,37 +60,24 @@ const ResendEmailScreen = () => {
     //
     //Resend OTP
     function resendOtp() {
-        if (email == "") {
+        if (phoneNumber == "") {
             setErrors((prevErrors: any) => ({
                 ...prevErrors,
-                email: "Email is required"
+                phoneNumber: "Phone number is required"
             }));
             return;
         }
 
-        if (!validateEmail(email)) {
 
-            setErrors((prevErrors: any) => ({
-                ...prevErrors,
-                email: 'Invalid email format',
-            }));
-            return;
-
-        } else {
-            setErrors((prevErrors: any) => ({
-                ...prevErrors,
-                email: '',
-            }));
-        }
         setLoading(true);
 
         const headers = new Headers();
         headers.append('Accept', 'application/json');
 
         const body = new FormData();
-        body.append('email', email.toLowerCase());
+        body.append('phone_number', phoneNumber.toLowerCase());
 
-        fetch(`${RESEND_EMAIL_OTP}`, {
+        fetch(`${RESEND_PHONE_OTP}`, {
             method: 'POST',
             headers,
             body,
@@ -120,8 +111,8 @@ const ResendEmailScreen = () => {
                     duration: 3000
                 })
 
-                navigation.navigate('VerifyEmail', { email: email,provider:"email" });
-            
+                navigation.navigate('VerifyPhoneNumber', { phoneNumber: phoneNumber, provider:"phoneNumber" });
+
 
                 setLoading(false);
             })
@@ -144,27 +135,29 @@ const ResendEmailScreen = () => {
             >
 
 
-                <Text style={[{ fontSize: 20, marginVertical:10 }, generalStyles.textStyle]}>Resend OTP Code? </Text>
+                <Text style={[{ fontSize: 20 }, generalStyles.textStyle]}>Resend OTP Code</Text>
 
                 <Text style={[generalStyles.textStyle]}>
-                    Please re-enter your email again to resend verification code
+                    Please re-enter your phone number again to resend verification code
                 </Text>
 
                 <View style={generalStyles.formContainer}>
-                   
 
-                    <TextInput
-                        style={[generalStyles.formInput, generalStyles.borderStyles,  errors.email && generalStyles.errorInput]}
-                        placeholder={'Email'}
-                        keyboardType="email-address"
-                        placeholderTextColor={COLORS.primaryWhiteHex}
-                        onChangeText={text => setEmail(text)}
-                        value={email}
-                        underlineColorAndroid="transparent"
-                        autoCapitalize="none"
+
+                    <PhoneInput
+                        ref={phoneInput}
+                        defaultValue={phoneNumber}
+                        defaultCode="UG"
+                        layout="first"
+                        onChangeFormattedText={(text) => {
+                            setPhoneNumber(text);
+                        }}
+                        placeholder="Phone number"
+                        containerStyle={styles.phoneInputContainer}
+                        textContainerStyle={styles.phoneTextInputContainer}
                     />
                     <View>
-                        {errors.email && <Text style={generalStyles.errorText}>{errors.email}</Text>}
+                        {errors.phoneNumber && <Text style={generalStyles.errorText}>{errors.phoneNumber}</Text>}
                     </View>
 
                 </View>
@@ -174,7 +167,7 @@ const ResendEmailScreen = () => {
                     activeOpacity={1}
                     style={generalStyles.loginContainer}
                     onPress={() => resendOtp()}>
-                    <Text style={generalStyles.loginText}>{'Resend Email'}</Text>
+                    <Text style={generalStyles.loginText}>{'Resend OTP'}</Text>
                 </TouchableOpacity>
                 {/* button */}
                 {loading && <ActivityIndicator />}
@@ -183,6 +176,20 @@ const ResendEmailScreen = () => {
     );
 };
 
-export default ResendEmailScreen;
+export default ResendPhoneNumberScreen;
 
 
+
+const styles = StyleSheet.create({
+    phoneInputContainer: {
+        width: '100%',
+        height: 50,
+        backgroundColor: '#f5f5f5',
+        borderRadius: 8,
+    },
+    phoneTextInputContainer: {
+        paddingVertical: 0,
+        backgroundColor: '#f5f5f5',
+    },
+
+})

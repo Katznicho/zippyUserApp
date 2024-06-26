@@ -30,7 +30,8 @@ const HomeStack = () => {
     const navigation = useNavigation<any>();
 
     return (
-        <Stack.Navigator initialRouteName={"HomeScreen"} >
+        <Stack.Navigator initialRouteName={"HomeScreen"} 
+        >
             <Stack.Screen
                 name="HomeScreen"
                 component={HomeScreen}
@@ -39,9 +40,9 @@ const HomeStack = () => {
                     headerShown: false
                 }}
             >
-
             </Stack.Screen>
 
+        
 
             <Stack.Screen
                 name="CreateWallet"

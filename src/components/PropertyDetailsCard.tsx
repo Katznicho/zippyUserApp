@@ -17,13 +17,6 @@ const PropertyDetailsCard = ({ property }: any) => {
     const navigation = useNavigation<any>();
     const { position } = useGetUserLocation();
 
-    // console.log("==============position============")
-    // console.log("position", position.latitude, position.longitude)
-    // console.log("==============position============")
-
-    // console.log("======property============")
-    //  console.log("property", property.lat, property.long)
-    //  console.log("======property============")
 
 
 

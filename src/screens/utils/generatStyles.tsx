@@ -109,6 +109,16 @@ export const generalStyles = StyleSheet.create({
     marginHorizontal: 20,
     marginVertical: 10
   },
+  phoneInputContainer: {
+    width: '100%',
+    height: 50,
+    backgroundColor: '#f5f5f5',
+    borderRadius: 8,
+  },
+  phoneTextInputContainer: {
+    paddingVertical: 0,
+    backgroundColor: '#f5f5f5',
+  },
 
 
   titleHeaderStyles: {

@@ -278,12 +278,16 @@ const ZippyAlert = () => {
                     method: "POST",
                     headers: myHeaders,
                     body: formData,
-                    redirect: "follow"
                 };
+
+                console.log(CREATE_ZIPPY_ALERT)
 
                 fetch(CREATE_ZIPPY_ALERT, requestOptions)
                     .then((response) => response.json())
                     .then((result) => {
+                        console.log("======res===============")
+                        console.log(result)
+                        console.log("=====================")    
                         setLoading(false)
                         if (result?.response === "success") {
                             showMessage({

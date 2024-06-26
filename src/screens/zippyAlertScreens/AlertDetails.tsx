@@ -8,9 +8,7 @@ import { COLORS } from '../../theme/theme'
 const AlertDetails = () => {
     const { data } = useRoute<any>()?.params
 
-    console.log("=======================")
-    console.log(data?.services)
-    console.log("======================")
+
     return (
         <KeyboardAwareScrollView
             style={[{ flex: 1, width: '100%' }, generalStyles.ScreenContainer]}

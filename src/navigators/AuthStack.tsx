@@ -8,6 +8,8 @@ import ForgotPasswordScreen from '../screens/authscrens/ForgotPasswordScreen';
 import ChangePasswordForgotEmail from '../screens/authscrens/ChangePasswordForgotEmail';
 import VerificationScreen from '../screens/authscrens/VerificationScreen';
 import ResendEmailScreen from '../screens/authscrens/ResendEmail';
+import VerifyPhoneNumber from '../screens/authscrens/VerifyPhoneNumber';
+import ResendPhoneNumberScreen from '../screens/authscrens/ResendPhoneNumber';
 
 
 const Stack = createNativeStackNavigator();
@@ -21,13 +23,14 @@ const AuthStack = () => {
                 name="Login"
                 component={Login}
                 options={{
-                    title: 'Login',
-                    headerStyle: {
-                        backgroundColor: COLORS.primaryOrangeHex
-                    },
-                    headerTitleStyle: generalStyles.titleHeaderStyles,
-                    headerTitleAlign: 'center',
-                    headerTintColor: COLORS.primaryBlackHex,
+                    // title: 'Login',
+                    // headerStyle: {
+                    //     backgroundColor: COLORS.primaryOrangeHex
+                    // },
+                    // headerTitleStyle: generalStyles.titleHeaderStyles,
+                    // headerTitleAlign: 'center',
+                    // headerTintColor: COLORS.primaryBlackHex,
+                    headerShown: false
 
                 }}
             />
@@ -59,10 +62,10 @@ const AuthStack = () => {
                 }}
             />
             <Stack.Screen
-                name="ChangePasswordForgotEmail"
-                component={ChangePasswordForgotEmail}
+                name="VerifyPhoneNumber"
+                component={VerifyPhoneNumber}
                 options={{
-                    title: 'Change Password',
+                    title: 'Verify Phone Number',
                     headerStyle: {
                         backgroundColor: COLORS.primaryOrangeHex
                     },
@@ -89,6 +92,20 @@ const AuthStack = () => {
                 component={ResendEmailScreen}
                 options={{
                     title: 'Resend Email',
+                    headerStyle: {
+                        backgroundColor: COLORS.primaryOrangeHex
+                    },
+                    headerTitleStyle: generalStyles.titleHeaderStyles,
+                    headerTitleAlign: 'center',
+                    headerTintColor: COLORS.primaryBlackHex,
+                }}
+            />
+
+            <Stack.Screen
+                name="ResendPhoneNumber"
+                component={ResendPhoneNumberScreen}
+                options={{
+                    title: 'Resend OTP',
                     headerStyle: {
                         backgroundColor: COLORS.primaryOrangeHex
                     },

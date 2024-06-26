@@ -8,7 +8,7 @@ import { ActivityIndicator } from '../../components/ActivityIndicator'
 const Points = () => {
 
     const { data, error, isLoading, } = useApi<any>({
-        endpoint: '/getUserPoints',
+        endpoint: '/app-user/getUserPoints',
         params: {
             "account": "hasWalletAccount"
         },

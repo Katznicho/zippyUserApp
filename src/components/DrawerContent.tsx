@@ -38,8 +38,8 @@ const DrawerContent = (props: any) => {
 
         try {
             const result = await Share.open({
-                title: 'Install Reuse App',
-                message: 'Check out Reuse App and install it',
+                title: 'Install Zippy App',
+                message: 'Check out Zippy App and install it',
                 url: 'https://play.google.com/apps/internaltest/4699919634175995763',
             });
             console.log(result);
@@ -417,7 +417,7 @@ const DrawerContent = (props: any) => {
 
             {/* logout  */}
             <DrawerItem
-                label="Logout"
+                label={guestUser ? "Login" : "Logout"}
                 icon={() => <AntDesign
                     name="logout"
                     size={25}
@@ -426,7 +426,13 @@ const DrawerContent = (props: any) => {
                 }
                 onPress={() => {
                     setSelectedItem('Logout');
-                    onSignOut()
+                    if(guestUser){
+                        return dispatch(showAuthScreen(true));
+                    }
+                    else{
+                        return onSignOut();
+                    }
+                    // onSignOut()
                 }}
                 style={[{
                     backgroundColor:
