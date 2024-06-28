@@ -14,6 +14,7 @@ import AllUsers from '../screens/AllUsers';
 import TransactionDetails from '../screens/TransactionDetails';
 import PropertyDetails from '../screens/PropertyDetails';
 import PropertyImages from '../screens/PropertyImages';
+import ConfirmAndPay from '../screens/ConfirmAndPay';
 
 
 
@@ -97,6 +98,23 @@ const PropertyStack = () => {
                 }}>
             </Stack.Screen>
             {/* property details */}
+
+                        {/* confirm and pay */}
+             <Stack.Screen
+                name="ConfirmAndPay"
+                component={ConfirmAndPay}
+                options={{
+                    animation: 'slide_from_bottom',
+                    title: 'Confirm and Pay',
+                    headerStyle: generalStyles.headerStyle,
+                    headerTitleStyle: generalStyles.titleHeaderStyles,
+                    headerTintColor: COLORS.primaryBlackHex,
+                    headerTitleAlign: 'center',
+                    headerLeft: () => <ArrowBack />,
+
+                }}>
+            </Stack.Screen>
+            {/* confirm and pay */}
 
 
             {/* property images */}

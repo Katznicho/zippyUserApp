@@ -34,6 +34,7 @@ export const SPACING: Spacing = {
 
 interface Color {
   primaryRedHex: string;
+  primaryDarkRedHex: string;
   primaryOrangeHex: string;
   primaryBlackHex: string;
   primaryDarkGreyHex: string;
@@ -47,9 +48,10 @@ interface Color {
   secondaryBlackRGBA: string;
   primaryLightWhiteGrey: string;
 }
-
+//#D61C29
 export const COLORS: Color = {
   primaryRedHex: '#DC3535',
+  primaryDarkRedHex: '#D61C29',
   primaryOrangeHex: '#005CFF',
   primaryBlackHex: '#ffffff',
   primaryDarkGreyHex: '#141921',
@@ -62,6 +64,7 @@ export const COLORS: Color = {
   primaryBlackRGBA: 'rgba(12,15,20,0.5)',
   secondaryBlackRGBA: 'rgba(0,0,0,0.7)',
   primaryLightWhiteGrey: '#F5F7F8',
+  
 };
 
 // export const COLORS: Color = {

@@ -21,6 +21,7 @@ import HeaderBar from '../components/HeaderBar';
 import ZippyAlert from '../screens/ZippyAlert';
 import MyWebView from '../screens/MyWebView';
 import Deposit from '../screens/Deposit';
+import ConfirmAndPay from '../screens/ConfirmAndPay';
 
 const Stack = createNativeStackNavigator();
 
@@ -161,6 +162,9 @@ const HomeStack = () => {
                 }}>
             </Stack.Screen>
             {/* transaction details */}
+
+
+
 
             {/* property details */}
             <Stack.Screen

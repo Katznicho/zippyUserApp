@@ -10,9 +10,7 @@ const PropertyDetailScrollView = () => {
 
     const { data, error, isLoading, } = useApi<any>({
         endpoint: '/getAllPropertiesByPagination',
-        params: {
-            "account": "hasWalletAccount"
-        },
+        
         queryOptions: {
             // enabled: true,
             // refetchInterval: 2000,
@@ -20,6 +18,8 @@ const PropertyDetailScrollView = () => {
             // refetchOnMount: true,
         },
     })
+
+
 
     return (
         <ScrollView
