@@ -287,7 +287,7 @@ const ZippyAlert = () => {
                     .then((result) => {
                         console.log("======res===============")
                         console.log(result)
-                        console.log("=====================")    
+                        console.log("=====================")
                         setLoading(false)
                         if (result?.response === "success") {
                             showMessage({
@@ -669,7 +669,9 @@ const ZippyAlert = () => {
         <View style={[{ marginHorizontal: 10 }]}>
             <TouchableOpacity
                 activeOpacity={1}
-                style={[generalStyles.loginContainer, { width: "100%" }]}
+                style={[generalStyles.loginContainer, { width: "100%", backgroundColor:COLORS.primaryDarkRedHex }
+
+                ]}
                 // onPress={() => guestUser ? handleShowAlert() : navigation.navigate('ZippyAlert')}
                 onPress={onCreateZippyAlert}
             >
@@ -761,18 +763,10 @@ const styles = StyleSheet.create({
     },
     labelStyles: {
         color: COLORS.primaryWhiteHex,
-        fontFamily: FONTFAMILY.poppins_semibold,
+        fontFamily: FONTFAMILY.roboto_medium,
         fontSize: 15
     },
-    touchableStyles: {
-        marginHorizontal: 5,
-        marginVertical: 5,
-        width: 100,
-        height: 50,
-        borderRadius: 10,
-        alignItems: "center",
-        justifyContent: "center"
-    },
+
     textColor: {
         color: COLORS.primaryBlackHex,
     },
