@@ -1,26 +1,29 @@
 import { Image, StyleSheet, Text, View } from 'react-native';
 import React from 'react';
 import moment from 'moment';
-
 import { COLORS } from '../theme/theme';
-import { DEFAULT_USER_PROFILE } from '../screens/utils/constants/constants';
+import { DEFAULT_USER_PROFILE, PUBLIC_STORAGE } from '../screens/utils/constants/constants';
 import RatingBox from './RatingBox';
 
-const Comment = ({ item }: { item: any }) => {
+const Comment = ({ item }: any) => {
     const [collapsed, setCollapsed] = React.useState(true);
 
     //
     //
+    const getImageUrl = (displayPicture: string | null) => {
+        return displayPicture ? `${PUBLIC_STORAGE}profile/${displayPicture}` : DEFAULT_USER_PROFILE;
+    }
+    
     return (
         <View style={styles.container}>
             <View style={styles.userContainer}>
                 <Image
-                    source={{ uri: item?.user?.avatar ?? DEFAULT_USER_PROFILE }}
+                    source={{ uri: getImageUrl(item?.app_user?.avatar) }}
                     style={styles.commenterAvatar}
                 />
 
                 <Text style={styles.commenterName} numberOfLines={1}>
-                    {item?.user?.first_name} {item?.user?.last_name}
+                     {item?.app_user?.name}
                 </Text>
 
                 <RatingBox rating={item?.rating} />
@@ -28,10 +31,10 @@ const Comment = ({ item }: { item: any }) => {
 
             <Text
                 style={styles.sComment}
-                numberOfLines={collapsed ? 5 : undefined}
+                numberOfLines={collapsed ? 2 : undefined}
                 onPress={() => setCollapsed(!collapsed)}
             >
-                {item?.comment}
+                {item?.body}
             </Text>
 
             <Text style={styles.sTime}>
@@ -48,6 +51,7 @@ const styles = StyleSheet.create({
         backgroundColor: COLORS.primaryBlackHex,
         borderRadius: 20,
         padding: 10,
+        marginVertical:4
     },
 
     userContainer: { flexDirection: 'row', alignItems: 'center' },

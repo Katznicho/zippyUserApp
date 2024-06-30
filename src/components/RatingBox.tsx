@@ -17,13 +17,13 @@ export default function RatingBox({ rating }: boxInterface) {
 
 const styles = StyleSheet.create({
     sRating: {
-        backgroundColor: COLORS.primaryOrangeHex,
-        paddingHorizontal: 10,
-        borderRadius: 4,
+        backgroundColor: "gold",
+        padding: 2,
+        borderRadius: 20,
         color: COLORS.primaryBlackHex,
         fontWeight: 'bold',
-        width: 40,
-        height: 15,
+        width: 22,
+        height: 22,
         textAlign: 'center',
         overflow: 'hidden',
         fontSize: 12,

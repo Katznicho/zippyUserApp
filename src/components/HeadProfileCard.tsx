@@ -58,6 +58,7 @@ const HeadProfileCard = () => {
                     setImagePath(null)
                     setLoading(false)
                     const { profile_pic } = res.data;
+                    
                     dispatch(updateProfilePicture(profile_pic));
                     showMessage({
                         message: 'Profile picture updated successfully',

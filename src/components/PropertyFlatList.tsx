@@ -57,7 +57,6 @@ const PropertyFlatList: React.FC<any> = ({ propertyData, loadMoreData, isFetchin
                     <View >
 
                         <ZippyAlertButton 
-                          text="Create a new property"
                         />
 
                     </View>
@@ -66,6 +65,7 @@ const PropertyFlatList: React.FC<any> = ({ propertyData, loadMoreData, isFetchin
             </SafeAreaView>
         );
     }
+    
     return (
 
         <FlatList

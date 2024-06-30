@@ -16,6 +16,9 @@ import PropertyDetails from '../screens/PropertyDetails';
 import PropertyImages from '../screens/PropertyImages';
 import ConfirmAndPay from '../screens/ConfirmAndPay';
 import AddPropertyReview from '../screens/property/AddPropertyReview';
+import AllPropertyComments from '../screens/property/AllPropertyComments';
+import AgentProfile from '../screens/agent/AgentProfile';
+import AddAgentReview from '../screens/agent/AddAgentReview';
 
 
 
@@ -133,6 +136,64 @@ const PropertyStack = () => {
                 }}>
             </Stack.Screen>
             {/* property rating */}
+
+            <Stack.Screen
+                name="AddAgentReview"
+                component={AddAgentReview}
+                options={{
+                    animation: 'slide_from_bottom',
+                    title: 'Rate Agent',
+                    headerStyle: generalStyles.headerStyle,
+                    headerTitleStyle: generalStyles.titleHeaderStyles,
+                    headerTintColor: COLORS.primaryBlackHex,
+                    headerTitleAlign: 'center',
+                    headerLeft: () => <ArrowBack />,
+
+                }}>
+            </Stack.Screen>
+
+            {/* all property reviews */}
+            <Stack.Screen
+                name="AllPropertyReviews"
+                component={AllPropertyComments}
+                options={{
+                    animation: 'slide_from_bottom',
+                    headerShown: false
+                }}>
+            </Stack.Screen>
+            {/* all property reviews */}
+
+            {/* agent section */}
+            <Stack.Screen
+                name="AgentProfile"
+                component={AgentProfile}
+                options={{
+                    animation: 'slide_from_bottom',
+                    title: 'Agent Profile',
+                    headerStyle: generalStyles.headerStyle,
+                    headerTitleStyle: generalStyles.titleHeaderStyles,
+                    headerTintColor: COLORS.primaryBlackHex,
+                    headerTitleAlign: 'center',
+                    headerLeft: () => <ArrowBack />,
+
+                }}>
+            </Stack.Screen>
+
+            <Stack.Screen
+                name="AgentComments"
+                component={AgentProfile}
+                options={{
+                    animation: 'slide_from_bottom',
+                    title: 'Agent Comments',
+                    headerStyle: generalStyles.headerStyle,
+                    headerTitleStyle: generalStyles.titleHeaderStyles,
+                    headerTintColor: COLORS.primaryBlackHex,
+                    headerTitleAlign: 'center',
+                    headerLeft: () => <ArrowBack />,
+
+                }}>
+            </Stack.Screen>
+            {/* agent section */}
 
 
             {/* property images */}

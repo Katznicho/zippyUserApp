@@ -1,13 +1,13 @@
 import { useInfiniteQuery } from 'react-query';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { err } from 'react-native-svg';
 
-const fetcher = async (limit: number = 20, pageNumber: number = 1, queryUrl: string, status = null) => {
+
+const fetcher = async (limit: number = 20, pageNumber: number = 1, queryUrl: string, status = null, property_id=null) => {
     try {
         const headers = new Headers();
         headers.append('Accept', 'application/json');
         const token = await AsyncStorage.getItem('token');
-        console.log(token)
+        
         headers.append('Authorization', `Bearer ${token}`);
 
         // Build the URL based on the presence of the status parameter
@@ -16,13 +16,26 @@ const fetcher = async (limit: number = 20, pageNumber: number = 1, queryUrl: str
             url += `&status=${status}`;
         }
 
+        if(property_id){
+            url += `&property_id=${property_id}`;
+        }
+
+        console.log("url from infinite fetch")
+        console.log(url)
+
 
         const response = await fetch(url, {
             method: 'GET',
-            headers,
-        });
+            headers,  
+        },
+        
+    );
 
         const data = await response.json();
+
+        console.log("data from infinite fetch")
+        console.log(data)
+
 
         return {
             data: data?.data?.data,
@@ -33,6 +46,9 @@ const fetcher = async (limit: number = 20, pageNumber: number = 1, queryUrl: str
             pageParam: data?.data?.pagination?.current_page + 1,
         };
     } catch (error) {
+        console.log("error from infinite fetch")
+        console.log(error)
+
         if (error instanceof Error) throw new Error(error.message);
         else throw new Error('Something went wrong.');
     }
@@ -45,7 +61,8 @@ const fetcher = async (limit: number = 20, pageNumber: number = 1, queryUrl: str
  *
  * @return {object} An object containing the fetched data, loading and error states, and functions for pagination.
  */
-export default function useFetchInfinite(queryKey: string, url: string, status: any = null) {
+export default function useFetchInfinite(queryKey: string, url: string, status: any = null, property_id:any=null) {
+    
     const {
         data,
         isError,
@@ -57,7 +74,7 @@ export default function useFetchInfinite(queryKey: string, url: string, status: 
 
     } = useInfiniteQuery({
         queryKey: queryKey,
-        queryFn: ({ pageParam = 1 }) => fetcher(20, pageParam, url, status),
+        queryFn: ({ pageParam = 1 }) => fetcher(20, pageParam, url, status, property_id),
         getNextPageParam: (lastPage, allPages) => lastPage.nextPage,
         getPreviousPageParam: (firstPage, allPages) => firstPage.currentPage - 1,
         staleTime: Infinity,

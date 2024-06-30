@@ -32,9 +32,9 @@ import Entypo from 'react-native-vector-icons/Entypo';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import useGetUserLocation from '../hooks/useGetUserLocation';
 import Collapsible from 'react-native-collapsible';
-import Ionicons from 'react-native-vector-icons/Ionicons';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import FourReviews from '../components/FourReviews';
+import { DEFAULT_USER_PROFILE, PUBLIC_STORAGE } from './utils/constants/constants';
 
 const { height, width } = Dimensions.get('window');
 
@@ -133,7 +133,7 @@ const PropertyDetails = () => {
             [
                 {
                     text: 'Cancel',
-                    onPress: () => console.log('Cancel Pressed'),
+                    onPress: () => null,
                     style: 'cancel'
                 },
                 {
@@ -215,6 +215,9 @@ const PropertyDetails = () => {
         setCurrentImageIndex(index);
     };
 
+    const getImageUrl = (displayPicture: string | null) => {
+        return displayPicture ? `${PUBLIC_STORAGE}profile/${displayPicture}` : DEFAULT_USER_PROFILE;
+    }
 
 
 
@@ -408,22 +411,16 @@ const PropertyDetails = () => {
                                     km(s) from you
                                 </Text>
                             </View>
-                            <View
-                                style={[
-                                    generalStyles.flexStyles,
-                                    { paddingVertical: 5 }
-                                ]}
-                            >
-                                <AntDesign
-                                    name="star"
-                                    size={12}
-                                    color={'#FCB72B'}
-                                    style={{ marginLeft: -5 }}
-                                />
-                                <Text style={styles.CardSubtitle}>
-                                    {'4.6'}(103) reviews
-                                </Text>
-                            </View>
+
+                            <Text style={styles.CardSubtitle}>
+                                {data?.number_of_beds} bedroom(s)
+                            </Text>
+                            <Text style={styles.CardSubtitle}>
+                                {data?.number_of_baths} bathroom(s)
+                            </Text>
+                            <Text style={styles.CardTitle}>
+                                {data?.currency?.name} {formatCurrency(data?.price)}  {data.payment_period?.name}
+                            </Text>
                         </View>
                         <View style={{ alignItems: 'flex-end' }}>
                             <QRCode value={data?.zippy_id} size={40} />
@@ -433,12 +430,15 @@ const PropertyDetails = () => {
                                     { paddingVertical: 5 }
                                 ]}
                             >
-                                <Text style={styles.CardSubtitle}>
-                                    {data?.number_of_beds} bedroom(s)
-                                </Text>
-                                <Text style={styles.CardSubtitle}>
-                                    {data?.number_of_baths} bathroom(s)
-                                </Text>
+                                <TouchableOpacity
+                                    activeOpacity={1}
+                                    style={[generalStyles.loginContainer, styles.bookNowButton]}
+                                    // onPress={() => handleBookNow()}
+                                    onPress={() => navigation.navigate('ConfirmAndPay', { property: data })}
+                                >
+                                    <Text style={generalStyles.loginText}>{'Book Now'}</Text>
+                                </TouchableOpacity>
+
                             </View>
                         </View>
                     </View>
@@ -453,17 +453,16 @@ const PropertyDetails = () => {
                             }
                         ]}
                     >
-                        <View
+                        <TouchableOpacity
+                           activeOpacity={1}
                             style={[
                                 generalStyles.flexStyles,
                                 { alignItems: 'center' }
                             ]}
+                            onPress={() => navigation.navigate('AgentProfile', { data: data?.agent })}
                         >
                             <Image
-                                source={{
-                                    uri:
-                                        'https://plus.unsplash.com/premium_photo-1658506615399-d1280310ad6c?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTN8fGFmcmljYW4lMjBwcm9wZXJ0eSUyMGFnZW50fGVufDB8fDB8fHww'
-                                }}
+                                source={{ uri: getImageUrl(data?.agent?.avatar) }}
                                 style={styles.imageStyles}
                             />
                             <View style={{ marginHorizontal: 5 }}>
@@ -474,7 +473,7 @@ const PropertyDetails = () => {
                                     {'Property Agent'}
                                 </Text>
                             </View>
-                        </View>
+                        </TouchableOpacity>
                         <View>
                             <View>
                                 <TouchableOpacity
@@ -500,8 +499,8 @@ const PropertyDetails = () => {
                             generalStyles.flexStyles,
                             {
                                 //justifyContent: 'space-between',
-                                 paddingVertical: 5,
-                                 alignItems: 'center',
+                                paddingVertical: 5,
+                                alignItems: 'center',
                                 // justifyContent: 'center'
                             }
                         ]}
@@ -551,7 +550,7 @@ const PropertyDetails = () => {
                                 //justifyContent: 'center',
                                 paddingVertical: 5,
                                 alignItems: 'center'
-                                
+
                             }
                         ]}
                         onPress={() => {
@@ -648,7 +647,7 @@ const PropertyDetails = () => {
 
                     {/* likes sections */}
                     <FourReviews
-                     property_id={data?.id}
+                        property_id={data?.id}
                     />
                     {/* likes section */}
 
@@ -661,19 +660,6 @@ const PropertyDetails = () => {
                     />
                 )}
             </ScrollView>
-            <View style={styles.fixedBottomBar}>
-                <Text style={styles.priceText}>
-                    {data?.currency?.name} {formatCurrency(data?.price)}
-                </Text>
-                <TouchableOpacity
-                    activeOpacity={1}
-                    style={[generalStyles.loginContainer, styles.bookNowButton]}
-                    // onPress={() => handleBookNow()}
-                    onPress={() => navigation.navigate('ConfirmAndPay', { property: data })}
-                >
-                    <Text style={generalStyles.loginText}>{'Book Now'}</Text>
-                </TouchableOpacity>
-            </View>
         </View>
     );
 };
@@ -736,8 +722,9 @@ const styles = StyleSheet.create({
         fontWeight: 'bold'
     },
     bookNowButton: {
-        width: '40%',
-        marginTop: 0
+        width: '50%',
+        marginTop: 0,
+        backgroundColor: COLORS.primaryDarkRedHex
     },
     imageIndicatorContainer: {
         position: 'absolute',

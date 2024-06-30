@@ -1,4 +1,4 @@
-import { SetStateAction, useState } from "react";
+import {  useState } from "react";
 import { Alert, StyleSheet, Text, TextInput, TouchableOpacity, View } from "react-native";
 import { COLORS, FONTSIZE, SPACING } from "../../theme/theme";
 import StarRating from 'react-native-star-rating-widget';
@@ -13,7 +13,7 @@ import { useNavigation, useRoute } from "@react-navigation/native";
 import { showAuthScreen } from "../../redux/store/slices/UserSlice";
 
 
-const AddPropertyReview = () => {
+const AddAgentReview = () => {
     const [rating, setRating] = useState<number>(0);
     const [comment, setComment] = useState<string>('');
     const [loading , setLoading] = useState<boolean>(false)
@@ -198,4 +198,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export default AddPropertyReview;
+export default AddAgentReview;
