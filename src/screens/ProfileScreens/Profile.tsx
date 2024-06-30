@@ -1,5 +1,5 @@
 import { ScrollView, View, Text, TouchableOpacity, StyleSheet } from 'react-native';
-import React, { useState } from 'react';
+import React  from 'react';
 import HeadProfileCard from '../../components/HeadProfileCard';
 import ProfileDetailsCard from '../../components/ProfileCardDetails';
 import { generalStyles } from '../utils/generatStyles';

@@ -50,7 +50,7 @@ export const DEFAULT_USER_PROFILE = "https://media.istockphoto.com/id/519078727/
 
 //reuse storage
 
-export const PUBLIC_STORAGE = "https://zippy.risidev.com/storage/app/public/"
+export const PUBLIC_STORAGE = "https://dashboard.zippyug.com/storage/app/public/"
 
 
 

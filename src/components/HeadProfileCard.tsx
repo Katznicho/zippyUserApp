@@ -7,8 +7,6 @@ import UploadComponent from './UploadComponent';
 import { updateProfilePicture } from '../redux/store/slices/UserSlice';
 import { DEFAULT_USER_PROFILE, PUBLIC_STORAGE } from '../screens/utils/constants/constants';
 import { generalStyles } from '../screens/utils/generatStyles';
-import { COLORS } from '../theme/theme';
-import AntDesign from 'react-native-vector-icons/AntDesign';
 import { PROFILE_UPLOAD } from '../screens/utils/constants/routes';
 import RNFetchBlob from 'rn-fetch-blob';
 import { ActivityIndicator } from './ActivityIndicator';
@@ -16,24 +14,17 @@ import { ActivityIndicator } from './ActivityIndicator';
 const screenWidth = Dimensions.get('window').width
 
 const HeadProfileCard = () => {
-
-
     const { user, isLoggedIn, authToken } = useSelector((state: RootState) => state.user);
     const [showModal, setShowModal] = useState<boolean>(false);
     const [imagePath, setImagePath] = useState<any>(null);
     const [progress, setProgress] = useState<number>(0);
-
     const [loading, setLoading] = useState<boolean>(false);
-
-
-
     const dispatch = useDispatch<AppDispatch>();
 
-    const handleUpload = async () => {
+    const handleUpload = async (selectedImagePath: string) => {
         try {
             setLoading(true)
-            const coverImageFilePath = imagePath?.imagePath?.replace(/^file:\/\//, '');
-
+            const coverImageFilePath = selectedImagePath.replace(/^file:\/\//, '');
             const formData = new FormData();
 
             formData.append('profile_pic', {
@@ -56,11 +47,8 @@ const HeadProfileCard = () => {
                         name: 'profile_pic',
                         filename: 'profile_pic.png',
                         type: 'image/png',
-                        // Change BASE64 encoded data to a file path with prefix `RNFetchBlob-file://`.
-                        // Or simply wrap the file path with RNFetchBlob.wrap().
                         data: RNFetchBlob.wrap(coverImageFilePath)
                     },
-
                 ]
             ).uploadProgress((written, total) => {
                 setProgress(written / total)
@@ -68,20 +56,18 @@ const HeadProfileCard = () => {
                 .then(response => response.json())
                 .then(async (res) => {
                     setImagePath(null)
-
                     setLoading(false)
-                    //dispatch(updateProfilePicture(res.data));
                     const { profile_pic } = res.data;
                     dispatch(updateProfilePicture(profile_pic));
-                    return showMessage({
+                    showMessage({
                         message: 'Profile picture updated successfully',
                         type: 'success',
                         icon: 'success',
                         duration: 3000,
                         floating: true,
-                    })
-                }).
-                catch((error) => {
+                    });
+                })
+                .catch((error) => {
                     setLoading(false)
                     showMessage({
                         message: error.response.data.message,
@@ -92,8 +78,6 @@ const HeadProfileCard = () => {
                         floating: true,
                     });
                 });
-
-
         } catch (error: any) {
             setLoading(false)
             showMessage({
@@ -108,21 +92,14 @@ const HeadProfileCard = () => {
     };
 
     useEffect(() => {
-
+        if (imagePath) {
+            handleUpload(imagePath.imagePath);
+        }
     }, [imagePath]);
 
     const getImageUrl = (displayPicture: string | null) => {
-
-
-        if (displayPicture) {
-            return `${PUBLIC_STORAGE}profile/${displayPicture}`
-        } else {
-            return DEFAULT_USER_PROFILE
-        }
-
+        return displayPicture ? `${PUBLIC_STORAGE}profile/${displayPicture}` : DEFAULT_USER_PROFILE;
     }
-
-
 
     return (
         <View style={[generalStyles.flexStyles]}>
@@ -134,55 +111,14 @@ const HeadProfileCard = () => {
                     }
                 }}
             >
-                {imagePath ? (
-                    <View>
-                        <Image
-                            style={{ width: 80, height: 80, borderRadius: 40 }}
-                            source={{
-                                uri: `${imagePath.imagePath}`,
-                            }}
-                        />
-                        <View
-                            style={[generalStyles.absoluteStyles, { bottom: -6, right: -15 }]}
-                        >
-
-
-                            <TouchableOpacity
-                                style={{
-                                    backgroundColor: COLORS.primaryOrangeHex,
-                                    width: 40,
-                                    height: 40,
-                                    borderRadius: 35,
-                                    justifyContent: 'center',
-                                    alignItems: 'center',
-                                }}
-                                onPress={handleUpload}>
-                                <AntDesign
-                                    name="upload"
-                                    color={COLORS.primaryWhiteHex}
-                                    size={25}
-                                />
-                            </TouchableOpacity>
-
-                        </View>
-                    </View>
-                ) : (
-                    <Image
-                        style={{ width: 80, height: 80, borderRadius: 40 }}
-                        source={{ uri: getImageUrl(user?.displayPicture) }}
-                    />
-                )}
+                <Image
+                    style={{ width: 80, height: 80, borderRadius: 40 }}
+                    source={{ uri: imagePath ? imagePath.imagePath : getImageUrl(user?.displayPicture) }}
+                />
             </TouchableOpacity>
 
-
-
-            {/* progress bar */}
-
-            {/* loader */}
             {loading && <ActivityIndicator />}
-            {/* loader */}
 
-            {/* modal section */}
             {showModal && (
                 <UploadComponent
                     image={imagePath}
@@ -192,12 +128,8 @@ const HeadProfileCard = () => {
                     selectDocument={false}
                 />
             )}
-
-            {/* modal section */}
         </View>
     );
 };
 
 export default HeadProfileCard;
-
-
