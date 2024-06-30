@@ -19,6 +19,7 @@ import AddPropertyReview from '../screens/property/AddPropertyReview';
 import AllPropertyComments from '../screens/property/AllPropertyComments';
 import AgentProfile from '../screens/agent/AgentProfile';
 import AddAgentReview from '../screens/agent/AddAgentReview';
+import AgentComments from '../screens/agent/AgentComments';
 
 
 
@@ -137,6 +138,20 @@ const PropertyStack = () => {
             </Stack.Screen>
             {/* property rating */}
 
+
+
+            {/* all property reviews */}
+            <Stack.Screen
+                name="AllPropertyReviews"
+                component={AllPropertyComments}
+                options={{
+                    animation: 'slide_from_bottom',
+                    headerShown: false
+                }}>
+            </Stack.Screen>
+            {/* all property reviews */}
+
+            {/* agent section */}
             <Stack.Screen
                 name="AddAgentReview"
                 component={AddAgentReview}
@@ -151,19 +166,6 @@ const PropertyStack = () => {
 
                 }}>
             </Stack.Screen>
-
-            {/* all property reviews */}
-            <Stack.Screen
-                name="AllPropertyReviews"
-                component={AllPropertyComments}
-                options={{
-                    animation: 'slide_from_bottom',
-                    headerShown: false
-                }}>
-            </Stack.Screen>
-            {/* all property reviews */}
-
-            {/* agent section */}
             <Stack.Screen
                 name="AgentProfile"
                 component={AgentProfile}
@@ -181,15 +183,10 @@ const PropertyStack = () => {
 
             <Stack.Screen
                 name="AgentComments"
-                component={AgentProfile}
+                component={AgentComments}
                 options={{
                     animation: 'slide_from_bottom',
-                    title: 'Agent Comments',
-                    headerStyle: generalStyles.headerStyle,
-                    headerTitleStyle: generalStyles.titleHeaderStyles,
-                    headerTintColor: COLORS.primaryBlackHex,
-                    headerTitleAlign: 'center',
-                    headerLeft: () => <ArrowBack />,
+                    headerShown:false
 
                 }}>
             </Stack.Screen>

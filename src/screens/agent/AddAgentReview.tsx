@@ -5,7 +5,7 @@ import StarRating from 'react-native-star-rating-widget';
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 import { generalStyles } from "../utils/generatStyles";
 import { ActivityIndicator } from "../../components/ActivityIndicator";
-import { COMMENT_ON_PROPERTY } from "../utils/constants/routes";
+import { COMMENT_ON_AGENT, COMMENT_ON_PROPERTY } from "../utils/constants/routes";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../redux/store/dev";
 import { showMessage } from "react-native-flash-message";
@@ -21,7 +21,8 @@ const AddAgentReview = () => {
 
     const navigation = useNavigation<any>();
 
-    const {property_id} =  useRoute<any>().params;
+    const {agent_id} =  useRoute<any>().params;
+    
 
     const { authToken , guestUser} = useSelector((state: RootState) => state.user);
 
@@ -68,7 +69,7 @@ const AddAgentReview = () => {
             setErrors({ comment: '', rating: '' });
            
 
-            fetch(`${COMMENT_ON_PROPERTY}`, {
+            fetch(`${COMMENT_ON_AGENT}`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -78,11 +79,11 @@ const AddAgentReview = () => {
                 body: JSON.stringify({
                     message: comment,
                     rating: rating.toString(),
-                    property_id: property_id
+                    agent_id
                   }),
             }).then(response => response.json())
                 .then(data => {
-                    //  console.log('Data:', data);
+                     console.log('Data:', data);
                     setLoading(false);
                     if (data.success) {
                         showMessage({
@@ -108,7 +109,7 @@ const AddAgentReview = () => {
 
                 });
         } catch (error) {
-            //console.log('Error:', error);
+            console.log('Error:', error);
             setLoading(false);
                     return showMessage({
                         message: 'Failed to add comment',

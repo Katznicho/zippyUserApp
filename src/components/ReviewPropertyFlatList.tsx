@@ -40,7 +40,7 @@ const ReviewPropertyFlatList = ({ reviewData, loadMoreData, isFetching, searchTe
             <SafeAreaView style={[generalStyles.ScreenContainer]}>
                 <View style={[generalStyles.centerContent, generalStyles.viewStyles]} >
                     <EmptyContainer
-                        title={'No properties found'}
+                        title={'No reviews found'}
                     />
 
 

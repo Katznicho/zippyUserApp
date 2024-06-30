@@ -2,7 +2,7 @@ import { useInfiniteQuery } from 'react-query';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 
-const fetcher = async (limit: number = 20, pageNumber: number = 1, queryUrl: string, status = null, property_id=null) => {
+const fetcher = async (limit: number = 20, pageNumber: number = 1, queryUrl: string, status = null, property_id=null,agent_id=null) => {
     try {
         const headers = new Headers();
         headers.append('Accept', 'application/json');
@@ -20,8 +20,11 @@ const fetcher = async (limit: number = 20, pageNumber: number = 1, queryUrl: str
             url += `&property_id=${property_id}`;
         }
 
-        console.log("url from infinite fetch")
-        console.log(url)
+        if(agent_id){
+            url += `&agent_id=${agent_id}`;
+        }
+
+
 
 
         const response = await fetch(url, {
@@ -61,7 +64,7 @@ const fetcher = async (limit: number = 20, pageNumber: number = 1, queryUrl: str
  *
  * @return {object} An object containing the fetched data, loading and error states, and functions for pagination.
  */
-export default function useFetchInfinite(queryKey: string, url: string, status: any = null, property_id:any=null) {
+export default function useFetchInfinite(queryKey: string, url: string, status: any = null, property_id:any=null, agent_id:any=null) {
     
     const {
         data,
@@ -74,7 +77,7 @@ export default function useFetchInfinite(queryKey: string, url: string, status: 
 
     } = useInfiniteQuery({
         queryKey: queryKey,
-        queryFn: ({ pageParam = 1 }) => fetcher(20, pageParam, url, status, property_id),
+        queryFn: ({ pageParam = 1 }) => fetcher(20, pageParam, url, status, property_id, agent_id),
         getNextPageParam: (lastPage, allPages) => lastPage.nextPage,
         getPreviousPageParam: (firstPage, allPages) => firstPage.currentPage - 1,
         staleTime: Infinity,

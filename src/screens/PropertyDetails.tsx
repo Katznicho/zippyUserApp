@@ -459,7 +459,7 @@ const PropertyDetails = () => {
                                 generalStyles.flexStyles,
                                 { alignItems: 'center' }
                             ]}
-                            onPress={() => navigation.navigate('AgentProfile', { data: data?.agent })}
+                            onPress={() => navigation.navigate('AgentProfile', { agent: data?.agent })}
                         >
                             <Image
                                 source={{ uri: getImageUrl(data?.agent?.avatar) }}

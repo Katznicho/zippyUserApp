@@ -68,8 +68,9 @@ export const ACTIVATE_ZIPPY_ALERT = `${BASE_URL}/app-user/ActivateAlert`
 export const DEACTIVATE_ZIPPY_ALERT = `${BASE_URL}/app-user/deActivateAlert`;
 
 export const COMMENT_ON_PROPERTY = `${BASE_URL}/app-user/commentOnProperty`;
-export const COMMENT_ON_AGENT = `${BASE_URL}/app-user/commentOnAgent`;
+export const COMMENT_ON_AGENT = `${BASE_URL}/app-user/commentOnAgentProperty`;
 export const COMMENTS_BY_ID  = `${BASE_URL}/getPropertyCommentsByIdAndPaginated`
+export const AGENT_COMMENTS_BY_ID = `${BASE_URL}/getPropertyAgentCommentsByIdAndPaginated`
 
 export const LIKE_PROPERTY = `${BASE_URL}/app-user/likeProperty`
 export const DISLIKE_PROPERTY = `${BASE_URL}/app-user/dislikeProperty`
