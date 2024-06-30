@@ -73,7 +73,9 @@ export const COMMENTS_BY_ID  = `${BASE_URL}/getPropertyCommentsByIdAndPaginated`
 export const AGENT_COMMENTS_BY_ID = `${BASE_URL}/getPropertyAgentCommentsByIdAndPaginated`
 
 export const LIKE_PROPERTY = `${BASE_URL}/app-user/likeProperty`
-export const DISLIKE_PROPERTY = `${BASE_URL}/app-user/dislikeProperty`
+export const DISLIKE_PROPERTY = `${BASE_URL}/app-user/dislikeProperty`;
+
+export const CHECK_IF_PROPERTY_LIKED  = `${BASE_URL}/app-user/checkIfPropertyLikedByUser`;
 
 
 

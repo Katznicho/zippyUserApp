@@ -29,6 +29,9 @@ const HomeScreen = () => {
         keyboardShouldPersistTaps="always"
         contentContainerStyle={{ paddingBottom: tabBarHeight }}
       >
+        {/* menu icon */}
+
+        {/* menu icon */}
 
 
         {/* categories */}

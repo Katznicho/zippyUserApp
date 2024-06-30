@@ -20,7 +20,7 @@ import { logoutUser } from '../redux/store/slices/UserSlice';
 const ProfileDetailsCard = ({
     details,
 }: any) => {
-    const { authToken , isLoggedIn} = useSelector((state: RootState) => state.user);
+    const { authToken } = useSelector((state: RootState) => state.user);
     const dispatch = useDispatch<any>()
 
 

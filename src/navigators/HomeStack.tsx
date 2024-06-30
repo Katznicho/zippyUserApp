@@ -22,6 +22,9 @@ import ZippyAlert from '../screens/ZippyAlert';
 import MyWebView from '../screens/MyWebView';
 import Deposit from '../screens/Deposit';
 import ConfirmAndPay from '../screens/ConfirmAndPay';
+import { DEFAULT_USER_PROFILE, PUBLIC_STORAGE } from '../screens/utils/constants/constants';
+import { TouchableOpacity } from 'react-native-gesture-handler';
+import { Image } from 'react-native';
 
 const Stack = createNativeStackNavigator();
 
@@ -30,6 +33,12 @@ const HomeStack = () => {
     const { user } = useSelector((state: RootState) => state.user);
     const navigation = useNavigation<any>();
 
+    const getImageUrl = (displayPicture: string | null) => {
+        return displayPicture ? `${PUBLIC_STORAGE}profile/${displayPicture}` : DEFAULT_USER_PROFILE;
+    }
+
+    //                            navigation.toggleDrawer()
+    
     return (
         <Stack.Navigator initialRouteName={"HomeScreen"} 
         >
@@ -38,7 +47,30 @@ const HomeStack = () => {
                 component={HomeScreen}
                 options={{
                     animation: 'slide_from_bottom',
-                    headerShown: false
+                    
+                    headerLeft: () => 
+                    <TouchableOpacity
+                        onPress={() => {
+                            navigation.toggleDrawer()
+                        }}
+                        activeOpacity={1}
+                    >
+                      <Image 
+                        source={{ uri: getImageUrl(user?.displayPicture) }}
+                        style={{
+                            width: 40,
+                            height:40,
+                            borderRadius: 50,
+                            marginHorizontal: 10
+                        }}
+                      />
+                    </TouchableOpacity>,
+                    title: 'zippy',
+                    headerStyle: generalStyles.headerStyle,
+                    headerTitleStyle: generalStyles.titleHeaderStyles,
+                    headerTintColor: COLORS.primaryBlackHex,
+                    headerTitleAlign: 'center',
+
                 }}
             >
             </Stack.Screen>
