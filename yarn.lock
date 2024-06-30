@@ -9686,6 +9686,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"react-native-star-rating-widget@npm:^1.8.0":
+  version: 1.8.0
+  resolution: "react-native-star-rating-widget@npm:1.8.0"
+  peerDependencies:
+    react: "*"
+    react-native: "*"
+    react-native-svg: "*"
+  checksum: c0caee812b1b1590e3e4bfb646d788c7b5913ddcee0f83c5995bc686d8471676f6200994d8caed1e790bbd895d87768bd650e6318c71de0b54200da9a053f92d
+  languageName: node
+  linkType: hard
+
 "react-native-svg@npm:^15.2.0":
   version: 15.2.0
   resolution: "react-native-svg@npm:15.2.0"
@@ -11988,6 +11999,7 @@ __metadata:
     react-native-screens: ^3.31.1
     react-native-share: ^10.2.0
     react-native-splash-screen: ^3.3.0
+    react-native-star-rating-widget: ^1.8.0
     react-native-svg: ^15.2.0
     react-native-tab-view: ^3.5.2
     react-native-ui-lib: ^7.21.2

@@ -15,6 +15,7 @@ import TransactionDetails from '../screens/TransactionDetails';
 import PropertyDetails from '../screens/PropertyDetails';
 import PropertyImages from '../screens/PropertyImages';
 import ConfirmAndPay from '../screens/ConfirmAndPay';
+import AddPropertyReview from '../screens/property/AddPropertyReview';
 
 
 
@@ -115,6 +116,23 @@ const PropertyStack = () => {
                 }}>
             </Stack.Screen>
             {/* confirm and pay */}
+
+            {/* property rating */}
+            <Stack.Screen
+                name="AddReviewScreen"
+                component={AddPropertyReview}
+                options={{
+                    animation: 'slide_from_bottom',
+                    title: 'Rate Property',
+                    headerStyle: generalStyles.headerStyle,
+                    headerTitleStyle: generalStyles.titleHeaderStyles,
+                    headerTintColor: COLORS.primaryBlackHex,
+                    headerTitleAlign: 'center',
+                    headerLeft: () => <ArrowBack />,
+
+                }}>
+            </Stack.Screen>
+            {/* property rating */}
 
 
             {/* property images */}

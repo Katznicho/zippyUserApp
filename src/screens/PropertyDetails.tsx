@@ -34,6 +34,7 @@ import useGetUserLocation from '../hooks/useGetUserLocation';
 import Collapsible from 'react-native-collapsible';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+import FourReviews from '../components/FourReviews';
 
 const { height, width } = Dimensions.get('window');
 
@@ -52,20 +53,20 @@ const PropertyDetails = () => {
         return Linking.openURL(url);
     };
 
-     const [liked, setLiked] = useState<boolean>(false);
+    const [liked, setLiked] = useState<boolean>(false);
 
-     const [servicesCollapsed, setServicesCollapsed] = useState<boolean>(true);
-     const [amenitiesCollapsed, setAmenitiesCollapsed] = useState<boolean>(true);
-     const [publicCollapsed, setPublicCollapsed] = useState<boolean>(true);
+    const [servicesCollapsed, setServicesCollapsed] = useState<boolean>(true);
+    const [amenitiesCollapsed, setAmenitiesCollapsed] = useState<boolean>(true);
+    const [publicCollapsed, setPublicCollapsed] = useState<boolean>(true);
 
-     const handleLike = () => {
+    const handleLike = () => {
 
-         if(guestUser){
+        if (guestUser) {
             //  return dispatch(showAuthScreen())
-            return   handleShowAlert();
-         }
-        if(!liked){
-           return Alert.alert(
+            return handleShowAlert();
+        }
+        if (!liked) {
+            return Alert.alert(
                 'Like ' + data?.name,
                 'Are you sure you want to like this ' + data?.name,
                 [
@@ -77,16 +78,16 @@ const PropertyDetails = () => {
                     {
                         text: 'OK',
                         onPress: () => {
-                           setLiked(!liked)
-                           return showMessage({
-                               message: 'Liked Successfully',
-                               type: 'success',
-                               icon: 'success',
-                               duration: 3000,
-                               autoHide: true,
+                            setLiked(!liked)
+                            return showMessage({
+                                message: 'Liked Successfully',
+                                type: 'success',
+                                icon: 'success',
+                                duration: 3000,
+                                autoHide: true,
                                 position: 'bottom'
-                           })
-   
+                            })
+
                         }
                     }
                 ],
@@ -94,7 +95,7 @@ const PropertyDetails = () => {
             )
 
         }
-        else{
+        else {
             return Alert.alert(
                 'Dislike ' + data?.name,
                 'Are you sure you want to dislike this ' + data?.name,
@@ -107,24 +108,24 @@ const PropertyDetails = () => {
                     {
                         text: 'OK',
                         onPress: () => {
-                           setLiked(!liked)
-                           return showMessage({
-                               message: 'Disliked Successfully',
-                               type: 'success',
-                               icon: 'success',
-                               duration: 3000,
-                               autoHide: true,
-                               position: 'bottom'
-                           })
-   
+                            setLiked(!liked)
+                            return showMessage({
+                                message: 'Disliked Successfully',
+                                type: 'success',
+                                icon: 'success',
+                                duration: 3000,
+                                autoHide: true,
+                                position: 'bottom'
+                            })
+
                         }
                     }
                 ],
                 { cancelable: false }
             )
         }
-         
-     }
+
+    }
     const handleShowAlert = () => {
         Alert.alert(
             'Login',
@@ -279,62 +280,62 @@ const PropertyDetails = () => {
                                 <Entypo
                                     name="heart"
                                     size={25}
-                                    color={liked?COLORS.primaryDarkRedHex: COLORS.primaryWhiteHex}
+                                    color={liked ? COLORS.primaryDarkRedHex : COLORS.primaryWhiteHex}
                                 />
                             </TouchableOpacity>
                             {/* positioned like */}
 
-                             {/* positited arrow right */}
-                             <TouchableOpacity
-                                 style={[styles.rightArrow]}
-                                 activeOpacity={1}
-                                 onPress={() => {
-                                     const newIndex = currentImageIndex + 1;
-                                     if (newIndex < data?.property_images?.length) {
-                                         setCurrentImageIndex(newIndex);
-                                     }
-                                 }}
-                                 >
-                                 <MaterialIcons
-                                     name="arrow-forward-ios"
-                                     size={30}
-                                     color={COLORS.primaryBlackHex}
-                                     onPress={() => {
-                                         const newIndex = currentImageIndex + 1;
-                                         if (newIndex < data?.property_images?.length) {
-                                             setCurrentImageIndex(newIndex);
-                                         }
-                                     }}
-                                 />
+                            {/* positited arrow right */}
+                            <TouchableOpacity
+                                style={[styles.rightArrow]}
+                                activeOpacity={1}
+                                onPress={() => {
+                                    const newIndex = currentImageIndex + 1;
+                                    if (newIndex < data?.property_images?.length) {
+                                        setCurrentImageIndex(newIndex);
+                                    }
+                                }}
+                            >
+                                <MaterialIcons
+                                    name="arrow-forward-ios"
+                                    size={30}
+                                    color={COLORS.primaryBlackHex}
+                                    onPress={() => {
+                                        const newIndex = currentImageIndex + 1;
+                                        if (newIndex < data?.property_images?.length) {
+                                            setCurrentImageIndex(newIndex);
+                                        }
+                                    }}
+                                />
 
-                             </TouchableOpacity>
-                             {/* positioned arrow right */}
+                            </TouchableOpacity>
+                            {/* positioned arrow right */}
 
-                             {/* positioned arrow left */}
-                             <TouchableOpacity
-                                 style={[styles.leftArrow]}
-                                 activeOpacity={1}
-                                 onPress={() => {
-                                     const newIndex = currentImageIndex + 1;
-                                     if (newIndex < data?.property_images?.length) {
-                                         setCurrentImageIndex(newIndex);
-                                     }
-                                 }}
-                                 >
-                                 <MaterialIcons
-                                     name="arrow-back-ios"
-                                     size={30}
-                                     color={COLORS.primaryBlackHex}
-                                     onPress={() => {
-                                         const newIndex = currentImageIndex + 1;
-                                         if (newIndex < data?.property_images?.length) {
-                                             setCurrentImageIndex(newIndex);
-                                         }
-                                     }}
-                                 />
+                            {/* positioned arrow left */}
+                            <TouchableOpacity
+                                style={[styles.leftArrow]}
+                                activeOpacity={1}
+                                onPress={() => {
+                                    const newIndex = currentImageIndex + 1;
+                                    if (newIndex < data?.property_images?.length) {
+                                        setCurrentImageIndex(newIndex);
+                                    }
+                                }}
+                            >
+                                <MaterialIcons
+                                    name="arrow-back-ios"
+                                    size={30}
+                                    color={COLORS.primaryBlackHex}
+                                    onPress={() => {
+                                        const newIndex = currentImageIndex + 1;
+                                        if (newIndex < data?.property_images?.length) {
+                                            setCurrentImageIndex(newIndex);
+                                        }
+                                    }}
+                                />
 
-                             </TouchableOpacity>
-                             {/* positioned arrow left */}
+                            </TouchableOpacity>
+                            {/* positioned arrow left */}
                         </ImageBackground>
                     ))}
 
@@ -498,15 +499,17 @@ const PropertyDetails = () => {
                         style={[
                             generalStyles.flexStyles,
                             {
-                                justifyContent: 'space-between',
-                                paddingVertical: 5
+                                //justifyContent: 'space-between',
+                                 paddingVertical: 5,
+                                 alignItems: 'center',
+                                // justifyContent: 'center'
                             }
                         ]}
                         onPress={() => {
                             setServicesCollapsed(!servicesCollapsed);
                         }}
                     >
-                        <View style={{ flex: 1 }}>
+                        <View style={{ flex: 0.4 }}>
                             <Text style={[generalStyles.CardTitle]}>{'Services'}</Text>
                         </View>
 
@@ -514,25 +517,26 @@ const PropertyDetails = () => {
                             name={servicesCollapsed ? 'downcircleo' : 'upcircleo'}
                             size={20}
                             color={COLORS.primaryOrangeHex}
+                            style={{ marginLeft: 10 }}
                         />
                     </TouchableOpacity>
 
                     <Collapsible collapsed={servicesCollapsed}>
                         <View>
                             <Text style={generalStyles.CardSubtitle}>
-                            {data?.services.length>0 ? data?.services.map(
-                                (service: any, index: number) => {
-                                    return (
-                                        <Text
-                                            style={styles.CardSubtitle}
-                                            key={index}
-                                        >
-                                            {service?.name}
-                                        </Text>
-                                    );
-                                }
-                            ):'No Services Available'}
-                        
+                                {data?.services.length > 0 ? data?.services.map(
+                                    (service: any, index: number) => {
+                                        return (
+                                            <Text
+                                                style={styles.CardSubtitle}
+                                                key={index}
+                                            >
+                                                {service?.name}
+                                            </Text>
+                                        );
+                                    }
+                                ) : 'No Services Available'}
+
                             </Text>
                         </View>
                     </Collapsible>
@@ -544,15 +548,17 @@ const PropertyDetails = () => {
                         style={[
                             generalStyles.flexStyles,
                             {
-                                justifyContent: 'space-between',
-                                paddingVertical: 5
+                                //justifyContent: 'center',
+                                paddingVertical: 5,
+                                alignItems: 'center'
+                                
                             }
                         ]}
                         onPress={() => {
                             setAmenitiesCollapsed(!amenitiesCollapsed);
                         }}
                     >
-                        <View style={{ flex: 1 }}>
+                        <View style={{ flex: 0.4 }} >
                             <Text style={[generalStyles.CardTitle]}>{'Amenities'}</Text>
                         </View>
 
@@ -560,25 +566,26 @@ const PropertyDetails = () => {
                             name={amenitiesCollapsed ? 'downcircleo' : 'upcircleo'}
                             size={20}
                             color={COLORS.primaryOrangeHex}
+                            style={{ marginLeft: 10 }}
                         />
                     </TouchableOpacity>
 
                     <Collapsible collapsed={amenitiesCollapsed}>
                         <View>
                             <Text style={[generalStyles.CardSubtitle]}>
-                            {data.amenities.length>0 ? data?.amenities?.map(
-                                (amentity: any, index: number) => {
-                                    return (
-                                        <Text
-                                            style={styles.CardSubtitle}
-                                            key={index}
-                                        >
-                                            {amentity?.name}
-                                        </Text>
-                                    );
-                                }
-                            )
-                            :'No Amenities Available'}
+                                {data.amenities.length > 0 ? data?.amenities?.map(
+                                    (amentity: any, index: number) => {
+                                        return (
+                                            <Text
+                                                style={styles.CardSubtitle}
+                                                key={index}
+                                            >
+                                                {amentity?.name}
+                                            </Text>
+                                        );
+                                    }
+                                )
+                                    : 'No Amenities Available'}
                             </Text>
                         </View>
                     </Collapsible>
@@ -591,39 +598,42 @@ const PropertyDetails = () => {
                         style={[
                             generalStyles.flexStyles,
                             {
-                                justifyContent: 'space-between',
-                                paddingVertical: 5
+                                //justifyContent: 'space-between',
+                                paddingVertical: 5,
+                                alignItems: 'center',
+                                //justifyContent: 'center'
                             }
                         ]}
                         onPress={() => {
                             setPublicCollapsed(!publicCollapsed);
                         }}
-                    >   
-                        <View style={{ flex: 1 }}>
+                    >
+                        <View style={{ flex: 0.4 }}>
                             <Text style={[generalStyles.CardTitle]}>{'Public Facilities'}</Text>
                         </View>
                         <AntDesign
                             name={publicCollapsed ? 'downcircleo' : 'upcircleo'}
                             size={20}
                             color={COLORS.primaryOrangeHex}
+                            style={{ marginLeft: 10 }}
                         />
                     </TouchableOpacity>
 
                     <Collapsible collapsed={publicCollapsed}>
                         <View>
                             <Text style={[generalStyles.CardSubtitle]}>
-                            {data?.public_facilities?.length>0 ? data?.public_facilities?.map(
-                                (facility: any, index: number) => {
-                                    return (
-                                        <Text
-                                            style={styles.CardSubtitle}
-                                            key={index}
-                                        >
-                                            {facility}
-                                        </Text>
-                                    );
-                                }
-                            ):'No Public Facilities Available'}
+                                {data?.public_facilities?.length > 0 ? data?.public_facilities?.map(
+                                    (facility: any, index: number) => {
+                                        return (
+                                            <Text
+                                                style={styles.CardSubtitle}
+                                                key={index}
+                                            >
+                                                {facility}
+                                            </Text>
+                                        );
+                                    }
+                                ) : 'No Public Facilities Available'}
                             </Text>
                         </View>
                     </Collapsible>
@@ -635,7 +645,13 @@ const PropertyDetails = () => {
                             {data?.description}
                         </Text>
                     </View>
-                    
+
+                    {/* likes sections */}
+                    <FourReviews
+                     property_id={data?.id}
+                    />
+                    {/* likes section */}
+
                 </View>
                 {loading && (
                     <ActivityIndicator
@@ -653,11 +669,11 @@ const PropertyDetails = () => {
                     activeOpacity={1}
                     style={[generalStyles.loginContainer, styles.bookNowButton]}
                     // onPress={() => handleBookNow()}
-                    onPress={()=>navigation.navigate('ConfirmAndPay', {property: data})}
+                    onPress={() => navigation.navigate('ConfirmAndPay', { property: data })}
                 >
                     <Text style={generalStyles.loginText}>{'Book Now'}</Text>
                 </TouchableOpacity>
-            </View> 
+            </View>
         </View>
     );
 };
@@ -742,7 +758,7 @@ const styles = StyleSheet.create({
         top: 10,
         right: 10,
         // backgroundColor: 'rgba(0, 0, 0, 0.5)',
-        backgroundColor:COLORS.primaryBlackHex,
+        backgroundColor: COLORS.primaryBlackHex,
         //backgroundColor: "red",
         borderRadius: 20,
         paddingHorizontal: 5,
@@ -752,7 +768,7 @@ const styles = StyleSheet.create({
         width: 30,
         height: 30
     },
-    leftArrow:{
+    leftArrow: {
         position: 'absolute',
         top: 100,
         left: 10,
@@ -762,7 +778,7 @@ const styles = StyleSheet.create({
         paddingHorizontal: 10,
         paddingVertical: 5
     },
-    rightArrow:{
+    rightArrow: {
         position: 'absolute',
         top: 100,
         right: 10,

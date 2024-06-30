@@ -3,13 +3,16 @@ import React, { useEffect, useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { COLORS } from '../theme/theme';
 import { BASE_URL } from '../screens/utils/constants/routes';
+import { generalStyles } from '../screens/utils/generatStyles';
 
-type Props = { trainer_id: number };
+type Props = { property_id: number };
 
-export default function FourReviews({ trainer_id }: Props) {
+export default function FourReviews({ property_id }: Props) {
+    
     const [fourReviews, setFourReviews] = useState([]);
 
     const navigation = useNavigation<any>();
+    //COMMENTS_BY_ID 
 
     //
     // Get trainer reviews
@@ -40,8 +43,8 @@ export default function FourReviews({ trainer_id }: Props) {
     //
     //
     return (
-        <View style={styles.parent}>
-            {fourReviews?.length > 0 && (
+        <View>
+            {fourReviews?.length > 0 ? (
                 <View style={styles.container}>
                     <View style={styles.peopleRow}>
                         {fourReviews.slice(0, 4).map((rev, index) => (
@@ -54,7 +57,7 @@ export default function FourReviews({ trainer_id }: Props) {
                                             navigation.navigate(
                                                 'TrainerReviewsScreen',
                                                 {
-                                                    trainer_id,
+                                                    property_id,
                                                 },
                                             )
                                         }
@@ -82,7 +85,7 @@ export default function FourReviews({ trainer_id }: Props) {
                     <Text
                         onPress={() =>
                             navigation.navigate('TrainerReviewsScreen', {
-                                trainer_id,
+                                property_id,
                             })
                         }
                         style={{ color: COLORS.primaryOrangeHex }}
@@ -90,7 +93,34 @@ export default function FourReviews({ trainer_id }: Props) {
                         Read all reviews
                     </Text>
                 </View>
-            )}
+            ):(
+                <View style={[generalStyles.flexStyles ,{ justifyContent: 'space-between', paddingVertical: 5}]}>
+                     <View>
+                     <Text style={[generalStyles.CardTitle]}>Reviews</Text>
+                     <Text style={[generalStyles.CardSubtitle]}>No reviews yet</Text>
+
+                     </View>
+                     <View>
+                                <TouchableOpacity
+                                    activeOpacity={1}
+                                    style={[
+                                        generalStyles.loginContainer,
+                                        { width: '100%', marginTop: 0, backgroundColor:COLORS.primaryDarkRedHex }
+                                    ]}
+                                    onPress={() => navigation.navigate("AddReviewScreen", { property_id })}
+                                >
+                                    <Text style={generalStyles.loginText}>
+                                        {'Add a review'}
+                                    </Text>
+                                </TouchableOpacity>
+                            </View>
+
+
+
+                </View>
+
+            )
+            }
         </View>
     );
 }

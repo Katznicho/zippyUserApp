@@ -65,7 +65,14 @@ export const CREATE_ZIPPY_ALERT = `${BASE_URL}/app-user/createPropertyAlert`
 //https://zippy.risidev.com/api/v1/createPropertyAlert
 export const GET_ALL_ZIPPY_ALERTS = `${BASE_URL}/app-user/getUserAlerts`
 export const ACTIVATE_ZIPPY_ALERT = `${BASE_URL}/app-user/ActivateAlert`
-export const DEACTIVATE_ZIPPY_ALERT = `${BASE_URL}/app-user/deActivateAlert`
+export const DEACTIVATE_ZIPPY_ALERT = `${BASE_URL}/app-user/deActivateAlert`;
+
+export const COMMENT_ON_PROPERTY = `${BASE_URL}/app-user/commentOnProperty`;
+export const COMMENT_ON_AGENT = `${BASE_URL}/app-user/commentOnAgent`;
+export const COMMENTS_BY_ID  = `${BASE_URL}/getPropertyCommentsByIdAndPaginated`
+
+export const LIKE_PROPERTY = `${BASE_URL}/app-user/likeProperty`
+export const DISLIKE_PROPERTY = `${BASE_URL}/app-user/dislikeProperty`
 
 
 
