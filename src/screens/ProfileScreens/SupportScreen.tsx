@@ -15,7 +15,7 @@ const SupportScreen = () => {
     const onMakeCall = () => {
 
         const args = {
-            number: '256759983853', // String value with the number to call
+            number: '+256759983853', // String value with the number to call
             prompt: false, // Optional boolean property. Determines if the user should be prompted prior to the call 
             skipCanOpen: true // Skip the canOpenURL check
         }

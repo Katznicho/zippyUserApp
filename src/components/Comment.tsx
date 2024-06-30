@@ -1,12 +1,12 @@
 import { Image, StyleSheet, Text, View } from 'react-native';
 import React from 'react';
-import { theme } from '../theme/theme';
-import RatingBox from './RatingBox';
-import { TrainerReviewType } from '../types';
 import moment from 'moment';
-import { DEFAULT_USER_PROFILE } from '../constants/endpoints';
 
-const Comment = ({ item }: { item: TrainerReviewType }) => {
+import { COLORS } from '../theme/theme';
+import { DEFAULT_USER_PROFILE } from '../screens/utils/constants/constants';
+import RatingBox from './RatingBox';
+
+const Comment = ({ item }: { item: any }) => {
     const [collapsed, setCollapsed] = React.useState(true);
 
     //
@@ -45,7 +45,7 @@ export default Comment;
 
 const styles = StyleSheet.create({
     container: {
-        backgroundColor: theme.colors.darkBlack,
+        backgroundColor: COLORS.primaryBlackHex,
         borderRadius: 20,
         padding: 10,
     },
@@ -55,17 +55,17 @@ const styles = StyleSheet.create({
     commenterAvatar: { width: 30, height: 30, borderRadius: 30 },
 
     commenterName: {
-        color: theme.colors.white,
+        color: COLORS.primaryWhiteHex,
         fontSize: 17,
         marginLeft: 10,
         flex: 1,
         fontWeight: '600',
     },
 
-    sComment: { color: theme.colors.white, marginTop: 10 },
+    sComment: { color: COLORS.primaryWhiteHex, marginTop: 10 },
 
     sTime: {
-        color: theme.colors.buttonColor,
+        color: COLORS.primaryOrangeHex,
         fontSize: 10,
         marginTop: 6,
         textAlign: 'right',

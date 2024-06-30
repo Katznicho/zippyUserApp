@@ -35,7 +35,6 @@ const SetUpStack = () => {
                     headerTitleStyle: generalStyles.titleHeaderStyles,
                     headerTintColor: COLORS.primaryBlackHex,
                     headerTitleAlign: 'center',
-                    headerLeft: () => <ArrowBack />
 
                 }}
             >

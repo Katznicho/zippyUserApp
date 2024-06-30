@@ -20,10 +20,17 @@ const PropertyFlatList: React.FC<any> = ({ propertyData, loadMoreData, isFetchin
     }, [searchText, resetSearch]);
 
     const filteredData = searchText
-        ? propertyData.filter((property: { name: string; description: string; category: { name: string; }; }) =>
+        ? propertyData.filter((property: any) =>
             property.name.toLowerCase().includes(searchText.toLowerCase()) ||
-            property.description.toLowerCase().includes(searchText.toLowerCase()) ||
-            property.category.name.toLowerCase().includes(searchText.toLowerCase())
+            property.description?.toLowerCase().includes(searchText.toLowerCase()) ||
+            property?.category?.name?.toLowerCase().includes(searchText.toLowerCase())||
+            //property?.status?.toLowerCase().includes(searchText.toLowerCase())||
+            property?.location?.toLowerCase().includes(searchText.toLowerCase())||
+            property?.agent?.name?.toLowerCase().includes(searchText.toLowerCase())||
+            property?.owner?.name?.toLowerCase().includes(searchText.toLowerCase())
+            // property?.number_of_rooms?.toLowerCase().includes(searchText.toLowerCase())||
+            // property?.number_of_beds?.toLowerCase().includes(searchText.toLowerCase())||
+            // property?.number_of_baths?.toLowerCase().includes(searchText.toLowerCase())
         )
         : propertyData;
 
@@ -49,7 +56,9 @@ const PropertyFlatList: React.FC<any> = ({ propertyData, loadMoreData, isFetchin
                     />
                     <View >
 
-                        <ZippyAlertButton />
+                        <ZippyAlertButton 
+                          text="Create a new property"
+                        />
 
                     </View>
 

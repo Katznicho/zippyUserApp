@@ -31,10 +31,13 @@ import ArrowBack from '../components/ArrowBack';
 import Entypo from 'react-native-vector-icons/Entypo';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import useGetUserLocation from '../hooks/useGetUserLocation';
+import Collapsible from 'react-native-collapsible';
+import Ionicons from 'react-native-vector-icons/Ionicons';
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
 const { height, width } = Dimensions.get('window');
 
-const StationDetails = () => {
+const PropertyDetails = () => {
     const navigation = useNavigation<any>();
     const { data } = useRoute<any>().params;
     const { guestUser, authToken } = useSelector((state: RootState) => state.user);
@@ -50,6 +53,10 @@ const StationDetails = () => {
     };
 
      const [liked, setLiked] = useState<boolean>(false);
+
+     const [servicesCollapsed, setServicesCollapsed] = useState<boolean>(true);
+     const [amenitiesCollapsed, setAmenitiesCollapsed] = useState<boolean>(true);
+     const [publicCollapsed, setPublicCollapsed] = useState<boolean>(true);
 
      const handleLike = () => {
 
@@ -215,7 +222,7 @@ const StationDetails = () => {
             <ScrollView
                 showsVerticalScrollIndicator={false}
                 keyboardShouldPersistTaps="always"
-                style={{ paddingBottom: 50 }}
+                style={{ paddingBottom: 100 }}
             >
                 <ScrollView
                     horizontal
@@ -276,6 +283,58 @@ const StationDetails = () => {
                                 />
                             </TouchableOpacity>
                             {/* positioned like */}
+
+                             {/* positited arrow right */}
+                             <TouchableOpacity
+                                 style={[styles.rightArrow]}
+                                 activeOpacity={1}
+                                 onPress={() => {
+                                     const newIndex = currentImageIndex + 1;
+                                     if (newIndex < data?.property_images?.length) {
+                                         setCurrentImageIndex(newIndex);
+                                     }
+                                 }}
+                                 >
+                                 <MaterialIcons
+                                     name="arrow-forward-ios"
+                                     size={30}
+                                     color={COLORS.primaryBlackHex}
+                                     onPress={() => {
+                                         const newIndex = currentImageIndex + 1;
+                                         if (newIndex < data?.property_images?.length) {
+                                             setCurrentImageIndex(newIndex);
+                                         }
+                                     }}
+                                 />
+
+                             </TouchableOpacity>
+                             {/* positioned arrow right */}
+
+                             {/* positioned arrow left */}
+                             <TouchableOpacity
+                                 style={[styles.leftArrow]}
+                                 activeOpacity={1}
+                                 onPress={() => {
+                                     const newIndex = currentImageIndex + 1;
+                                     if (newIndex < data?.property_images?.length) {
+                                         setCurrentImageIndex(newIndex);
+                                     }
+                                 }}
+                                 >
+                                 <MaterialIcons
+                                     name="arrow-back-ios"
+                                     size={30}
+                                     color={COLORS.primaryBlackHex}
+                                     onPress={() => {
+                                         const newIndex = currentImageIndex + 1;
+                                         if (newIndex < data?.property_images?.length) {
+                                             setCurrentImageIndex(newIndex);
+                                         }
+                                     }}
+                                 />
+
+                             </TouchableOpacity>
+                             {/* positioned arrow left */}
                         </ImageBackground>
                     ))}
 
@@ -433,10 +492,35 @@ const StationDetails = () => {
                         </View>
                     </View>
 
-                    <View>
+                    {/* collapsable  services*/}
+                    <TouchableOpacity
+                        activeOpacity={1}
+                        style={[
+                            generalStyles.flexStyles,
+                            {
+                                justifyContent: 'space-between',
+                                paddingVertical: 5
+                            }
+                        ]}
+                        onPress={() => {
+                            setServicesCollapsed(!servicesCollapsed);
+                        }}
+                    >
+                        <View style={{ flex: 1 }}>
+                            <Text style={[generalStyles.CardTitle]}>{'Services'}</Text>
+                        </View>
+
+                        <AntDesign
+                            name={servicesCollapsed ? 'downcircleo' : 'upcircleo'}
+                            size={20}
+                            color={COLORS.primaryOrangeHex}
+                        />
+                    </TouchableOpacity>
+
+                    <Collapsible collapsed={servicesCollapsed}>
                         <View>
-                            <Text style={styles.CardTitle}>Services</Text>
-                            {data?.services?.map(
+                            <Text style={generalStyles.CardSubtitle}>
+                            {data?.services.length>0 ? data?.services.map(
                                 (service: any, index: number) => {
                                     return (
                                         <Text
@@ -447,14 +531,42 @@ const StationDetails = () => {
                                         </Text>
                                     );
                                 }
-                            )}
+                            ):'No Services Available'}
+                        
+                            </Text>
                         </View>
-                    </View>
+                    </Collapsible>
+                    {/* collapsable services */}
 
-                    <View style={{ marginTop: 10 }}>
+                    {/* collapsable amenties */}
+                    <TouchableOpacity
+                        activeOpacity={1}
+                        style={[
+                            generalStyles.flexStyles,
+                            {
+                                justifyContent: 'space-between',
+                                paddingVertical: 5
+                            }
+                        ]}
+                        onPress={() => {
+                            setAmenitiesCollapsed(!amenitiesCollapsed);
+                        }}
+                    >
+                        <View style={{ flex: 1 }}>
+                            <Text style={[generalStyles.CardTitle]}>{'Amenities'}</Text>
+                        </View>
+
+                        <AntDesign
+                            name={amenitiesCollapsed ? 'downcircleo' : 'upcircleo'}
+                            size={20}
+                            color={COLORS.primaryOrangeHex}
+                        />
+                    </TouchableOpacity>
+
+                    <Collapsible collapsed={amenitiesCollapsed}>
                         <View>
-                            <Text style={styles.CardTitle}>Amentities</Text>
-                            {data?.amenities?.map(
+                            <Text style={[generalStyles.CardSubtitle]}>
+                            {data.amenities.length>0 ? data?.amenities?.map(
                                 (amentity: any, index: number) => {
                                     return (
                                         <Text
@@ -465,16 +577,42 @@ const StationDetails = () => {
                                         </Text>
                                     );
                                 }
-                            )}
-                        </View>
-                    </View>
-
-                    <View style={{ marginVertical: 10 }}>
-                        <View>
-                            <Text style={styles.CardTitle}>
-                                Nearest Public facilties
+                            )
+                            :'No Amenities Available'}
                             </Text>
-                            {data?.public_facilities?.map(
+                        </View>
+                    </Collapsible>
+
+                    {/* collapsable amenties */}
+
+                    {/* collapsable public facilites */}
+                    <TouchableOpacity
+                        activeOpacity={1}
+                        style={[
+                            generalStyles.flexStyles,
+                            {
+                                justifyContent: 'space-between',
+                                paddingVertical: 5
+                            }
+                        ]}
+                        onPress={() => {
+                            setPublicCollapsed(!publicCollapsed);
+                        }}
+                    >   
+                        <View style={{ flex: 1 }}>
+                            <Text style={[generalStyles.CardTitle]}>{'Public Facilities'}</Text>
+                        </View>
+                        <AntDesign
+                            name={publicCollapsed ? 'downcircleo' : 'upcircleo'}
+                            size={20}
+                            color={COLORS.primaryOrangeHex}
+                        />
+                    </TouchableOpacity>
+
+                    <Collapsible collapsed={publicCollapsed}>
+                        <View>
+                            <Text style={[generalStyles.CardSubtitle]}>
+                            {data?.public_facilities?.length>0 ? data?.public_facilities?.map(
                                 (facility: any, index: number) => {
                                     return (
                                         <Text
@@ -485,9 +623,11 @@ const StationDetails = () => {
                                         </Text>
                                     );
                                 }
-                            )}
+                            ):'No Public Facilities Available'}
+                            </Text>
                         </View>
-                    </View>
+                    </Collapsible>
+                    {/* collapsable public facilites */}
 
                     <View>
                         <Text style={styles.CardTitle}>About Property</Text>
@@ -495,6 +635,7 @@ const StationDetails = () => {
                             {data?.description}
                         </Text>
                     </View>
+                    
                 </View>
                 {loading && (
                     <ActivityIndicator
@@ -516,12 +657,12 @@ const StationDetails = () => {
                 >
                     <Text style={generalStyles.loginText}>{'Book Now'}</Text>
                 </TouchableOpacity>
-            </View>
+            </View> 
         </View>
     );
 };
 
-export default StationDetails;
+export default PropertyDetails;
 
 const styles = StyleSheet.create({
     cardContainer: {
@@ -610,5 +751,25 @@ const styles = StyleSheet.create({
     heartIcon: {
         width: 30,
         height: 30
+    },
+    leftArrow:{
+        position: 'absolute',
+        top: 100,
+        left: 10,
+        //backgroundColor: 'rgba(0, 0, 0, 0.5)',
+        //backgroundColor: "red",
+        borderRadius: 20,
+        paddingHorizontal: 10,
+        paddingVertical: 5
+    },
+    rightArrow:{
+        position: 'absolute',
+        top: 100,
+        right: 10,
+        //backgroundColor: 'rgba(0, 0, 0, 0.5)',
+        //backgroundColor: "red",
+        borderRadius: 20,
+        paddingHorizontal: 10,
+        paddingVertical: 5
     }
 });

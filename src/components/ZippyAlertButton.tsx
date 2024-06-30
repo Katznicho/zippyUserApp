@@ -39,7 +39,7 @@ const ZippyAlertButton = () => {
                 style={[generalStyles.loginContainer, { width: "100%" }]}
                 onPress={() => guestUser ? handleShowAlert() : navigation.navigate('ZippyAlert')}
             >
-                <Text style={generalStyles.loginText}>{'Zippy Alert'}</Text>
+                <Text style={generalStyles.loginText}>{'Create Zippy Alert'}</Text>
             </TouchableOpacity>
         </View>
     )

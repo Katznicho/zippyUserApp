@@ -1,8 +1,8 @@
 import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import React, { useEffect, useState } from 'react';
-import { theme } from '../theme/theme';
 import { useNavigation } from '@react-navigation/native';
-import { BASE_URL } from '../constants/endpoints';
+import { COLORS } from '../theme/theme';
+import { BASE_URL } from '../screens/utils/constants/routes';
 
 type Props = { trainer_id: number };
 
@@ -13,29 +13,29 @@ export default function FourReviews({ trainer_id }: Props) {
 
     //
     // Get trainer reviews
-    useEffect(() => {
-        const headers = new Headers();
-        headers.append('Accept', 'application/json');
-        // headers.append('Authorization', `Bearer ${authToken}`);
+    // useEffect(() => {
+    //     const headers = new Headers();
+    //     headers.append('Accept', 'application/json');
+    //     // headers.append('Authorization', `Bearer ${authToken}`);
 
-        fetch(`${BASE_URL}/trainer/rating/${trainer_id}`, {
-            headers,
-        })
-            .then(response => response.json())
-            .then(result => {
-                // console.log('\n\n\n\n Trainer reviews below:');
-                // console.log(result?.reviews?.data?.[0]);
+    //     fetch(`${BASE_URL}/trainer/rating/${trainer_id}`, {
+    //         headers,
+    //     })
+    //         .then(response => response.json())
+    //         .then(result => {
+    //             // console.log('\n\n\n\n Trainer reviews below:');
+    //             // console.log(result?.reviews?.data?.[0]);
 
-                if (result.response === 'success') {
-                    setFourReviews(result?.reviews?.data);
-                    // setAvgRating(result?.average_rating);
-                }
-            })
-            .catch(error => {
-                console.log('\n\n\n\nError getting trainer reviews');
-                console.log(error);
-            });
-    }, [trainer_id]);
+    //             if (result.response === 'success') {
+    //                 setFourReviews(result?.reviews?.data);
+    //                 // setAvgRating(result?.average_rating);
+    //             }
+    //         })
+    //         .catch(error => {
+    //             console.log('\n\n\n\nError getting trainer reviews');
+    //             console.log(error);
+    //         });
+    // }, [trainer_id]);
 
     //
     //
@@ -85,7 +85,7 @@ export default function FourReviews({ trainer_id }: Props) {
                                 trainer_id,
                             })
                         }
-                        style={{ color: theme.colors.buttonColor }}
+                        style={{ color: COLORS.primaryOrangeHex }}
                     >
                         Read all reviews
                     </Text>
@@ -107,7 +107,7 @@ const styles = StyleSheet.create({
     peopleRow: { flexDirection: 'row', alignItems: 'center' },
 
     fourPlusContainer: {
-        backgroundColor: theme.colors.buttonColor,
+        backgroundColor: COLORS.primaryOrangeHex,
         height: 40,
         width: 40,
         borderRadius: 20,

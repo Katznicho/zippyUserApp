@@ -7,14 +7,18 @@ import { COLORS } from '../../theme/theme';
 import { showMessage } from 'react-native-flash-message';
 import { causeVibration } from '../utils/helpers/helpers';
 import { ActivityIndicator } from '../../components/ActivityIndicator/ActivityIndicator';
+import DatePicker from 'react-native-date-picker'
 
 const EditProfile = () => {
   const { user, authToken } = useSelector((state: RootState) => state.user);
   const [firstName, setFirstName] = useState(user.fname);
   const [lastName, setLastName] = useState(user.lname);
   const [phoneNumber, setPhoneNumber] = useState(user.phone);
-  const [username, setUsername] = useState(user.username);
+
   const [loading, setLoading] = useState(false);
+
+  const [date, setDate] = useState(new Date())
+  const [open, setOpen] = useState(false)
 
   const [errors, setErrors] = useState({
     firstName: '',
@@ -24,7 +28,7 @@ const EditProfile = () => {
   });
 
   const onEdit = async () => {
-    if (!firstName || !lastName || !phoneNumber || !username) {
+    if (!firstName || !lastName || !phoneNumber) {
       if (!firstName) {
         setErrors((prevErrors) => ({ ...prevErrors, firstName: 'First name is required' }));
       }
@@ -34,9 +38,7 @@ const EditProfile = () => {
       if (!phoneNumber) {
         setErrors((prevErrors) => ({ ...prevErrors, phoneNumber: 'Phone number is required' }));
       }
-      if (!username) {
-        setErrors((prevErrors) => ({ ...prevErrors, username: 'Username is required' }));
-      }
+
       return;
     }
 
@@ -53,7 +55,7 @@ const EditProfile = () => {
         first_name: firstName,
         last_name: lastName,
         phone_number: phoneNumber,
-        username,
+
       }),
     }).then(response => response.json())
       .then(result => {
@@ -133,15 +135,31 @@ const EditProfile = () => {
             style={styles.textInput}
           />
           {errors.phoneNumber && <Text style={generalStyles.errorText}>{errors.phoneNumber}</Text>}
-          <TextInput
-            value={username}
-            onChangeText={setUsername}
-            placeholder="Username"
-            placeholderTextColor={'black'}
-            style={styles.textInput}
+
+          {/* date picker */}
+          <DatePicker
+            modal
+            open={open}
+            date={date}
+            onConfirm={(date) => {
+              setOpen(false)
+              setDate(date)
+            }}
+            onCancel={() => {
+              setOpen(false)
+            }}
+            mode="date"
+            maximumDate={new Date()}
+
+            style={{
+              backgroundColor: 'white',
+              borderRadius: 5,
+            }}
           />
-          {errors.username && <Text style={generalStyles.errorText}>{errors.username}</Text>}
+          {/* date picker */}
+
         </View>
+
         <TouchableOpacity
           style={styles.continueButton}
           onPress={onEdit}
