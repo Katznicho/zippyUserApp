@@ -3,6 +3,7 @@ import React from 'react'
 import PropertyDetailsCard from './PropertyDetailsCard'
 import { useApi } from '../hooks/useApi'
 import { COLORS } from '../theme/theme';
+import { generalStyles } from '../screens/utils/generatStyles';
 
 
 
@@ -32,6 +33,7 @@ const PropertyDetailScrollView = () => {
                  <ActivityIndicator
                     size={'large'}
                     color={COLORS.primaryOrangeHex}
+                    style={[generalStyles.centerContent]}
                 /> 
                 : data?.data?.data.map((item: any) => (
                     <PropertyDetailsCard

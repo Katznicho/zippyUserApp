@@ -74,6 +74,7 @@ export const AGENT_COMMENTS_BY_ID = `${BASE_URL}/getPropertyAgentCommentsByIdAnd
 
 export const LIKE_PROPERTY = `${BASE_URL}/app-user/likeProperty`
 export const DISLIKE_PROPERTY = `${BASE_URL}/app-user/dislikeProperty`;
+export const GET_APP_USER_LIKES = `${BASE_URL}/app-user/getUserLikes`;
 
 export const CHECK_IF_PROPERTY_LIKED  = `${BASE_URL}/app-user/checkIfPropertyLikedByUser`;
 

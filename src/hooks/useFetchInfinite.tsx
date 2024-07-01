@@ -12,6 +12,10 @@ const fetcher = async (limit: number = 20, pageNumber: number = 1, queryUrl: str
 
         // Build the URL based on the presence of the status parameter
         let url = `${queryUrl}?limit=${limit}&page=${pageNumber}`;
+
+        console.log("======url========")
+        console.log(url)
+        
         if (status !== null) {
             url += `&status=${status}`;
         }

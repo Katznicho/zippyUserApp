@@ -9,7 +9,7 @@ import {
   ImageBackground,
   ScrollView,
 } from "react-native";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { generalStyles } from "../screens/utils/generatStyles";
 import { COLORS, FONTSIZE } from "../theme/theme";
 import Entypo from "react-native-vector-icons/Entypo";
@@ -26,78 +26,19 @@ import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../redux/store/dev";
 import { showMessage } from "react-native-flash-message";
 import { showAuthScreen } from "../redux/store/slices/UserSlice";
+import { CHECK_IF_PROPERTY_LIKED, DISLIKE_PROPERTY, LIKE_PROPERTY } from "../screens/utils/constants/routes";
 
 const { height, width } = Dimensions.get("window");
-const PropertyCard = ({ property }: any) => {
+const PropertyCard = ({ property , nextScreen=true}: any) => {
   const navigation = useNavigation<any>();
   const { position } = useGetUserLocation();
   const dispatch = useDispatch<any>();
   const [liked, setLiked] = useState<boolean>(false);
-  const { guestUser, authToken } = useSelector(
-    (state: RootState) => state.user
-  );
+  const { guestUser, authToken } = useSelector( (state: RootState) => state.user);
 
-  const handleLike = () => {
-    if (guestUser) {
-      //  return dispatch(showAuthScreen())
-      return handleShowAlert();
-    }
-    if (!liked) {
-      return Alert.alert(
-        "Like " + property?.name,
-        "Are you sure you want to like this " + property?.name,
-        [
-          {
-            text: "Cancel",
-            onPress: () => console.log("Cancel Pressed"),
-            style: "cancel",
-          },
-          {
-            text: "OK",
-            onPress: () => {
-              setLiked(!liked);
-              return showMessage({
-                message: "Liked Successfully",
-                type: "success",
-                icon: "success",
-                duration: 3000,
-                autoHide: true,
-                position: "bottom",
-              });
-            },
-          },
-        ],
-        { cancelable: false }
-      );
-    } else {
-      return Alert.alert(
-        "Dislike " + property?.name,
-        "Are you sure you want to dislike this " + property?.name,
-        [
-          {
-            text: "Cancel",
-            onPress: () => console.log("Cancel Pressed"),
-            style: "cancel",
-          },
-          {
-            text: "OK",
-            onPress: () => {
-              setLiked(!liked);
-              return showMessage({
-                message: "Disliked Successfully",
-                type: "success",
-                icon: "success",
-                duration: 3000,
-                autoHide: true,
-                position: "bottom",
-              });
-            },
-          },
-        ],
-        { cancelable: false }
-      );
-    }
-  };
+  const isFocused = useNavigation().isFocused();
+
+
 
   const handleShowAlert = () => {
     Alert.alert(
@@ -126,11 +67,144 @@ const PropertyCard = ({ property }: any) => {
     setCurrentImageIndex(index);
   };
 
+  //likes section
+  useEffect(() => {
+    checkIfPropertyIsLiked()
+}, [isFocused]);
+
+const checkIfPropertyIsLiked =async ()=>{
+   const response = await fetch(`${CHECK_IF_PROPERTY_LIKED}`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${authToken}`
+        },
+        body: JSON.stringify({
+            property_id: property?.id
+        })
+    });
+    const res = await response.json();
+    if (res.success == true) {
+        return setLiked(true);
+    }
+    else {
+        return setLiked(false);
+    }
+
+}
+
+const handleLike = () => {
+
+    if (guestUser) {
+        //  return dispatch(showAuthScreen())
+        return handleShowAlert();
+    }
+    if (!liked) {
+        //LIKE_PROPERTY
+        fetch(`${LIKE_PROPERTY}`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${authToken}`
+            },
+            body: JSON.stringify({
+                property_id: property?.id
+            })
+        }).then(response=>response.json())
+        .then(res=>{
+
+             if(res.success==true){
+                setLiked(true)
+                
+                return showMessage({
+                    message: 'Liked Successfully',
+                    description: 'Property liked successfully',
+                    type: 'success',
+                    icon: 'success',
+                    duration: 3000,
+                    autoHide: true,
+                    position: 'center'
+                })
+             }
+             else{
+                setLiked(false);
+                return showMessage({
+                    message:"Failed to like property",
+                    type:"danger",
+                    icon:"danger",
+                    duration:3000,
+                    position:"bottom"
+                })
+             }
+            
+        }).catch(err=>{
+            return showMessage({
+                message:"Failed to like property",
+                type:"danger",
+                icon:"danger",
+                duration:3000,
+                position:"bottom"
+            })
+        })
+
+    }
+    else {
+        
+        fetch(`${DISLIKE_PROPERTY}`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${authToken}`
+            },
+            body: JSON.stringify({
+                property_id: property?.id
+            })
+        }).then(response=>response.json())
+        .then(res=>{
+             console.log(res)
+             if(res.success==true){
+                setLiked(false)
+                return showMessage({
+                    message: 'Liked Removed',
+                    description: 'Property liked removed successfully',
+                    type: 'success',
+                    icon: 'success',
+                    duration: 3000,
+                    autoHide: true,
+                    position: 'bottom'
+                })
+             }
+             else{
+                setLiked(true);
+                return showMessage({
+                    message:"Failed to remove like property",
+                    type:"danger",
+                    icon:"danger",
+                    duration:3000,
+                    position:"bottom"
+                })
+             }
+            
+        }).catch(err=>{
+            return showMessage({
+                message:"Failed to like property",
+                type:"danger",
+                icon:"danger",
+                duration:3000,
+                position:"bottom"
+            })
+        })
+    }
+
+}
+
+  //likes section
+
   return (
     <TouchableOpacity
       activeOpacity={1}
       style={[styles.container]}
-      onPress={() => navigation.navigate("PropertyDetails", { data: property })}
+      onPress={() =>nextScreen? navigation.navigate("PropertyDetails", { data: property }):null}
     >
       {/* scroll area */}
       <ScrollView

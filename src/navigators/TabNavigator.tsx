@@ -2,14 +2,13 @@ import React from 'react';
 import { StyleSheet, Platform, Image } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { COLORS } from '../theme/theme';
-import CustomIcon from '../components/CustomIcon';
 import { RootState } from '../redux/store/dev';
 import { useSelector } from 'react-redux';
 import ProfileStack from './ProfileStack';
 import MyNotificationStack from './MyNotificationStack';
-import AntDesign from 'react-native-vector-icons/AntDesign';
 import HomeStack from './HomeStack';
 import SearchStack from './SearchStack';
+import SavedPlaceStack from './SavedPlaceStack';
 
 
 
@@ -108,10 +107,10 @@ const TabNavigator = () => {
 {
         isLoggedIn && (
           <Tab.Screen
-            name="Likes"
-            component={MyNotificationStack}
+            name="SavedPlaces"
+            component={SavedPlaceStack}
             options={{
-              title: 'Like',
+              title: 'Saved Places',
               tabBarIcon: ({ focused, color, size }) => (
                 <Image
               source={require('../assets/images/like.png')}
