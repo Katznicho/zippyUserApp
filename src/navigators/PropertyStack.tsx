@@ -192,6 +192,18 @@ const PropertyStack = () => {
             </Stack.Screen>
             {/* agent section */}
 
+            {/* my webview */}
+            <Stack.Screen
+                name="BookingWebView"
+                component={MyWebView}
+                options={{
+                    animation: 'slide_from_bottom',
+                    headerShown:false
+
+                }}>
+            </Stack.Screen>
+            {/* my webview */}
+
 
             {/* property images */}
             <Stack.Screen

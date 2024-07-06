@@ -6,7 +6,7 @@ import { COLORS } from '../theme/theme';
 import { showMessage } from 'react-native-flash-message';
 import { generalStyles } from './utils/generatStyles';
 import { ActivityIndicator } from '../components/ActivityIndicator';
-import { ScrollView } from 'react-native-gesture-handler';
+
 
 
 const MyWebView = () => {
@@ -34,7 +34,7 @@ const MyWebView = () => {
                 type: 'success',
                 icon: 'success'
             })
-            navigation.navigate('HomeTab')
+            navigation.navigate('Home')
         }
 
 

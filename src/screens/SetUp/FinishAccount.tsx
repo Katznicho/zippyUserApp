@@ -2,7 +2,7 @@ import React, { useRef, useState } from 'react';
 import { Text, View, TouchableOpacity, TextInput, StyleSheet } from 'react-native';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import { useNavigation } from '@react-navigation/native';
-import { useDispatch, useSelector } from 'react-redux';
+import {  useSelector } from 'react-redux';
 import { RootState } from '../../redux/store/dev';
 import PhoneInput from 'react-native-phone-number-input';
 import { generalStyles } from '../utils/generatStyles';
@@ -11,6 +11,8 @@ import { SETUP_ACCOUNT } from '../utils/constants/routes';
 import { causeVibration } from '../utils/helpers/helpers';
 import { showMessage } from 'react-native-flash-message';
 import { ActivityIndicator } from '../../components/ActivityIndicator/ActivityIndicator';
+import DatePicker from 'react-native-date-picker';
+
 
 
 const FinishAccount = () => {
@@ -18,6 +20,13 @@ const FinishAccount = () => {
 
 
   const navigation = useNavigation<any>();
+
+  const formatDate = (date: Date): string => {
+    const day = date.getDate().toString().padStart(2, '0');
+    const month = (date.getMonth() + 1).toString().padStart(2, '0');
+    const year = date.getFullYear().toString();
+    return `${year}-${month}-${day}`;
+};
 
 
 
@@ -28,6 +37,9 @@ const FinishAccount = () => {
   const [loading, setLoading] = useState<boolean>(false);
   const phoneInput = useRef(null);
   const [phoneNumber, setPhoneNumber] = useState<any>(user.phone);
+
+  const [date, setDate] = useState<Date>(new Date());
+  const [open, setOpen] = useState<boolean>(false);
 
   const [errors, setErrors] = useState<any>({
     firstName: '',
@@ -57,6 +69,9 @@ const FinishAccount = () => {
       return;
     }
 
+   
+
+
     setErrors((prevErrors: any) => ({ ...prevErrors, firstName: '', lastName: '', dob: '', email: '', phoneNumber: '' }));
     setLoading(true);
     const formData =  new FormData();
@@ -75,7 +90,7 @@ const FinishAccount = () => {
       body: JSON.stringify({
         first_name: firstName || user.fname,
         last_name: lastName || user.lname,
-        dob,
+        dob:formatDate(date),
         email:email || user.email,
         phone_number: phoneNumber || user.phone,
       }),
@@ -159,11 +174,33 @@ const FinishAccount = () => {
           </View>
           <TextInput
             value={dob}
-            onChangeText={setDob}
+            onFocus={() => setOpen(true)}
+            onChangeText={text => {
+                setDob(text);
+                setOpen(true);
+            }}
+            placeholder="DD/MM/YYYY"
             placeholderTextColor={'black'}
-            placeholder="Date of birth (dd/mm/yyyy)"
             style={styles.textInput}
           />
+          {/* date picker */}
+          <DatePicker
+                            modal
+                            open={open}
+                            date={date}
+                            title={"Select Your Date of Birth"}
+                            maximumDate={new Date("2024-01-01")}
+                            mode="date"
+                            onConfirm={(date) => {
+                                setOpen(false);
+                                setDate(date);
+                                setDob(formatDate(date)); // Format the date
+                            }}
+                            onCancel={() => {
+                                setOpen(false);
+                            }}
+                        />
+          {/* date picker */}
           <View>
             {errors.dob && <Text style={generalStyles.errorText}>{errors.dob}</Text>}
           </View>
