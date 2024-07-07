@@ -26,15 +26,14 @@ const MyWebView = () => {
         console.log(event)
         console.log("======================================")
 
-        //navigat back home if the url is https://testemail.rapharm.shop/finishPayment
         if (event.title == 'dashboard.zippyug.com/finishPayment' || event.url === 'https://dashboard.zippyug.com/finishPayment' || event.url.includes('https://dashboard.zippyug.com/finishPayment')) {
             showMessage({
-                message: 'Payment Successful',
-                description: 'Your payment was successful',
+                message: 'Pending Payment',
+                description: 'Your payment is pending',
                 type: 'success',
                 icon: 'success'
             })
-            navigation.navigate('Home')
+            return navigation.navigate('Payments');
         }
 
 
@@ -60,7 +59,7 @@ const MyWebView = () => {
                 />
 
                 <Button title="Home"
-                    onPress={() => navigation.navigate('HomeTab')}
+                    onPress={() => navigation.navigate('Payments')}
                     color={COLORS.primaryOrangeHex}
                 />
 

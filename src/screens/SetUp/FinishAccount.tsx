@@ -126,9 +126,6 @@ const FinishAccount = () => {
 
       }).catch(error => {
 
-        console.log('========error======')
-        console.log(error)
-        console.log('=====error=========')
         setLoading(false)
         return showMessage({ message: "Error", description: error, type: "info", autoHide: true, duration: 3000, icon: "danger" })
       })
@@ -136,7 +133,7 @@ const FinishAccount = () => {
     setLoading(false);
   };
 
-  console.log(user)
+
 
 
 

@@ -137,11 +137,6 @@ const Login = () => {
             })
           })
     
-         
-    
-        //  console.log("=======google credentials===========")
-        //  console.log(decodedToken)
-        //  console.log("========google credentials===========")
     
    } catch (error) {
 

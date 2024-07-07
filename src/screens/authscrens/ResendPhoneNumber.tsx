@@ -15,7 +15,7 @@ import Animated, {
     withTiming,
 } from 'react-native-reanimated';
 import { causeVibration } from '../utils/helpers/helpers';
-import { RESEND_OTP, RESEND_PHONE_OTP } from '../utils/constants/routes';
+import {  RESEND_PHONE_OTP } from '../utils/constants/routes';
 import { generalStyles } from '../utils/generatStyles';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import { TouchableOpacity } from 'react-native';

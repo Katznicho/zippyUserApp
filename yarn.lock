@@ -9539,6 +9539,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"react-native-otp-entry@npm:^1.7.0":
+  version: 1.7.0
+  resolution: "react-native-otp-entry@npm:1.7.0"
+  checksum: 21a29aebbcc94b77b1ea389bce4d2fc309d97f70289c66bd824ae08cb6819b331e022a52512e37595d70b849b0ac84123b5c4fd017c2517a9911c37cf9826694
+  languageName: node
+  linkType: hard
+
 "react-native-pager-view@npm:^6.3.1":
   version: 6.3.1
   resolution: "react-native-pager-view@npm:6.3.1"
@@ -11988,6 +11995,7 @@ __metadata:
     react-native-indicators: ^0.17.0
     react-native-keyboard-aware-scroll-view: ^0.9.5
     react-native-maps: ^1.15.1
+    react-native-otp-entry: ^1.7.0
     react-native-pager-view: ^6.3.1
     react-native-phone-call: ^1.2.0
     react-native-phone-number-input: ^2.1.0

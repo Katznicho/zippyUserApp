@@ -20,6 +20,7 @@ const Points = () => {
         },
     })
 
+
     if (isLoading)
         return <View style={[generalStyles.ScreenContainer]}>
             <ActivityIndicator />
@@ -32,12 +33,12 @@ const Points = () => {
         >
             <View style={[generalStyles.flexStyles]}>
                 <View style={[styles.containerCard]}>
-                    <Text style={[generalStyles.CardTitle]}>Over All Points</Text>
-                    <Text style={[generalStyles.CardSubtitle]}>{data?.data?.points}</Text>
+                    <Text style={[generalStyles.CardTitle]}>Current Points</Text>
+                    <Text style={[generalStyles.CardSubtitle]}>{data?.data?.total_points}</Text>
                 </View>
                 <View style={[styles.containerCard]}>
-                    <Text style={[generalStyles.CardTitle]}>Current Points</Text>
-                    <Text style={[generalStyles.CardSubtitle]}> {data?.data?.current_points}</Text>
+                    <Text style={[generalStyles.CardTitle]}>User Points</Text>
+                    <Text style={[generalStyles.CardSubtitle]}> {data?.data?.used_points}</Text>
                 </View>
             </View>
 
@@ -45,9 +46,9 @@ const Points = () => {
             <View style={[styles.containerCard]}>
                 <Text style={[generalStyles.CardTitle]}>Points Usage</Text>
             </View>
-            <View>
+            { <View>
                 {
-                    data?.data?.point_usages.length == 0 ? <View style={[styles.containerCard]}>
+                    data?.data?.user?.point_usages.length == 0 ? <View style={[styles.containerCard]}>
                         <Text style={[generalStyles.CardSubtitle]}>No Points Used So Far</Text>
                     </View> : data?.data?.point_usages?.map((item: any, index: any) => {
                         return (
@@ -60,7 +61,7 @@ const Points = () => {
                         )
                     })
                 }
-            </View>
+            </View> }
             {/* points usgae */}
         </ScrollView>
     )

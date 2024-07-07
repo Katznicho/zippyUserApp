@@ -18,7 +18,7 @@ import Animated, {
     withTiming,
 } from 'react-native-reanimated';
 
-import { VERIFY_EMAIL, VERIFY_PHONE_OTP } from '../utils/constants/routes';
+import {  VERIFY_PHONE_OTP } from '../utils/constants/routes';
 import { causeVibration, getErrorMessage } from '../utils/helpers/helpers';
 import { showMessage } from 'react-native-flash-message';
 import { COLORS } from '../../theme/theme';
@@ -28,6 +28,7 @@ import { ActivityIndicator } from '../../components/ActivityIndicator';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { updateUserState } from '../../redux/store/slices/UserSlice';
 import { useDispatch } from 'react-redux';
+import { OtpInput } from "react-native-otp-entry";
 
 
 const VerifyPhoneNumber = () => {
@@ -229,7 +230,7 @@ const VerifyPhoneNumber = () => {
                 <View>
                     <View style={generalStyles.formContainer}>
                         
-                        <TextInput
+                        {/* <TextInput
 
                             style={[generalStyles.formInput, generalStyles.borderStyles, errors.code && generalStyles.errorInput]}
                             placeholder="Code"
@@ -247,6 +248,19 @@ const VerifyPhoneNumber = () => {
                                 }
                             }}
                             maxLength={6}
+                        /> */}
+                         <OtpInput
+                            numberOfDigits={6}
+                            focusColor={COLORS.primaryOrangeHex}
+                            onFilled={(text) => setOtpCode(text)}
+                            hideStick={true}
+                            onTextChange={(text) => setOtpCode(text)}
+                            textInputProps={{
+                                accessibilityLabel: "One-Time Password",
+                              }}
+                              theme={{
+                                  pinCodeTextStyle: { color: COLORS.primaryWhiteHex },
+                              }}
                         />
 
                         <Animated.Text style={[styles.errorColor, errorStyle]}>

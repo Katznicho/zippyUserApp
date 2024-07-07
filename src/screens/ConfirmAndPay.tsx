@@ -53,7 +53,6 @@ const PropertyDetails: React.FC<any> = () => {
           .then(response => response.json())
           .then(result => {
              setLoading(false);
-             console.log(result)
              if(result.success){
               showMessage({
                 message:"Select Payment Method",

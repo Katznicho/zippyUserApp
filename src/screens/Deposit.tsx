@@ -1,98 +1,99 @@
-import { StyleSheet, Text, View, ScrollView, TextInput, TouchableOpacity } from 'react-native'
-import React, { useState, useEffect } from 'react'
-import { generalStyles } from './utils/generatStyles'
-import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
-import { COLORS } from '../theme/theme'
-import { ActivityIndicator } from '../components/ActivityIndicator'
-import { showMessage } from 'react-native-flash-message'
-import { RootState } from '../redux/store/dev'
+import { StyleSheet, Text, View, ScrollView, TextInput, TouchableOpacity } from 'react-native';
+import React, { useState, useEffect } from 'react';
+import { generalStyles } from './utils/generatStyles';
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
+import { COLORS } from '../theme/theme';
+import { ActivityIndicator } from '../components/ActivityIndicator';
+import { showMessage } from 'react-native-flash-message';
+import { RootState } from '../redux/store/dev';
 import { useSelector } from 'react-redux';
-import { PROCESSORDER } from './utils/constants/routes'
-import { useNavigation } from '@react-navigation/native'
+import { LOAD_POINTS, PROCESSORDER } from './utils/constants/routes';
+import { useNavigation } from '@react-navigation/native';
+import { formatCurrency } from './utils/helpers/helpers';
 
 const Deposit = () => {
-    const [amount, setAmount] = useState<any>('')
-    const [points, setPoints] = useState<string>('')
-    const [reason, setReason] = useState<string>('')
-    const [phoneNumber, setPhoneNumber] = useState<string>('')
-    const [loading, setLoading] = useState<boolean>(false)
     const { user, authToken } = useSelector((state: RootState) => state.user);
+    const [amount, setAmount] = useState<number>(0);
+    const [formattedAmount, setFormattedAmount] = useState<string>('');
+    const [points, setPoints] = useState<string>('');
+    const [reason, setReason] = useState<string>('');
+    const [phoneNumber, setPhoneNumber] = useState<string>(user.phone);
+    const [loading, setLoading] = useState<boolean>(false);
+
 
     const [errors, setErrors] = useState<any>({});
 
-    const navigation = useNavigation<any>()
-    const [redirect_url, setRedirect_url] = useState('')
+    const navigation = useNavigation<any>();
+    const [redirect_url, setRedirect_url] = useState('');
 
     const onDeposit = () => {
         try {
-            if (amount == "") {
-                setLoading(false)
+            if (amount === 0) {
+                setLoading(false);
                 return setErrors((prevErrors: any) => ({
                     ...prevErrors,
-                    password: "Amount is required"
+                    amount: "Amount is required"
                 }));
-
             }
-            if (phoneNumber == "") {
-                setLoading(false)
+            if (phoneNumber === "") {
+                setLoading(false);
                 return setErrors((prevErrors: any) => ({
                     ...prevErrors,
-                    confirmpassword: "Phone number is required"
+                    phoneNumber: "Phone number is required"
                 }));
-
             }
-            if (reason == "") {
-                setLoading(false)
-                return setErrors((prevErrors: any) => ({
-                    ...prevErrors,
-                    confirmpassword: "Phone number is required"
-                }));
+            // if (reason === "") {
+            //     setLoading(false);
+            //     return setErrors((prevErrors: any) => ({
+            //         ...prevErrors,
+            //         reason: "Reason is required"
+            //     }));
+            // }
 
-            }
-            const formData = new FormData();
-            formData.append('amount', amount);
-            formData.append('description', reason);
-            formData.append('phone_number', phoneNumber);
-            formData.append('total_points', points);
-            formData.append('callback', `https://dashboard.zippyug.com/finishPayment`);
-            formData.append('cancel_url', `https://dashboard.zippyug.com/cancelPayment`);
-            formData.append("payment_type", "LoadPoints")
+            setLoading(true);
 
-            const headers = new Headers();
-            headers.append('Accept', 'application/json');
-            headers.append('Authorization', `Bearer ${authToken}`);
+            const body =  JSON.stringify({
+                amount: amount,
+                reason: reason,
+                phone_number: phoneNumber,
+                points: points,
+                payment_type: "Points"
+            });
 
-            setLoading(true)
+            const headers = {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${authToken}`
+            };
+        
 
-            fetch(`${PROCESSORDER}`, {
-                method: 'POST',
-                headers,
-                body: formData
-            }).then((response) => {
+            const requestOptions = { method: 'POST', headers: headers, body: body };
 
-                return response.json()
+            fetch(`${LOAD_POINTS}`, requestOptions).then((response) => {
+                return response.json();
             }).then((result) => {
-
-                console.log(result)
-                if (result?.response?.success) {
-                    setRedirect_url(result?.response?.message?.redirect_url)
-                    return navigation.navigate('MyWebView', {
-                        url: result?.response?.message?.redirect_url
+                console.log("======res=========")
+                 console.log(result)
+                 setLoading(false);
+                if(result.success){
+                    showMessage({
+                      message:"Select Payment Method",
+                      type: 'success',
+                      icon: 'success',
+                      position:"center",
+                      autoHide: true,
+                      duration:3000
                     })
-                }
-                else {
-                    setLoading(false);
+                    return navigation.navigate('MyWebView', {url:result.data});
+                   }
+                   else{
                     return showMessage({
-                        message: "Failed to Initiate Deposit",
-                        description: "Please try again",
-                        type: "info",
-                        icon: "info",
-                        duration: 3000,
-                        autoHide: true
-                    })
-
-                }
-
+                       message: 'Failed to load points', 
+                       description: 'Please try again', 
+                       type: 'danger', 
+                       icon: 'danger'
+                        });
+                   }
             }).catch((error) => {
                 showMessage({
                     message: 'Failed to create pin',
@@ -102,44 +103,45 @@ const Deposit = () => {
                     duration: 3000,
                     autoHide: true,
                 });
-                return setLoading(false);
-
-            })
-
-        }
-        catch (error) {
+                setLoading(false);
+            });
+        } catch (error) {
             showMessage({
                 message: 'Failed to create pin',
                 description: 'Please try again',
-                type: 'info',
-                icon: 'info',
+                type: 'danger',
+                icon: 'danger',
                 duration: 3000,
                 autoHide: true,
             });
-            return setLoading(false);
-
+            setLoading(false);
         }
-
-    }
+    };
 
     useEffect(() => {
         if (redirect_url) {
             navigation.navigate('MyWebView', {
                 url: redirect_url
-            })
+            });
         }
+    }, [redirect_url]);
 
-    }, [redirect_url])
+    useEffect(() => {
+        calculateTotalAmount();
+    }, [points]);
 
     const calculateTotalAmount = () => {
         const pointsValue = parseFloat(points);
         if (!isNaN(pointsValue)) {
-            const amount = pointsValue * 10; // Each point is 10 Ugandan Shilling
-            setAmount(amount);
+            const amountValue = pointsValue * 10; 
+            setAmount(amountValue);
+            setFormattedAmount(`UGX ${formatCurrency(amountValue)}`);
         } else {
             setAmount(0);
+            setFormattedAmount('UGX 0.00');
         }
     };
+
     return (
         <KeyboardAwareScrollView
             style={[{ flex: 1, width: '100%' }, generalStyles.ScreenContainer]}
@@ -170,25 +172,19 @@ const Deposit = () => {
                     <Text>Each Point is 10/=</Text>
                     <View>
                         <TextInput
-                            style={generalStyles.formInput}
+                            style={[generalStyles.formInput, generalStyles.borderStyles, errors.amount && generalStyles.errorInput]}
                             placeholderTextColor={COLORS.primaryWhiteHex}
                             keyboardType="number-pad"
                             placeholder={'Enter Points'}
-                            onChangeText={text => {
-                                setPoints(text);
-                                calculateTotalAmount();
-                            }}
+                            onChangeText={text => setPoints(text)}
                             value={points}
-                            maxLength={6}
                             underlineColorAndroid="transparent"
                             autoCapitalize="none"
                         />
                     </View>
-
                     <View>
                         {errors.amount && <Text style={generalStyles.errorText}>{errors.amount}</Text>}
                     </View>
-
                 </View>
                 {/* points*/}
 
@@ -201,11 +197,11 @@ const Deposit = () => {
                     </View>
                     <View>
                         <TextInput
-                            style={generalStyles.formInput}
+                            style={[generalStyles.formInput, generalStyles.borderStyles, { backgroundColor: "#ddd" }]}
                             placeholder="Total Amount"
                             placeholderTextColor={COLORS.primaryWhiteHex}
                             keyboardType="numeric"
-                            value={amount.toString()}
+                            value={formattedAmount}
                             editable={false}
                         />
                     </View>
@@ -219,19 +215,16 @@ const Deposit = () => {
                             Phone Number</Text>
                     </View>
                     <TextInput
-                        style={generalStyles.formInput}
-                        placeholder="Enter phone number with country code"
+                        style={[generalStyles.formInput, generalStyles.borderStyles, errors.phoneNumber && generalStyles.errorInput]}
+                        placeholder="+256 700 000 000"
                         placeholderTextColor={COLORS.primaryLightGreyHex}
                         keyboardType="number-pad"
                         value={phoneNumber}
                         onChangeText={text => setPhoneNumber(text)}
-
                     />
-
                     <View>
                         {errors.phoneNumber && <Text style={generalStyles.errorText}>{errors.phoneNumber}</Text>}
                     </View>
-
                 </View>
                 {/* phone number */}
 
@@ -239,22 +232,19 @@ const Deposit = () => {
                 <View style={generalStyles.formContainer}>
                     <View>
                         <Text style={generalStyles.formInputTextStyle}>
-                            Reason</Text>
+                            Reason(optional)</Text>
                     </View>
                     <TextInput
-                        style={generalStyles.formInput}
-                        placeholder="Forexample: Points Load"
+                        style={[generalStyles.formInput, generalStyles.borderStyles, errors.reason && generalStyles.errorInput]}
+                        placeholder="For example: Points Load"
                         placeholderTextColor={COLORS.primaryLightGreyHex}
                         keyboardType="default"
                         value={reason}
                         onChangeText={text => setReason(text)}
-
                     />
-
                     <View>
                         {errors.reason && <Text style={generalStyles.errorText}>{errors.reason}</Text>}
                     </View>
-
                 </View>
                 {/* reason */}
                 <TouchableOpacity
@@ -267,11 +257,7 @@ const Deposit = () => {
                 {loading && <ActivityIndicator />}
             </ScrollView>
         </KeyboardAwareScrollView>
-    )
-}
+    );
+};
 
-export default Deposit
-
-const styles = StyleSheet.create({
-    errorColor: { color: '#EF4444', fontSize: 12 },
-})
+export default Deposit;

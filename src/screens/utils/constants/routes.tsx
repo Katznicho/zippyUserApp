@@ -17,18 +17,19 @@ export const LOGIN_OR_REGISTER_WITH_GOOGLE = `${BASE_URL}/app-user/loginOrRegist
 export const LOGIN = `${BASE_URL}/auth/login`;
 export const REGISTER = `${BASE_URL}/auth/registerCommunity`;
 
-export const FORGOT_PASSWORD = `${BASE_URL}/auth/requestPasswordReset`;
-export const RESET_PASSWORD = `${BASE_URL}/auth/resetPassword`;
-export const RESEND_OTP = `${BASE_URL}/auth/resendOTP`
-export const VERIFY_EMAIL = `${BASE_URL}/auth/verifyEmail`
-export const SAVE_DEVICE_INFO = `${BASE_URL}/auth/saveDeviceInfo`
-export const SETUP_WALLET_ACCOUNT = `${BASE_URL}/auth/setUpUserWalletAccount`;
-export const UPDATEWALLETBALANCE = `${BASE_URL}/auth/updateShowWalletBalance`
-export const UPDATEUSERAVATAR = `${BASE_URL}/auth/updateUserAvatarUrl`
-export const UPDATE_USER_LOCATION = `${BASE_URL}/auth/updateUserLocation`;
-export const UPDATE_PASSWORD_FIRST_USER = `${BASE_URL}/auth/resetPasswordFirstUser`;
+// export const FORGOT_PASSWORD = `${BASE_URL}/auth/requestPasswordReset`;
+// export const RESET_PASSWORD = `${BASE_URL}/auth/resetPassword`;
+// export const RESEND_OTP = `${BASE_URL}/auth/resendOTP`
+// export const VERIFY_EMAIL = `${BASE_URL}/auth/verifyEmail`
+// export const SAVE_DEVICE_INFO = `${BASE_URL}/auth/saveDeviceInfo`
+// export const SETUP_WALLET_ACCOUNT = `${BASE_URL}/auth/setUpUserWalletAccount`;
+// export const UPDATEWALLETBALANCE = `${BASE_URL}/auth/updateShowWalletBalance`
+// export const UPDATEUSERAVATAR = `${BASE_URL}/auth/updateUserAvatarUrl`
+// export const UPDATE_USER_LOCATION = `${BASE_URL}/auth/updateUserLocation`;
+
 
 //payments
+export const LOAD_POINTS = `${BASE_URL}/app-user/loadPoints`;
 export const PROCESSORDER = `${BASE_URL}/app-user/processOrder`;
 export const USERPAYMENTS = `${BASE_URL}/app-user/getUserPayments`;
 export const USERPRODUCTS = `${BASE_URL}/app-user/getUserProducts`;
