@@ -312,7 +312,7 @@ const ZippyAlert = () => {
                         if (result?.response === "failure") {
                             return showMessage({
                                 message: "Failed to create alert",
-                                description: "Failed to create alert",
+                                description: result.message,
                                 type: "info",
                                 autoHide: true,
                                 duration: 3000,
