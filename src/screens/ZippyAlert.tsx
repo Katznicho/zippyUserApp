@@ -3,7 +3,6 @@ import React, { useState, useRef, useEffect } from 'react'
 import { generalStyles } from './utils/generatStyles'
 import { useSelector } from 'react-redux'
 import { RootState } from '../redux/store/dev';
-import PhoneInput from "react-native-phone-number-input";
 import { COLORS, FONTFAMILY } from '../theme/theme'
 import { CREATE_ZIPPY_ALERT, GET_ALL_AMENTITIES, GET_ALL_CATEGORIES, GET_ALL_SERVICES } from './utils/constants/routes'
 import { showMessage } from 'react-native-flash-message';
@@ -28,10 +27,7 @@ const ZippyAlert = () => {
 
     const [loading, setLoading] = useState<boolean>()
 
-    //phone number details
-    const [phoneNumber, setPhoneNumber] = React.useState<any>(user?.phone.slice(4));
-    const phoneInput = useRef<PhoneInput>(null);
-    //phone number details
+
 
     const [selectedContactOptions, setSelectedContactOptions] = useState<any>([]);
 

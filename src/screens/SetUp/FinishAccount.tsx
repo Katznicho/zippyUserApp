@@ -265,6 +265,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     textAlign: 'center',
     marginVertical: 20,
+    color: "black",
   },
   formContainer: {
     marginVertical: 20,
