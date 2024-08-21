@@ -66,9 +66,7 @@ export function usePostQuery<T>({ endpoint, params, queryOptions }: ApiParams): 
       const { data } = await axiosInstance.post<T>(endpoint, formData);
       return data;
     } catch (error: any) {
-      console.log("==========error================")
-      console.log(error)
-      console.log("==========error================")
+
 
       throw new Error(error);
     }

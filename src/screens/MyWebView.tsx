@@ -14,17 +14,12 @@ const MyWebView = () => {
     const navigation = useNavigation<any>();
 
 
-    console.log("================params======================")
-    console.log(params.url)
-    console.log("===============params=======================")
 
 
     const webRef = useRef<any>();
 
     const handleNavigationStateChange = (event: any) => {
-        console.log("======================================")
-        console.log(event)
-        console.log("======================================")
+
 
         if (event.title == 'dashboard.zippyug.com/finishPayment' || event.url === 'https://dashboard.zippyug.com/finishPayment' || event.url.includes('https://dashboard.zippyug.com/finishPayment')) {
             showMessage({

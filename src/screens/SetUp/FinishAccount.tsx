@@ -30,12 +30,12 @@ const FinishAccount = () => {
 
 
 
-  const [firstName, setFirstName] = useState(user.fname);
-  const [lastName, setLastName] = useState(user.lname);
-  const [dob, setDob] = useState('');
+  const [firstName, setFirstName] = useState<any>(user.fname);
+  const [lastName, setLastName] = useState<any>(user.lname);
+  const [dob, setDob] = useState<any>(user.dob);
   const [email, setEmail] = useState(user.email);
   const [loading, setLoading] = useState<boolean>(false);
-  const phoneInput = useRef(null);
+  const phoneInput = useRef<any>(null);
   const [phoneNumber, setPhoneNumber] = useState<any>(user.phone);
 
   const [date, setDate] = useState<Date>(new Date());

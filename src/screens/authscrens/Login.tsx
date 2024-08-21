@@ -17,6 +17,7 @@ import { LOGIN_OR_REGISTER_WITH_EMAIL, LOGIN_OR_REGISTER_WITH_GOOGLE, LOGIN_OR_R
 
 GoogleSignin.configure({
   webClientId: '126014043646-kclsfvqmc7lsjags2iogk2dmga7aahqj.apps.googleusercontent.com', // From Firebase Console
+  forceCodeForRefreshToken: true
 });
 
 const Login = () => {
@@ -41,13 +42,12 @@ const Login = () => {
     setProvider("google");
     // Google sign-in logic here
         // Get the users ID token
+        await GoogleSignin.hasPlayServices();
         const { idToken } = await GoogleSignin.signIn();
         // Create a Google credential with the token
         const googleCredential = auth.GoogleAuthProvider.credential(idToken);
         // Decode the ID token
-        const decodedToken = jwtDecode(googleCredential.token);
-    
-      
+        const decodedToken = jwtDecode<any>(googleCredential.token);
     
         const userDetails = {
           email: decodedToken?.email,
@@ -82,7 +82,7 @@ const Login = () => {
         })
           .then(response => response.json())
           .then(async result => {
-            console.log(result)
+
             if (result.response === "success") {
               setLoading(false);
               // dispatch(updateUserState(result.data));
@@ -94,14 +94,14 @@ const Login = () => {
                     let dob = result?.data?.user?.dob || null
                     let phone = result?.data?.user?.phone_number || null
 
-                    let isSetupComplete =  phone != null ? true : false
+                    let isSetupComplete =  phone && email &&dob ? true : false
                     // console.log("isSetupComplete", isSetupComplete)
 
                     dispatch(
                         updateUserState({
                             isLoggedIn: true,
                             guestUser: false,
-                            isSetupComplete:false,
+                            isSetupComplete: isSetupComplete,
                             user: {
                                 UID: result?.data?.user?.id || null,
                                 fname: firstName,
@@ -110,7 +110,8 @@ const Login = () => {
                                 phone: result?.data?.user?.phone_number || null,
                                 displayPicture: result?.data?.user?.avatar || null,
                                 role: result?.data?.user?.role || null,
-                                points: result?.data?.user?.points || null
+                                points: result?.data?.user?.points || null,
+                                dob: result?.data?.user?.dob || null
                             },
                             authToken: result?.data?.authToken,
                             
@@ -121,8 +122,8 @@ const Login = () => {
             else {
               setLoading(false);
               return showMessage({
-                message: "Request Failed",
-                description: "Please try again",
+                message: "Failed to Login with Google",
+                description: `${result?.message}`,
                 type: "info",
                 icon: "info",
               })
@@ -131,21 +132,23 @@ const Login = () => {
             setLoading(false);
             return showMessage({
               message: "Request Failed",
-              description: "Please try again",
-              type: "info",
-              icon: "info",
+              description: `${error?.message}`,
+              type: "danger",
+              icon: "danger",
+              position:"center"
             })
           })
     
     
-   } catch (error) {
+   } catch (error:any) {
 
      setLoading(false)
      return showMessage({
-       message: "Request Failed",
-       description: "Please try again",
-       type: "info",
-       icon: "info",
+       message: "Google Sign In Failed",
+       description: `${error?.message}`,
+       type: "danger",
+       icon: "danger",
+       position:"center"
      })
     
    }
@@ -200,8 +203,6 @@ const Login = () => {
           body,
         }).then(response => response.json())
           .then(async result => {
-            console.log("phone result")
-             console.log(result)
 
              setLoading(false)
             if (result?.errors) {

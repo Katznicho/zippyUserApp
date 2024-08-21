@@ -40,7 +40,7 @@ const DrawerContent = (props: any) => {
             const result = await Share.open({
                 title: 'Install Zippy App',
                 message: 'Check out Zippy App and install it',
-                url: 'https://play.google.com/apps/internaltest/4699919634175995763',
+                url: 'https://play.google.com/store/apps/details?id=com.zippyUser',
             });
             console.log(result);
         } catch (error) {
@@ -365,7 +365,7 @@ const DrawerContent = (props: any) => {
                         }
                         onPress={() => {
                             setSelectedItem('Website');
-                            Linking.openURL('https://zippy.risidev.com');
+                            Linking.openURL('https://zippyug.com');
                         }}
                         style={[{
                             backgroundColor:

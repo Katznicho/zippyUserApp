@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import {
   StyleSheet,
   Text,
@@ -8,30 +9,30 @@ import {
   Alert,
   ImageBackground,
   ScrollView,
-} from "react-native";
-import React, { useEffect, useState } from "react";
-import { generalStyles } from "../screens/utils/generatStyles";
-import { COLORS, FONTSIZE } from "../theme/theme";
-import Entypo from "react-native-vector-icons/Entypo";
-import FontAwesome from "react-native-vector-icons/FontAwesome";
-import MaterialIcons from "react-native-vector-icons/MaterialIcons";
-import AntDesign from "react-native-vector-icons/AntDesign";
+} from 'react-native';
+import React, { useEffect, useState } from 'react';
+import { generalStyles } from '../screens/utils/generatStyles';
+import { COLORS, FONTSIZE } from '../theme/theme';
+import Entypo from 'react-native-vector-icons/Entypo';
+import FontAwesome from 'react-native-vector-icons/FontAwesome';
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+import AntDesign from 'react-native-vector-icons/AntDesign';
 import {
   formatCurrency,
   limitDescription,
-} from "../screens/utils/helpers/helpers";
-import { useNavigation } from "@react-navigation/native";
-import useGetUserLocation from "../hooks/useGetUserLocation";
-import { useDispatch, useSelector } from "react-redux";
-import { RootState } from "../redux/store/dev";
-import { showMessage } from "react-native-flash-message";
-import { showAuthScreen } from "../redux/store/slices/UserSlice";
-import { CHECK_IF_PROPERTY_LIKED, DISLIKE_PROPERTY, LIKE_PROPERTY } from "../screens/utils/constants/routes";
+} from '../screens/utils/helpers/helpers';
+import { useNavigation } from '@react-navigation/native';
 
-const { height, width } = Dimensions.get("window");
+import { useDispatch, useSelector } from 'react-redux';
+import { RootState } from '../redux/store/dev';
+import { showMessage } from 'react-native-flash-message';
+import { showAuthScreen } from '../redux/store/slices/UserSlice';
+import { CHECK_IF_PROPERTY_LIKED, DISLIKE_PROPERTY, LIKE_PROPERTY } from '../screens/utils/constants/routes';
+
+const { width } = Dimensions.get('window');
 const PropertyCard = ({ property , nextScreen=true}: any) => {
   const navigation = useNavigation<any>();
-  const { position } = useGetUserLocation();
+  //const { position  = useGetUserLocation();
   const dispatch = useDispatch<any>();
   const [liked, setLiked] = useState<boolean>(false);
   const { guestUser, authToken } = useSelector( (state: RootState) => state.user);
@@ -42,16 +43,16 @@ const PropertyCard = ({ property , nextScreen=true}: any) => {
 
   const handleShowAlert = () => {
     Alert.alert(
-      "Login",
-      "You need to login first to continue",
+      'Login',
+      'You need to login first to continue',
       [
         {
-          text: "Cancel",
-          onPress: () => console.log("Cancel Pressed"),
-          style: "cancel",
+          text: 'Cancel',
+          onPress: () => console.log('Cancel Pressed'),
+          style: 'cancel',
         },
         {
-          text: "OK",
+          text: 'OK',
           onPress: () => dispatch(showAuthScreen(true)),
         },
       ],
@@ -70,6 +71,7 @@ const PropertyCard = ({ property , nextScreen=true}: any) => {
   //likes section
   useEffect(() => {
     checkIfPropertyIsLiked()
+// eslint-disable-next-line react-hooks/exhaustive-deps
 }, [isFocused]);
 
 const checkIfPropertyIsLiked =async ()=>{
@@ -129,21 +131,21 @@ const handleLike = () => {
              else{
                 setLiked(false);
                 return showMessage({
-                    message:"Failed to like property",
-                    type:"danger",
-                    icon:"danger",
+                    message:'Failed to like property',
+                    type:'danger',
+                    icon:'danger',
                     duration:3000,
-                    position:"bottom"
+                    position:'bottom'
                 })
              }
             
-        }).catch(err=>{
+        }).catch(()=>{
             return showMessage({
-                message:"Failed to like property",
-                type:"danger",
-                icon:"danger",
+                message:'Failed to like property',
+                type:'danger',
+                icon:'danger',
                 duration:3000,
-                position:"bottom"
+                position:'bottom'
             })
         })
 
@@ -177,21 +179,21 @@ const handleLike = () => {
              else{
                 setLiked(true);
                 return showMessage({
-                    message:"Failed to remove like property",
-                    type:"danger",
-                    icon:"danger",
+                    message:'Failed to remove like property',
+                    type:'danger',
+                    icon:'danger',
                     duration:3000,
-                    position:"bottom"
+                    position:'bottom'
                 })
              }
             
-        }).catch(err=>{
+        }).catch(()=>{
             return showMessage({
-                message:"Failed to like property",
-                type:"danger",
-                icon:"danger",
+                message:'Failed to like property',
+                type:'danger',
+                icon:'danger',
                 duration:3000,
-                position:"bottom"
+                position:'bottom'
             })
         })
     }
@@ -204,7 +206,7 @@ const handleLike = () => {
     <TouchableOpacity
       activeOpacity={1}
       style={[styles.container]}
-      onPress={() =>nextScreen? navigation.navigate("PropertyDetails", { data: property }):null}
+      onPress={() =>nextScreen? navigation.navigate('PropertyDetails', { data: property }):null}
     >
       {/* scroll area */}
       <ScrollView
@@ -256,8 +258,8 @@ const handleLike = () => {
           style={[
             generalStyles.flexStyles,
             {
-              alignItems: "center",
-              justifyContent: "space-between",
+              alignItems: 'center',
+              justifyContent: 'space-between',
               marginHorizontal: 5,
             },
           ]}
@@ -265,11 +267,11 @@ const handleLike = () => {
           <Text style={[generalStyles.CardSubtitle]}>
             {property?.category?.name}
           </Text>
-          <View style={[generalStyles.flexStyles, { alignItems: "center" }]}>
+          <View style={[generalStyles.flexStyles, { alignItems: 'center' }]}>
             {Array(4)
               .fill(0)
               .map((_, index) => (
-                <AntDesign key={index} name="star" size={12} color={"gold"} />
+                <AntDesign key={index} name="star" size={12} color={'gold'} />
               ))}
           </View>
         </View>
@@ -280,7 +282,7 @@ const handleLike = () => {
           </Text>
         </View>
 
-        <View style={[generalStyles.flexStyles, { alignItems: "center" }]}>
+        <View style={[generalStyles.flexStyles, { alignItems: 'center' }]}>
           <Entypo
             name="location-pin"
             size={20}
@@ -293,8 +295,8 @@ const handleLike = () => {
           </Text>
         </View>
 
-        <View style={[generalStyles.flexStyles, { alignItems: "center" }]}>
-          <View style={[generalStyles.flexStyles, { alignItems: "center" }]}>
+        <View style={[generalStyles.flexStyles, { alignItems: 'center' }]}>
+          <View style={[generalStyles.flexStyles, { alignItems: 'center' }]}>
             <MaterialIcons
               name="meeting-room"
               size={18}
@@ -308,13 +310,13 @@ const handleLike = () => {
                 { fontSize: FONTSIZE.size_10, marginTop: 5 },
               ]}
             >
-              {property?.number_of_rooms} rooms
+              {property?.number_of_beds} bedrooms
             </Text>
           </View>
           <View
             style={[
               generalStyles.flexStyles,
-              { alignItems: "center", justifyContent: "center" },
+              { alignItems: 'center', justifyContent: 'center' },
             ]}
           >
             <FontAwesome
@@ -338,11 +340,11 @@ const handleLike = () => {
         <View
           style={[
             generalStyles.flexStyles,
-            { alignItems: "center", marginVertical: 5, marginHorizontal: 3 },
+            { alignItems: 'center', marginVertical: 5, marginHorizontal: 3 },
           ]}
         >
           <Text style={[generalStyles.CardTitle]}>
-            {" "}
+            {' '}
             {property?.currency?.name} {formatCurrency(property?.price)}
           </Text>
           <Text style={[generalStyles.CardSubtitle]}>
@@ -358,21 +360,21 @@ export default PropertyCard;
 
 const styles = StyleSheet.create({
   imageStyles: {
-    width: "100%",
+    width: '100%',
     height: 100,
     borderTopLeftRadius: 10,
     borderTopRightRadius: 10,
     // borderRadius: 10
   },
   container: {
-    width: "94%",
+    width: '94%',
     height: 270,
     elevation: 10,
     marginHorizontal: 10,
     marginVertical: 10,
     backgroundColor: COLORS.primaryBlackHex,
     borderRadius: 10,
-    shadowColor: "rgba(0, 0, 0, 0.1)",
+    shadowColor: 'rgba(0, 0, 0, 0.1)',
     shadowOffset: { width: 0, height: 1 },
     shadowOpacity: 1,
     shadowRadius: 4,
@@ -384,21 +386,21 @@ const styles = StyleSheet.create({
     // marginVertical: 2
   },
   imageIndicatorContainer: {
-    position: "absolute",
+    position: 'absolute',
     bottom: 30,
     right: 30,
-    backgroundColor: "rgba(0, 0, 0, 0.5)",
+    backgroundColor: 'rgba(0, 0, 0, 0.5)',
     //backgroundColor: "red",
     borderRadius: 20,
     paddingHorizontal: 10,
     paddingVertical: 5,
   },
   imageIndicatorText: {
-    color: "white",
+    color: 'white',
     fontSize: 14,
   },
   heartIconContainer: {
-    position: "absolute",
+    position: 'absolute',
     top: 10,
     right: 30,
     // backgroundColor: 'rgba(0, 0, 0, 0.5)',
@@ -414,7 +416,7 @@ const styles = StyleSheet.create({
   },
   dataBackgroundImage: {
      aspectRatio: 25 / 15,
-    justifyContent: "space-between",
+    justifyContent: 'space-between',
     //height:500
   },
 });

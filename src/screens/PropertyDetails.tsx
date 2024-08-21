@@ -24,7 +24,7 @@ import {
 import { showAuthScreen } from '../redux/store/slices/UserSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../redux/store/dev';
-import { CHECK_IF_PROPERTY_LIKED, CREATE_BOOKING, DISLIKE_PROPERTY, LIKE_PROPERTY } from './utils/constants/routes';
+import { CHECK_IF_PROPERTY_LIKED, CREATE_BOOKING, DISLIKE_PROPERTY, LIKE_PROPERTY, REQUEST_CALL } from './utils/constants/routes';
 import { showMessage } from 'react-native-flash-message';
 import { ActivityIndicator } from '../components/ActivityIndicator';
 import ArrowBack from '../components/ArrowBack';
@@ -154,7 +154,6 @@ const PropertyDetails = () => {
                 })
             }).then(response=>response.json())
             .then(res=>{
-                 console.log(res)
                  if(res.success==true){
                     setLiked(false)
                     return showMessage({
@@ -253,13 +252,40 @@ const PropertyDetails = () => {
 
     const handleRequestCall = () => {
         try {
+            if (guestUser) {
+              return  handleShowAlert();
+            }
             setLoading(true);
-            showMessage({
-                message: 'Request Sent',
-                description: 'We will get back to you soon',
-                type: 'success',
-                icon: 'success'
-            });
+            setLoading(true);
+            const myHeaders = new Headers();
+            myHeaders.append('Authorization', `Bearer ${authToken}`);
+
+            const body = new FormData();
+            body.append('property_id', data?.id);
+            const requestOptions = {
+                method: 'POST',
+                headers: myHeaders,
+                body
+            };
+
+            fetch(`${REQUEST_CALL}`, requestOptions)
+                .then(response => response.json())
+                .then(result => {
+                    setLoading(false);
+                    //return navigation.navigate('HomeTab');
+                    showMessage({
+                        message: 'Request Sent',
+                        description: 'We will get back to you soon',
+                        type: 'success',
+                        icon: 'success'
+                    });
+                })
+                .catch(error => {
+                    console.log("===================")
+                    console.log(error);
+                    setLoading(false);
+                });
+
             setLoading(false);
             return navigation.navigate('HomeTab');
         } catch (error) {
@@ -482,6 +508,9 @@ const PropertyDetails = () => {
                             <Text style={styles.CardSubtitle}>
                                 {data?.number_of_baths} bathroom(s)
                             </Text>
+                            <Text style={styles.CardSubtitle}>
+                                {data?.room_type} Room
+                            </Text>
                             <Text style={styles.CardTitle}>
                                 {data?.currency?.name} {formatCurrency(data?.price)}  {data.payment_period?.name}
                             </Text>
@@ -531,7 +560,7 @@ const PropertyDetails = () => {
                             />
                             <View style={{ marginHorizontal: 5 }}>
                                 <Text style={[styles.CardTitle, {}]}>
-                                    {data.agent.name}
+                                    {data?.agent?.name}
                                 </Text>
                                 <Text style={styles.CardSubtitle}>
                                     {'Property Agent'}
@@ -839,4 +868,5 @@ const styles = StyleSheet.create({
         paddingHorizontal: 10,
         paddingVertical: 5
     }
+    
 });

@@ -1,6 +1,7 @@
-import { StyleSheet, FlatList } from 'react-native'
+/* eslint-disable prettier/prettier */
 import React from 'react'
 import NotificationCard from './NotificationCard'
+import { FlatList } from 'react-native'
 
 
 
@@ -10,13 +11,12 @@ const NotificationFlatList = ({ notificationData, loadMoreData, isFetching }: an
     <FlatList
       data={notificationData}
       showsVerticalScrollIndicator={false}
-      keyExtractor={item => String(item?.id)}
+      keyExtractor={(item: { id: any }) => String(item?.id)}
       style={{ marginHorizontal: 10 }}
       renderItem={({ item, index }: any) => (
         <NotificationCard
-          type={item?.title}
-          time={item?.created_at}
-          description={item?.message}
+          item={item}
+          index={index}
         />
       )}
 
@@ -35,4 +35,3 @@ const NotificationFlatList = ({ notificationData, loadMoreData, isFetching }: an
 
 export default NotificationFlatList
 
-const styles = StyleSheet.create({})

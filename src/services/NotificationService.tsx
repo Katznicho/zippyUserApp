@@ -25,8 +25,7 @@ class NotificationService {
 
 
                 },
-                //console.log the data
-                //data: { test: 'test' },
+
 
             },
 

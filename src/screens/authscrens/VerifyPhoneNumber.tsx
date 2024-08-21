@@ -118,8 +118,6 @@ const VerifyPhoneNumber = () => {
         })
             .then(response => response.json())
             .then(async result => {
-                console.log(result);
-
                 if (result?.errors) {
                     setErrors(result.errors);
                     causeVibration();
@@ -169,7 +167,8 @@ const VerifyPhoneNumber = () => {
                     let dob = result?.data?.user?.dob || null
                     let phone = result?.data?.user?.phone_number || null
 
-                    let isSetupComplete = name != '' || email != null  || phone != null ? true : false
+                    let isSetupComplete = name && email&& dob ? true : false
+
 
                     dispatch(
                         updateUserState({
@@ -184,7 +183,8 @@ const VerifyPhoneNumber = () => {
                                 phone: result?.data?.user?.phone_number || null,
                                 displayPicture: result?.data?.user?.avatar || null,
                                 role: result?.data?.user?.role || null,
-                                points: result?.data?.user?.points || null
+                                points: result?.data?.user?.points || null,
+                                dob: result?.data?.user?.dob || null,
                             },
                             authToken: result?.data?.authToken,
                             
@@ -198,7 +198,6 @@ const VerifyPhoneNumber = () => {
                 setLoading(false);
             })
             .catch(error => {
-                console.log('error', error);
 
                 setLoading(false);
             });

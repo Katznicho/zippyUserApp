@@ -83,7 +83,6 @@ const AddAgentReview = () => {
                   }),
             }).then(response => response.json())
                 .then(data => {
-                     console.log('Data:', data);
                     setLoading(false);
                     if (data.success) {
                         showMessage({
@@ -109,7 +108,6 @@ const AddAgentReview = () => {
 
                 });
         } catch (error) {
-            console.log('Error:', error);
             setLoading(false);
                     return showMessage({
                         message: 'Failed to add comment',

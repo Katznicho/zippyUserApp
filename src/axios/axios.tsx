@@ -40,12 +40,7 @@ axiosInstance.interceptors.request.use(
   (error: AxiosError) => Promise.reject(error),
 );
 
-//print the url of the request
-// console.log(axiosInstance.defaults.baseURL);
-// console.log(axiosInstance.defaults.headers);
 
-//print full url of the request sent to the server
-// console.log(axiosInstance)
 
 // Add a retry mechanism to the axios instance with exponential backoff
 axiosRetry(axiosInstance, {
@@ -58,9 +53,7 @@ axiosInstance.interceptors.response.use(
   (error: AxiosError) => {
 
     const status = error.response?.status;
-    console.log("========error status================")
-    console.log(status)
-    console.log("========error status================")
+
     let errorMessage = "";
 
     if (status === 401) {
@@ -77,10 +70,7 @@ axiosInstance.interceptors.response.use(
     //   type: 'danger',
     //   icon:"danger"
     // })
-    console.log("========error message================")
-    console.log(errorMessage)
-    console.log("========error message================")
-    console.log(`There was an  error is ${JSON.stringify(error)}}`)
+
 
     return Promise.reject(error);
   },

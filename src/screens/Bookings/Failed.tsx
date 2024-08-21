@@ -8,7 +8,7 @@ import BookingFlatList from '../../components/BookingFlatList';
 import EmptyContainer from '../../components/EmptyContainer';
 
 const Failed = () => {
-  const { isError, data, error, fetchNextPage, hasNextPage, isFetching } = useFetchInfinite("FAILED", USERBOOKINGS, "Failed");
+  const { isError, data, error, fetchNextPage, hasNextPage, isFetching } = useFetchInfinite("FAILED", USERBOOKINGS, "Failed", null, null);
 
 
   const bookingData = data?.pages.flatMap(page => page.data);

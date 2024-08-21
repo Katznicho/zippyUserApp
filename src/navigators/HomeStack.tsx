@@ -1,7 +1,6 @@
 import React from 'react'
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import HomeScreen from '../screens/HomeScreen';
-import CreatePin from '../screens/CreatePin';
 import { generalStyles } from '../screens/utils/generatStyles';
 import { COLORS } from '../theme/theme';
 import AllTransactions from '../screens/AllTransactions';
@@ -9,22 +8,18 @@ import TransactionDetails from '../screens/TransactionDetails';
 import ArrowBack from '../components/ArrowBack';
 import { RootState } from '../redux/store/dev';
 import { useSelector } from 'react-redux';
-import ChangePassword from '../screens/ChangePassword';
-import AntDesign from 'react-native-vector-icons/AntDesign';
 import { useNavigation } from '@react-navigation/native';
 import AllProperties from '../screens/AllProperties';
 import PropertyDetails from '../screens/PropertyDetails';
 import UserDetails from '../screens/UserDetails';
 import AllUsers from '../screens/AllUsers';
 import PropertyImages from '../screens/PropertyImages';
-import HeaderBar from '../components/HeaderBar';
 import ZippyAlert from '../screens/ZippyAlert';
 import MyWebView from '../screens/MyWebView';
-import Deposit from '../screens/Deposit';
-import ConfirmAndPay from '../screens/ConfirmAndPay';
 import { DEFAULT_USER_PROFILE, PUBLIC_STORAGE } from '../screens/utils/constants/constants';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { Image } from 'react-native';
+import SearchProperties from '../screens/SearchProperties';
 
 const Stack = createNativeStackNavigator();
 
@@ -75,24 +70,7 @@ const HomeStack = () => {
             >
             </Stack.Screen>
 
-        
-
-            <Stack.Screen
-                name="CreateWallet"
-                component={CreatePin}
-                // options={{ animation: 'slide_from_bottom' }}
-                options={{
-                    animation: 'slide_from_bottom',
-                    title: 'Add Wallet',
-                    headerStyle: generalStyles.headerStyle,
-                    headerTitleStyle: generalStyles.titleHeaderStyles,
-                    headerTintColor: COLORS.primaryBlackHex,
-                    headerTitleAlign: 'center',
-                    headerLeft: () => <ArrowBack />
-
-                }}
-            >
-            </Stack.Screen>
+    
 
             {/* zippy alert */}
             <Stack.Screen
@@ -113,24 +91,6 @@ const HomeStack = () => {
             </Stack.Screen>
             {/* zippy alert */}
 
-            {/* chnage password */}
-            <Stack.Screen
-                name="ChangePassword"
-                component={ChangePassword}
-                // options={{ animation: 'slide_from_bottom' }}
-                options={{
-                    animation: 'slide_from_bottom',
-                    title: 'Change Password',
-                    headerStyle: generalStyles.headerStyle,
-                    headerTitleStyle: generalStyles.titleHeaderStyles,
-                    headerTintColor: COLORS.primaryBlackHex,
-                    headerTitleAlign: 'center',
-                    headerLeft: () => <ArrowBack />
-
-                }}
-            >
-            </Stack.Screen>
-            {/* change password */}
 
 
             {/* all transactions */}
@@ -161,6 +121,17 @@ const HomeStack = () => {
             </Stack.Screen>
             {/* all transactions */}
             {/* all propertes */}
+
+            {/* search properties */}
+            <Stack.Screen
+                name="SearchProperties"
+                component={SearchProperties}
+                options={{
+                    animation: 'slide_from_bottom',
+                    headerShown: false
+                }}>
+            </Stack.Screen>
+            {/* search properties */}
 
             {/* all users */}
             <Stack.Screen
@@ -238,23 +209,6 @@ const HomeStack = () => {
             </Stack.Screen>
             {/* user details */}
 
-
-            {/* load points */}
-            <Stack.Screen
-                name="LoadPoints"
-                component={Deposit}
-                options={{
-                    title: 'Load Points',
-                    animation: 'slide_from_bottom',
-                    // headerShown: false
-                    headerStyle: generalStyles.headerStyle,
-                    headerTitleStyle: generalStyles.titleHeaderStyles,
-                    headerTintColor: COLORS.primaryBlackHex,
-                    headerTitleAlign: 'center',
-                    headerLeft: () => <ArrowBack />
-                }}>
-            </Stack.Screen>
-            {/* load points */}
 
             <Stack.Screen
                 name="MyWebView"

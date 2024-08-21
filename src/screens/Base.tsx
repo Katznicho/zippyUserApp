@@ -11,7 +11,8 @@ const Stack = createNativeStackNavigator();
 
 const Base = () => {
     const { isLoggedIn, guestUser, user, isSetupComplete } = useSelector((state: RootState) => state.user);
-
+   
+    console.log("Completed Setup",isSetupComplete)
 
 
     useEffect(() => {

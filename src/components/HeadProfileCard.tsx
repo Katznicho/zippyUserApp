@@ -25,6 +25,8 @@ const HeadProfileCard = () => {
         try {
             setLoading(true)
             const coverImageFilePath = selectedImagePath.replace(/^file:\/\//, '');
+
+
             const formData = new FormData();
 
             formData.append('profile_pic', {
@@ -33,6 +35,7 @@ const HeadProfileCard = () => {
                 type: 'image/png',
                 data: RNFetchBlob.wrap(coverImageFilePath),
             });
+
 
             RNFetchBlob.fetch(
                 'POST',

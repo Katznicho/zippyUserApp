@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { StyleSheet, Text, View, TouchableOpacity, Image } from 'react-native';
 import React from 'react'
 import { generalStyles } from '../screens/utils/generatStyles';
@@ -8,6 +9,8 @@ import { calculateDistance, formatCurrency, limitDescription } from '../screens/
 import { useNavigation } from '@react-navigation/native';
 import useGetUserLocation from '../hooks/useGetUserLocation';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
+import { useSelector } from 'react-redux';
+import { RootState } from '../redux/store/dev';
 
 
 const PropertyDetailsCard = ({ property }: any) => {
@@ -16,9 +19,7 @@ const PropertyDetailsCard = ({ property }: any) => {
 
     const navigation = useNavigation<any>();
     const { position } = useGetUserLocation();
-
-
-
+    const {guestUser} = useSelector((state: RootState) => state.user)
 
 
 
@@ -76,7 +77,7 @@ const PropertyDetailsCard = ({ property }: any) => {
                     />
                     <Text style={[generalStyles.CardTitle, { fontSize: FONTSIZE.size_10 }]}>{property?.location}</Text>
                 </View>
-
+                   
                 <View style={[generalStyles.flexStyles, { alignItems: "center" }]}>
                     <FontAwesome5 name="ruler-horizontal"
                         size={20}

@@ -37,7 +37,7 @@ const Categories = () => {
                         // style={[generalStyles.CardContainer]}
                         activeOpacity={1}
                         style={styles.container}
-                        onPress={() => navigation.navigate("AllProperties")}
+                        onPress={() => navigation.navigate("SearchProperties", { category_id: item?.id })}
                     >
                         <Text style={[styles.textStyle]}>{item.name}</Text>
                     </TouchableOpacity>

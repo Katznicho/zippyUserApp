@@ -72,8 +72,7 @@ const Deposit = () => {
             fetch(`${LOAD_POINTS}`, requestOptions).then((response) => {
                 return response.json();
             }).then((result) => {
-                console.log("======res=========")
-                 console.log(result)
+
                  setLoading(false);
                 if(result.success){
                     showMessage({

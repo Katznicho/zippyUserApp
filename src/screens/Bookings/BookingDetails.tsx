@@ -10,6 +10,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../redux/store/dev';
 import { showAuthScreen } from '../../redux/store/slices/UserSlice';
 import ArrowBack from '../../components/ArrowBack';
+import { showMessage } from 'react-native-flash-message';
 
 
 
@@ -31,7 +32,7 @@ const BookingDetails = () => {
 
     const openMapsForDirections = () => {
         const destination = `${data?.lat},${data?.long}`;
-        // console.log(destination)
+        
         const url = `https://www.google.com/maps/dir/?api=1&destination=${destination}`;
         return Linking.openURL(url);
     };
@@ -55,7 +56,7 @@ const BookingDetails = () => {
         )
     }
 
-    const handleBookNow = () => {
+    const handleCancelRequest = () => {
         if (guestUser) {
             handleShowAlert()
         } else {
@@ -73,30 +74,16 @@ const BookingDetails = () => {
                 body,
             };
 
-            // fetch(`${CREATE_BOOKING}`, requestOptions)
-            //     .then((response) => response.json())
-            //     .then((result) => {
-            //         console.log(result)
-            //         showMessage({
-            //             message: "Booked Successfully",
-            //             description: "We will get back to you soon",
-            //             type: "success",
-            //             icon: "success",
-            //         });
-            //         setLoading(false)
-            //         return navigation.navigate("Bookings")
-            //     })
-            //     .catch((error) => {
-            //         console.log(error)
-            //         setLoading(false)
-            //         showMessage({
-            //             message: "Booked Failed",
-            //             description: "Please try again",
-            //             type: "info",
-            //             icon: "info",
-            //         });
+             showMessage({
+                message:"Cancel Request Sent",
+                type:"success",
+                icon:"success",
+                duration:3000,
+                position:"bottom"
+            })
+            return navigation.goBack()
 
-            //     });
+
 
         }
     }
@@ -177,8 +164,8 @@ const BookingDetails = () => {
                             <View>
                                 <TouchableOpacity
                                     activeOpacity={1}
-                                    style={[generalStyles.loginContainer, { width: "100%" }]}
-                                    onPress={() => handleBookNow()}
+                                    style={[generalStyles.loginContainer, { width: "100%", backgroundColor:COLORS.primaryRedHex }]}
+                                    onPress={() => handleCancelRequest()}
                                 >
                                     <Text style={generalStyles.loginText}>{'Cancel Now'}</Text>
                                 </TouchableOpacity>
@@ -323,12 +310,12 @@ const styles = StyleSheet.create({
         marginVertical: 10
     },
     CardTitle: {
-        fontFamily: FONTFAMILY.poppins_medium,
+        fontFamily: FONTFAMILY.roboto_regular,
         color: COLORS.primaryWhiteHex,
         fontSize: FONTSIZE.size_14,
     },
     CardSubtitle: {
-        fontFamily: FONTFAMILY.poppins_light,
+        fontFamily: FONTFAMILY.roboto_regular,
         color: COLORS.primaryWhiteHex,
         fontSize: FONTSIZE.size_10,
         // marginHorizontal: SPACING.space_10
@@ -336,7 +323,7 @@ const styles = StyleSheet.create({
     ImageHeaderBarContainerWithBack: {
         padding: SPACING.space_30,
         flexDirection: 'row',
-        aligndatas: 'center',
+        alignItems: 'center',
         justifyContent: 'space-between',
     },
     dataBackgroundImage: {

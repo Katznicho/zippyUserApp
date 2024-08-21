@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { SafeAreaView, StyleSheet, View } from 'react-native'
 import React from 'react'
 import { PAYMENT_STATUS } from '../utils/constants/constants';
@@ -10,7 +11,7 @@ import EmptyContainer from '../../components/EmptyContainer';
 
 const Completed = () => {
 
-    const { isError, data, error, fetchNextPage, hasNextPage, isFetching } = useFetchInfinite(PAYMENT_STATUS.COMPLETED, USERPAYMENTS, PAYMENT_STATUS.COMPLETED);
+    const { isError, data, error, fetchNextPage, hasNextPage, isFetching } = useFetchInfinite(PAYMENT_STATUS.COMPLETED, USERPAYMENTS, PAYMENT_STATUS.COMPLETED, null, null);
    
 
     const paymentData = data?.pages.flatMap(page => page.data);

@@ -16,10 +16,9 @@ interface User {
   email: string;
   phone: string;
   role: string,
-  // is_new_user: boolean,
   displayPicture: string;
   points: string | number
-  // guestUser: boolean
+  dob:string
 }
 
 const initialState: UserState = {
@@ -34,7 +33,8 @@ const initialState: UserState = {
     displayPicture: '',
     role: "",
     phone: "",
-    points: 0
+    points: 0,
+    dob: ""
     // is_new_user: true,
 
   },
@@ -65,7 +65,8 @@ export const userSlice = createSlice({
         displayPicture: '',
         role: "",
         phone: "",
-        points: 0
+        points: 0,
+        dob: ""
       }
     },
 

@@ -32,7 +32,6 @@ const ProfileDetailsCard = ({
                 message: 'Check out Zippy App and install it',
                 url: 'https://play.google.com/apps/testing/com.zippyUser',
             });
-            console.log(result);
         } catch (error) {
 
         }

@@ -23,7 +23,7 @@ const Profile = () => {
             requiresLogin: true,
         },
         {
-            name: 'Edit Profile',
+            name: 'Profile',
             screen: 'EditProfile',
             requiresLogin: true,
         },

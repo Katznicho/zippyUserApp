@@ -108,9 +108,7 @@ const UserLocation: React.FC<Props> = ({
         fetchDetails={true}
         debounce={400}
         onFail={error => {
-          console.log('================Error==================');
-          console.log(JSON.stringify(error));
-          console.log('================Error==================');
+
         }}
         enablePoweredByContainer={false}
         minLength={2}
@@ -182,9 +180,7 @@ const UserLocation: React.FC<Props> = ({
             longitude: details?.geometry.location.lng,
             latitude: details?.geometry.location.lat,
           });
-          console.log('==========================');
-          console.log(property);
-          console.log('========================');
+
           setOpenPicker(false);
         }}
         query={{

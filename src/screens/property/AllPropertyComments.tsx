@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { SafeAreaView, StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import React, { useState } from 'react';
 import useFetchInfinite from '../../hooks/useFetchInfinite';

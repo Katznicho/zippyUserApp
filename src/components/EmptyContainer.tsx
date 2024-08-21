@@ -23,7 +23,7 @@ const styles = StyleSheet.create({
         height: 300,
     },
     LottieText: {
-        fontFamily: FONTFAMILY.poppins_medium,
+        fontFamily: FONTFAMILY.roboto_medium,
         fontSize: FONTSIZE.size_16,
         color: COLORS.primaryWhiteHex,
         // marginTop: 20,

@@ -11,6 +11,9 @@ export const SETUP_ACCOUNT = `${BASE_URL}/app-user/updateUserDetails`;
 export const LOGGED_IN_USER = `${BASE_URL}/app-user/fetchLoggedInUserDetails`;
 export const LOGOUT = `${BASE_URL}/app-user/logout`;
 export const LOGIN_OR_REGISTER_WITH_GOOGLE = `${BASE_URL}/app-user/loginOrRegisterByGoogle`;
+export const UPDATE_USER_LOCATION = `${BASE_URL}/app-user/updateUserLocation`;
+export const SAVE_DEVICE_INFO = `${BASE_URL}/app-user/saveDeviceInfo`;
+export const REQUEST_CALL = `${BASE_URL}/app-user/requestCall`;
 //app users
 
 export const LOGIN = `${BASE_URL}/auth/login`;
@@ -20,20 +23,19 @@ export const REGISTER = `${BASE_URL}/auth/registerCommunity`;
 // export const RESET_PASSWORD = `${BASE_URL}/auth/resetPassword`;
 // export const RESEND_OTP = `${BASE_URL}/auth/resendOTP`
 // export const VERIFY_EMAIL = `${BASE_URL}/auth/verifyEmail`
-// export const SAVE_DEVICE_INFO = `${BASE_URL}/auth/saveDeviceInfo`
+
 // export const SETUP_WALLET_ACCOUNT = `${BASE_URL}/auth/setUpUserWalletAccount`;
 // export const UPDATEWALLETBALANCE = `${BASE_URL}/auth/updateShowWalletBalance`
 // export const UPDATEUSERAVATAR = `${BASE_URL}/auth/updateUserAvatarUrl`
-// export const UPDATE_USER_LOCATION = `${BASE_URL}/auth/updateUserLocation`;
+
 
 //payments
 export const LOAD_POINTS = `${BASE_URL}/app-user/loadPoints`;
 export const PROCESSORDER = `${BASE_URL}/app-user/processOrder`;
 export const USERPAYMENTS = `${BASE_URL}/app-user/getUserPayments`;
-export const USERPRODUCTS = `${BASE_URL}/app-user/getUserProducts`;
 export const USERBOOKINGS = `${BASE_URL}/app-user/getUserBookings`;
 
-export const USERDELIVERIES = `${BASE_URL}/app-user/getUserDelivries`;
+
 export const USERNOTIFICATIONS = `${BASE_URL}/app-user/getUserNotifications`;
 
 //booking
@@ -53,6 +55,7 @@ export const VERIFY_PROPERTY_OWNER = `${BASE_URL}/verifyPropertyOwnerPhoneNumber
 
 //properties
 export const GET_ALL_PROPERTIES_BY_PAGINATION = `${BASE_URL}/getAllPropertiesByPagination`;
+export const SEARCH_PROPERTIES = `${BASE_URL}/searchProperties`;
 //https://zippy.risidev.com/api/v1/getAllPropertiesByPagination
 
 //property owner

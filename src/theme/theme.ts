@@ -64,7 +64,6 @@ export const COLORS: Color = {
   primaryBlackRGBA: 'rgba(12,15,20,0.5)',
   secondaryBlackRGBA: 'rgba(0,0,0,0.7)',
   primaryLightWhiteGrey: '#F5F7F8',
-  
 };
 
 // export const COLORS: Color = {

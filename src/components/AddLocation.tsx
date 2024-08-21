@@ -13,7 +13,7 @@ const AddLocation = ({ property, setProperty }: any) => {
     return (
         <View>
             <View style={generalStyles.viewStyles}>
-                <Text style={[{ fontSize: 20, fontFamily: FONTFAMILY.ro }, generalStyles.textStyle]}>
+                <Text style={[{ fontSize: 20, fontFamily: FONTFAMILY.roboto_regular }, generalStyles.textStyle]}>
                     WHERE COULD YOU LIKE TO STAY ?
                 </Text>
             </View>
@@ -36,9 +36,7 @@ const AddLocation = ({ property, setProperty }: any) => {
                 fetchDetails={true}
                 debounce={400}
                 onFail={(error) => {
-                    console.log("================Error==================");
-                    console.log(JSON.stringify(error))
-                    console.log("================Error==================");
+
                 }}
                 enablePoweredByContainer={false}
                 minLength={2}

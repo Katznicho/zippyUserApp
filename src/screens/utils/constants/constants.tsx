@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { Dimensions, Platform, StatusBar } from "react-native";
 
 export const LISTMARGIN = 10;
@@ -31,7 +32,7 @@ export const PAYMENT_STATUS = {
     CANCELLED: "Failed",
     UNPAID: "UNPAID",
     CONFIRMED: "Confirmed",
-    UNCONFIRMED: "UnConfirmed"
+    UNCONFIRMED: 'UnConfirmed'
 }
 
 export const PAYMENT_TYPE = {

@@ -17,9 +17,7 @@ const PlacesLocation = () => {
             fetchDetails={true}
             debounce={400}
             onFail={(error) => {
-                console.log("================Error==================");
-                console.log(JSON.stringify(error))
-                console.log("================Error==================");
+
             }}
             enablePoweredByContainer={false}
 
@@ -82,10 +80,7 @@ const PlacesLocation = () => {
                 },
             }}
             onPress={(data, details = null) => {
-                // 'details' is provided when fetchDetails = true
-                console.log("==================================");
-                console.log(data, details);
-                console.log("==================================");
+
             }}
             query={{
                 key: 'AIzaSyATT-OoxvppDdCRfNypfjLY5VWbZEqs_GA',

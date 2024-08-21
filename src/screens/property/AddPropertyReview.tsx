@@ -82,7 +82,6 @@ const AddPropertyReview = () => {
                   }),
             }).then(response => response.json())
                 .then(data => {
-                    //  console.log('Data:', data);
                     setLoading(false);
                     if (data.success) {
                         showMessage({
@@ -108,7 +107,7 @@ const AddPropertyReview = () => {
 
                 });
         } catch (error) {
-            //console.log('Error:', error);
+
             setLoading(false);
                     return showMessage({
                         message: 'Failed to add comment',

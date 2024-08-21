@@ -18,7 +18,7 @@ import Animated, {
     withTiming,
 } from 'react-native-reanimated';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { VERIFY_EMAIL, VERIFY_EMAIL_OTP } from '../utils/constants/routes';
+import {  VERIFY_EMAIL_OTP } from '../utils/constants/routes';
 import { causeVibration, getErrorMessage } from '../utils/helpers/helpers';
 import { showMessage } from 'react-native-flash-message';
 import { COLORS } from '../../theme/theme';
@@ -116,8 +116,6 @@ const VerificationScreen = () => {
         })
             .then(response => response.json())
             .then(async result => {
-                // console.log(result);
-
                 if (result?.errors) {
                     setErrors(result.errors);
                     causeVibration();
@@ -168,7 +166,9 @@ const VerificationScreen = () => {
                     let dob = result?.data?.user?.dob || null
                     let phone = result?.data?.user?.phone_number || null
 
-                    let isSetupComplete = name != '' || email != null  || phone != null ? true : false
+                    let isSetupComplete = name && email&& dob ? true : false
+
+
 
                     dispatch(
                         updateUserState({
@@ -183,7 +183,8 @@ const VerificationScreen = () => {
                                 phone: result?.data?.user?.phone_number || null,
                                 displayPicture: result?.data?.user?.avatar || null,
                                 role: result?.data?.user?.role || null,
-                                points: result?.data?.user?.points || null
+                                points: result?.data?.user?.points || null,
+                                dob: result?.data?.user?.dob || null
                             },
                             authToken: result?.data?.authToken,
                             

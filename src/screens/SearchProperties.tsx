@@ -1,40 +1,49 @@
-/* eslint-disable prettier/prettier */
 import { StyleSheet, SafeAreaView, View, Text } from 'react-native'
 import React, { useState } from 'react'
-import { GET_APP_USER_LIKES } from '../utils/constants/routes';
-import useFetchInfinite from '../../hooks/useFetchInfinite';
-import { generalStyles } from '../utils/generatStyles';
-import EmptyContainer from '../../components/EmptyContainer';
-import ArrowBack from '../../components/ArrowBack';
-import { COLORS, FONTSIZE } from '../../theme/theme';
-import SearchBar from '../../components/SearchBar';
-import SavedPlacesFlatList from '../../components/SavedPlacesFlatList';
-import { useApi } from '../../hooks/useApi';
-
-const AllSavedPlaces: React.FC = () => {
-
-    // const { isError, data, error, fetchNextPage, hasNextPage, isFetching } = useFetchInfinite("AllSavedPlaces", GET_APP_USER_LIKES,null,null , null);
+import useFetchInfinite from '../hooks/useFetchInfinite';
+import { generalStyles } from './utils/generatStyles';
+import PropertyFlatList from '../components/PropertyFlatList';
+import { GET_ALL_PROPERTIES_BY_PAGINATION, SEARCH_PROPERTIES, } from './utils/constants/routes';
+import { COLORS, FONTSIZE } from '../theme/theme';
+import ArrowBack from '../components/ArrowBack';
+import SearchBar from '../components/SearchBar';
+import EmptyContainer from '../components/EmptyContainer';
+import { useRoute } from '@react-navigation/native';
+import { useApi } from '../hooks/useApi';
 
 
-    // const propertyData = data?.pages.flatMap(page => page.data);
+
+
+const SearchProperties: React.FC = () => {
+
+    const { category_id } = useRoute<any>().params;
+
+    console.log("==============")
+    console.log(category_id)
+
+    const { data, error, isLoading, } = useApi<any>({
+        endpoint: '/searchProperties',
+        params: {
+            "category_id": category_id
+        },
+        queryOptions: {
+            // enabled: true,
+            // refetchInterval: 2000,
+            // refetchOnWindowFocus: true,
+            // refetchOnMount: true,
+        },
+    })
+
+    console.log('======================')
+    console.log(data?.data)
+
+
+
 
 
     const loadMoreData = () => {
-        //if (hasNextPage && !isFetching && data?.pages[0].total !== propertyData?.length) return fetchNextPage()
-        return false
+        // if (hasNextPage && !isFetching && data?.pages[0].total !== propertyData?.length) return fetchNextPage()
     };
-
-    const { data, error, isLoading } = useApi<any>({
-        endpoint: '/app-user/getUserLikes',
-        queryOptions: {
-             enabled: true,
-            // refetchInterval: 2000,
-            refetchOnWindowFocus: true,
-            refetchOnMount: true,
-        },
-    });
-
-
 
     const [searchText, setSearchText] = useState<string>("");
     const resetSearch = () => {
@@ -42,12 +51,14 @@ const AllSavedPlaces: React.FC = () => {
     };
 
 
-
     return (
         <SafeAreaView style={[generalStyles.ScreenContainer]}>
 
-            
-            <View style={styles.containerStyle}>
+            {
+                data && data?.data?.data?.length === 0 &&<EmptyContainer
+                    title={'No Properties Yet'} />
+            }
+             <View style={styles.containerStyle}>
                 <View style={[generalStyles.absoluteStyles, { left: 10, top: 25 }]}>
                     <ArrowBack/>
                 </View>
@@ -65,12 +76,7 @@ const AllSavedPlaces: React.FC = () => {
                 />
             </View>
 
-            {
-        data && data?.data?.data?.length === 0 &&<EmptyContainer
-            title={'You don\'t have any saved places'} />
-    }
-
-            <SavedPlacesFlatList
+            <PropertyFlatList
                 propertyData={data?.data?.data}
                 loadMoreData={loadMoreData}
                 isFetching={false}
@@ -85,7 +91,7 @@ const AllSavedPlaces: React.FC = () => {
     )
 }
 
-export default AllSavedPlaces
+export default SearchProperties
 
 const styles = StyleSheet.create({
     containerStyle: {

@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { FlatList, View, SafeAreaView } from 'react-native'
 import React, { useState, useEffect } from 'react'
 import PropertyCard from './PropertyCard';

@@ -148,7 +148,7 @@ const ZippyAlert = () => {
             method: 'GET',
             headers
         }).then((res) => res.json()).then((data) => {
-            // console.log(data)
+    
             setServices(data?.data)
         }).catch((err) => {
 
@@ -158,7 +158,7 @@ const ZippyAlert = () => {
             method: 'GET',
             headers
         }).then((res) => res.json()).then((data) => {
-            // console.log(data)
+            
             setAmenities(data?.data)
         })
 
@@ -276,14 +276,9 @@ const ZippyAlert = () => {
                     body: formData,
                 };
 
-                console.log(CREATE_ZIPPY_ALERT)
-
                 fetch(CREATE_ZIPPY_ALERT, requestOptions)
                     .then((response) => response.json())
                     .then((result) => {
-                        console.log("======res===============")
-                        console.log(result)
-                        console.log("=====================")
                         setLoading(false)
                         if (result?.response === "success") {
                             showMessage({
@@ -332,7 +327,6 @@ const ZippyAlert = () => {
             }
 
         } catch (error) {
-            console.log(error)
             return showMessage({
                 message: "Something went wrong",
                 type: "danger",

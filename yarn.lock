@@ -2141,6 +2141,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@notifee/react-native@npm:^7.8.2":
+  version: 7.8.2
+  resolution: "@notifee/react-native@npm:7.8.2"
+  peerDependencies:
+    react-native: "*"
+  checksum: f3b3ea116653d4dc7b50f8124898f9e22567ae30306225841d2057bc9ce40d451b15436dff3e60e0e042ffd7f34338054b202cd2dc61c5dc5eab7676b625b9f9
+  languageName: node
+  linkType: hard
+
 "@npmcli/agent@npm:^2.0.0":
   version: 2.2.2
   resolution: "@npmcli/agent@npm:2.2.2"
@@ -2410,6 +2419,19 @@ __metadata:
     expo:
       optional: true
   checksum: 44d5897c938a24dd67a57b95759e03679ebc11ffe6d907ac110974d8ebf719c68bcdf42fb9c2759ffa34c74bcb032de35df98a4dd0a3a824f223b4f535f93abe
+  languageName: node
+  linkType: hard
+
+"@react-native-firebase/messaging@npm:^20.1.0":
+  version: 20.1.0
+  resolution: "@react-native-firebase/messaging@npm:20.1.0"
+  peerDependencies:
+    "@react-native-firebase/app": 20.1.0
+    expo: ">=47.0.0"
+  peerDependenciesMeta:
+    expo:
+      optional: true
+  checksum: 69b114453f093142c39461d05f2637d9dd31e28854f511689192a3a6e069c8aa3739f3eb550ab7600e4d277956fc01361621bde931bd83b7fa86141d20bcb823
   languageName: node
   linkType: hard
 
@@ -3484,6 +3506,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"apisauce@npm:^2.1.1":
+  version: 2.1.6
+  resolution: "apisauce@npm:2.1.6"
+  dependencies:
+    axios: ^0.21.4
+  checksum: 3db1447f03ecfa0d8fb9be0991bd4732a8eb4a5c96282c964c0b5f9d215dc1bca1e0fec7f5187080286368c1028deb0de8fb69cd7bccb92441b327aa1028598a
+  languageName: node
+  linkType: hard
+
 "appdirsjs@npm:^1.2.4":
   version: 1.2.7
   resolution: "appdirsjs@npm:1.2.7"
@@ -3697,6 +3728,15 @@ __metadata:
   peerDependencies:
     axios: 0.x || 1.x
   checksum: e1e07f710d12e3367bc1e934b49f3056bc6a1d8c4b1c5cc69afb89841c5ee360fe36565894d53c043c7ea43bc7ac353b87573c8d6d721b12ac4d567be38cc117
+  languageName: node
+  linkType: hard
+
+"axios@npm:^0.21.4":
+  version: 0.21.4
+  resolution: "axios@npm:0.21.4"
+  dependencies:
+    follow-redirects: ^1.14.0
+  checksum: 44245f24ac971e7458f3120c92f9d66d1fc695e8b97019139de5b0cc65d9b8104647db01e5f46917728edfc0cfd88eb30fc4c55e6053eef4ace76768ce95ff3c
   languageName: node
   linkType: hard
 
@@ -5757,7 +5797,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"follow-redirects@npm:^1.15.6":
+"follow-redirects@npm:^1.14.0, follow-redirects@npm:^1.15.6":
   version: 1.15.6
   resolution: "follow-redirects@npm:1.15.6"
   peerDependenciesMeta:
@@ -9413,6 +9453,31 @@ __metadata:
   languageName: node
   linkType: hard
 
+"react-native-device-info@npm:10.3.0":
+  version: 10.3.0
+  resolution: "react-native-device-info@npm:10.3.0"
+  peerDependencies:
+    react-native: "*"
+  checksum: 5f2b2f81a33c2dc66a44d404370908b8d7bd560c220920ce68b819bb471d293b657b1eb544b960f4a50006f43251fa6c02607f2aae32790c583b7bf2e4ebae22
+  languageName: node
+  linkType: hard
+
+"react-native-device-info@npm:^0.9.3":
+  version: 0.9.9
+  resolution: "react-native-device-info@npm:0.9.9"
+  checksum: 8950317d293ec116e8ed315b8ec4ca4c2f0ce53be5306ee26869e863eab984d299166202d2315f5e57dc8b9757214309701c20008f44e8833eeb50d19fefd4ce
+  languageName: node
+  linkType: hard
+
+"react-native-device-info@npm:^11.1.0":
+  version: 11.1.0
+  resolution: "react-native-device-info@npm:11.1.0"
+  peerDependencies:
+    react-native: "*"
+  checksum: 272cab82573933a1f3a9bc394b82a387ccbdf9fbef131fc1f04b8ff78b36f581931b5c643f5aa278f28577cbc320ef2ac588cafdb73292e9b0cf4427d54c44ce
+  languageName: node
+  linkType: hard
+
 "react-native-document-picker@npm:^9.2.0":
   version: 9.2.0
   resolution: "react-native-document-picker@npm:9.2.0"
@@ -9681,6 +9746,16 @@ __metadata:
   version: 10.2.0
   resolution: "react-native-share@npm:10.2.0"
   checksum: ad2675dac54c8359d2f55fc9da7c91ea79f59f272907d3c80aa8325cff2c7cd4583ca88e3aec5f2a76ef0e0a3ce1dafa670520ee363ac4ad322e7911465864df
+  languageName: node
+  linkType: hard
+
+"react-native-siren@npm:0.0.5":
+  version: 0.0.5
+  resolution: "react-native-siren@npm:0.0.5"
+  dependencies:
+    apisauce: ^2.1.1
+    react-native-device-info: ^0.9.3
+  checksum: f2fcfcd34e9b9758f48d1c5529888493bab9c2001fac682a91e8eee844e0088331af121617ae9989924b9dac0c34bd8f702805637e2678be5d2360ea42686f6a
   languageName: node
   linkType: hard
 
@@ -10380,6 +10455,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"semver@npm:7.2.1":
+  version: 7.2.1
+  resolution: "semver@npm:7.2.1"
+  bin:
+    semver: bin/semver.js
+  checksum: caedefcd65c5baaaf6b02c482b4cb187b999138d006c2e198ce8c45e56909db075d9b13e9455a991317685c72325915b29a32e37b3593d35569eff9493946b8d
+  languageName: node
+  linkType: hard
+
 "semver@npm:^5.2.0, semver@npm:^5.5.0, semver@npm:^5.6.0":
   version: 5.7.2
   resolution: "semver@npm:5.7.2"
@@ -10696,6 +10780,21 @@ __metadata:
   version: 0.7.4
   resolution: "source-map@npm:0.7.4"
   checksum: 01cc5a74b1f0e1d626a58d36ad6898ea820567e87f18dfc9d24a9843a351aaa2ec09b87422589906d6ff1deed29693e176194dc88bcae7c9a852dc74b311dbf5
+  languageName: node
+  linkType: hard
+
+"sp-react-native-in-app-updates@npm:^1.4.0":
+  version: 1.4.0
+  resolution: "sp-react-native-in-app-updates@npm:1.4.0"
+  dependencies:
+    react-native-device-info: 10.3.0
+    react-native-siren: 0.0.5
+    semver: 7.2.1
+    underscore: 1.12.1
+  peerDependencies:
+    react: "*"
+    react-native: "*"
+  checksum: eb0b757708635e6aa9493af8bb0f645f030ba5c32bee5be499e3f878975f852ec6cb0a1ea2b238e56aafc36eed06b6c6b09d52845e9388a809d6b032b3a110ef
   languageName: node
   linkType: hard
 
@@ -11337,6 +11436,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"underscore@npm:1.12.1":
+  version: 1.12.1
+  resolution: "underscore@npm:1.12.1"
+  checksum: ec327603aa112b99fe9d74cd9bf3b3b7451465a9d2610ceab269a532e3f191650ab017903be34dc86fe406a11d04d8905a3b04dd4c129493e51bee09a3f3074c
+  languageName: node
+  linkType: hard
+
 "undici-types@npm:~5.26.4":
   version: 5.26.5
   resolution: "undici-types@npm:5.26.5"
@@ -11953,11 +12059,13 @@ __metadata:
     "@babel/core": ^7.20.0
     "@babel/preset-env": ^7.20.0
     "@babel/runtime": ^7.20.0
+    "@notifee/react-native": ^7.8.2
     "@react-native-async-storage/async-storage": ^1.23.1
     "@react-native-community/geolocation": ^3.2.1
     "@react-native-community/netinfo": ^11.3.1
     "@react-native-firebase/app": ^20.1.0
     "@react-native-firebase/auth": ^20.1.0
+    "@react-native-firebase/messaging": ^20.1.0
     "@react-native-google-signin/google-signin": ^12.2.1
     "@react-native-twitter-signin/twitter-signin": ^1.2.0
     "@react-native/babel-preset": 0.74.83
@@ -11987,6 +12095,7 @@ __metadata:
     react-native-asset: ^2.1.1
     react-native-collapsible: ^1.6.1
     react-native-date-picker: ^5.0.4
+    react-native-device-info: ^11.1.0
     react-native-document-picker: ^9.2.0
     react-native-flash-message: ^0.4.2
     react-native-gesture-handler: ^2.16.1
@@ -12018,6 +12127,7 @@ __metadata:
     react-test-renderer: 18.2.0
     redux-persist: ^6.0.0
     rn-fetch-blob: ^0.12.0
+    sp-react-native-in-app-updates: ^1.4.0
     typescript: 5.0.4
   languageName: unknown
   linkType: soft

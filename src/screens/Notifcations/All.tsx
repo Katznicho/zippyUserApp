@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { SafeAreaView, View } from 'react-native';
 import React from 'react';
 import { COLORS } from '../../theme/theme';
@@ -22,7 +23,7 @@ const All = (): JSX.Element => {
     // const flattenedData = data?.pages.flatMap(page => page.results) || [];
     const notificationData = data?.pages.flatMap(page => page.data);
 
-    // console.log(notificationData);
+
 
 
     const loadMoreData = () => {
@@ -40,11 +41,11 @@ const All = (): JSX.Element => {
 
                 </View>
             }
-            <NotificationFlatList
+             <NotificationFlatList
                 notificationData={notificationData}
                 loadMoreData={loadMoreData}
                 isFetching={isFetching}
-            />
+            /> 
         </SafeAreaView>
     )
 }

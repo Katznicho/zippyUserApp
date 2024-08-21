@@ -1,8 +1,9 @@
+/* eslint-disable prettier/prettier */
 import { useInfiniteQuery } from 'react-query';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 
-const fetcher = async (limit: number = 20, pageNumber: number = 1, queryUrl: string, status = null, property_id=null,agent_id=null) => {
+const fetcher = async (limit: number = 20, pageNumber: number = 1, queryUrl: string, status = null, property_id=null,agent_id=null, category_id=null) => {
     try {
         const headers = new Headers();
         headers.append('Accept', 'application/json');
@@ -12,9 +13,6 @@ const fetcher = async (limit: number = 20, pageNumber: number = 1, queryUrl: str
 
         // Build the URL based on the presence of the status parameter
         let url = `${queryUrl}?limit=${limit}&page=${pageNumber}`;
-
-        console.log("======url========")
-        console.log(url)
         
         if (status !== null) {
             url += `&status=${status}`;
@@ -26,6 +24,10 @@ const fetcher = async (limit: number = 20, pageNumber: number = 1, queryUrl: str
 
         if(agent_id){
             url += `&agent_id=${agent_id}`;
+        }
+
+        if(category_id){
+            url += `&category_id=${category_id}`;
         }
 
 
@@ -40,10 +42,6 @@ const fetcher = async (limit: number = 20, pageNumber: number = 1, queryUrl: str
 
         const data = await response.json();
 
-        console.log("data from infinite fetch")
-        console.log(data)
-
-
         return {
             data: data?.data?.data,
             nextPage: data?.data?.pagination?.current_page + 1,
@@ -53,8 +51,7 @@ const fetcher = async (limit: number = 20, pageNumber: number = 1, queryUrl: str
             pageParam: data?.data?.pagination?.current_page + 1,
         };
     } catch (error) {
-        console.log("error from infinite fetch")
-        console.log(error)
+
 
         if (error instanceof Error) throw new Error(error.message);
         else throw new Error('Something went wrong.');
@@ -68,7 +65,7 @@ const fetcher = async (limit: number = 20, pageNumber: number = 1, queryUrl: str
  *
  * @return {object} An object containing the fetched data, loading and error states, and functions for pagination.
  */
-export default function useFetchInfinite(queryKey: string, url: string, status: any = null, property_id:any=null, agent_id:any=null) {
+export default function useFetchInfinite(queryKey: string, url: string, status: any = null, property_id:any=null, agent_id:any=null,category_id:any=null) {
     
     const {
         data,
@@ -88,7 +85,7 @@ export default function useFetchInfinite(queryKey: string, url: string, status: 
         cacheTime: Infinity,
         refetchOnWindowFocus: true,
         refetchOnReconnect: true,
-        // refetchInterval: 20000,
+        // refetchInterval: 10000,
     });
 
     return {

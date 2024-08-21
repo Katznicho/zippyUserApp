@@ -46,14 +46,15 @@ const NotificationPage = () => {
                 isLoggedIn: true,
                 isSetupComplete: true,
                 user: {
-                    UID: result?.data?.user?.id || null,
-                    fname: firstName,
-                    lname: lastName,
-                    email: result?.data?.email || null,
-                    phone: result?.data?.phone_number || null,
-                    displayPicture: result?.user?.avatar || null,
-                    role: result?.data?.role || null,
-                    points: result?.data?.points || null
+                  UID: result?.data?.user?.id || null,
+                  fname: firstName,
+                  lname: lastName,
+                  email: result?.data?.email || null,
+                  phone: result?.data?.phone_number || null,
+                  displayPicture: result?.user?.avatar || null,
+                  role: result?.data?.role || null,
+                  points: result?.data?.points || null,
+                  dob: result?.data?.dob || null
                 },
                 authToken: authToken,
                 guestUser: false
@@ -73,7 +74,7 @@ const NotificationPage = () => {
       }
     }).catch(error => {
       setLoading(false)
-      console.log(error)
+
       return showMessage({
         message: 'Error',
         description: 'Something went wrong',

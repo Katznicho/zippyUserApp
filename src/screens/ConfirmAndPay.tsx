@@ -39,13 +39,13 @@ const PropertyDetails: React.FC<any> = () => {
         const myHeaders = new Headers();
         myHeaders.append('Authorization', `Bearer ${authToken}`);
 
-        //console.log(authToken);
+
   
         const body = new FormData();
         body.append('property_id', property?.id);
         body.append('total_price', property?.price);
 
-        //console.log(body);
+
   
         const requestOptions = { method: 'POST', headers: myHeaders, body };
   

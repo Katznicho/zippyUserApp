@@ -33,10 +33,7 @@ export const formattedDate = (timestamp: any) => {
     return moment(timestamp).format('MMMM DD, YYYY');
 }
 
-// Example usage:
-// const firebaseTimestamp = {"nanoseconds": 561000000, "seconds": 1699706059};
-// const readableDate = convertFirebaseTimestampToReadableDate(firebaseTimestamp);
-// console.log(readableDate);
+
 
 //helper types
 export type _String = string;

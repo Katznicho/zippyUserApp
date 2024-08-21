@@ -9,8 +9,7 @@ import UserCard from './UserCard';
 const UserFlatList: React.FC<any> = ({ UserData, loadMoreData, isFetching }: any) => {
 
 
-    console.log("===========flat list user data==========")
-    console.log(UserData)
+
 
     if (UserData == undefined || UserData == null) {
         return <ActivityIndicator />

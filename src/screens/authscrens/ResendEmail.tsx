@@ -93,7 +93,6 @@ const ResendEmailScreen = () => {
         })
             .then(response => response.json())
             .then(async result => {
-                console.log(result);
 
                 if (result?.errors) {
                     setErrors(result.errors);
@@ -126,7 +125,6 @@ const ResendEmailScreen = () => {
                 setLoading(false);
             })
             .catch(error => {
-                console.log('error', error);
 
                 setLoading(false);
             });

@@ -109,7 +109,7 @@ const EditProfile = () => {
         contentContainerStyle={{ paddingBottom: 50 }}
         showsVerticalScrollIndicator={false}
       >
-        <Text style={styles.heading}>Edit Profile</Text>
+        <Text style={styles.heading}>Profile Details</Text>
         <View style={styles.formContainer}>
           <TextInput
             value={firstName}
@@ -160,13 +160,13 @@ const EditProfile = () => {
 
         </View>
 
-        <TouchableOpacity
+        {/* <TouchableOpacity
           style={styles.continueButton}
           onPress={onEdit}
         >
           <Text style={styles.continueButtonText}>Save Changes</Text>
         </TouchableOpacity>
-        {loading && <ActivityIndicator />}
+        {loading && <ActivityIndicator />} */}
       </ScrollView>
     </View>
   );

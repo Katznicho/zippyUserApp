@@ -8,7 +8,7 @@ import BookingFlatList from '../../components/BookingFlatList';
 import EmptyContainer from '../../components/EmptyContainer';
 
 const Pending = () => {
-  const { isError, data, error, fetchNextPage, hasNextPage, isFetching } = useFetchInfinite("PENDING", USERBOOKINGS, "Pending");
+  const { isError, data, error, fetchNextPage, hasNextPage, isFetching } = useFetchInfinite("PENDING", USERBOOKINGS, "Pending", null , null);
 
 
   const bookingData = data?.pages.flatMap(page => page.data);

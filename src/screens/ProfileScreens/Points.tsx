@@ -37,7 +37,7 @@ const Points = () => {
                     <Text style={[generalStyles.CardSubtitle]}>{data?.data?.total_points}</Text>
                 </View>
                 <View style={[styles.containerCard]}>
-                    <Text style={[generalStyles.CardTitle]}>User Points</Text>
+                    <Text style={[generalStyles.CardTitle]}>Used Points</Text>
                     <Text style={[generalStyles.CardSubtitle]}> {data?.data?.used_points}</Text>
                 </View>
             </View>
