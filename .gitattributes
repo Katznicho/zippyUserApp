@@ -1,0 +1,13 @@
+# Treat image files as binary
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.svg binary
+
+# Add other binary file types if necessary
+*.ttf binary
+*.otf binary
+*.mp4 binary
+
+
