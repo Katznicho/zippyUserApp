@@ -2,20 +2,32 @@
   "migIndex": 1,
   "data": [
     {
-      "path": "src/assets/app_images/amazonpay.png",
-      "sha1": "4ec7050dda251f228cb2b9a5220cc986099dd3c7"
+      "path": "src/assets/app_images/apple.png",
+      "sha1": "995e501a701f7517ec127062a75bc916828a0148"
     },
     {
-      "path": "src/assets/app_images/applepay.png",
-      "sha1": "0b06e72fa97134cda893f1688ab8852fef316f1f"
+      "path": "src/assets/app_images/email.png",
+      "sha1": "f370029080524b3e8470a5cffeda5dbe6476d567"
     },
     {
-      "path": "src/assets/app_images/avatar.png",
-      "sha1": "3455b9a804fed85c996001bfbcc73e6034bdf528"
+      "path": "src/assets/app_images/facebook.png",
+      "sha1": "146f45fc83f3a1bd6391ffbeaf40c46e8a159413"
     },
     {
-      "path": "src/assets/app_images/gpay.png",
-      "sha1": "039fbff59306d5e4300ef7614d796844345575af"
+      "path": "src/assets/app_images/google.jpeg",
+      "sha1": "128da8d98d3e5993a4c933175fad60ad3ffd5f0f"
+    },
+    {
+      "path": "src/assets/app_images/handshake.png",
+      "sha1": "34f6ce27f6464196a048aea8df9d12e6400dbee9"
+    },
+    {
+      "path": "src/assets/app_images/notification_bell.png",
+      "sha1": "b4119eec1cc6c080d5b561e6864ad8c13bca8a5e"
+    },
+    {
+      "path": "src/assets/app_images/phone.png",
+      "sha1": "57f8f613668e7587c8d832ec5063082794781ec7"
     },
     {
       "path": "src/assets/fonts/Roboto-Black.ttf",
@@ -64,6 +76,34 @@
     {
       "path": "src/assets/fonts/Roboto-ThinItalic.ttf",
       "sha1": "cc79d5a23bd0ec08b1d99f5390bf33cacc3082f4"
+    },
+    {
+      "path": "src/assets/images/Artboard 1.png",
+      "sha1": "97016f568a19a15068a78d6e8c3486b0accec46e"
+    },
+    {
+      "path": "src/assets/images/home.png",
+      "sha1": "551f03498dd7cb806270f180a8e84935a068dde9"
+    },
+    {
+      "path": "src/assets/images/like.png",
+      "sha1": "617c83b6384e1ca313ad08edcabaccce5e9bf89d"
+    },
+    {
+      "path": "src/assets/images/notifications.png",
+      "sha1": "cdafaca6ed9d18738f7e144a97335f4f7024341a"
+    },
+    {
+      "path": "src/assets/images/profile.png",
+      "sha1": "f6782385353e53825a6924a9cb0fab5744770d66"
+    },
+    {
+      "path": "src/assets/images/search.png",
+      "sha1": "1eece3f30db90b7729a3da8652b90510f1ea9d9e"
+    },
+    {
+      "path": "src/assets/images/vector.png",
+      "sha1": "a3b0fa39bb599296b7dc979592ece33b8fde74f0"
     },
     {
       "path": "src/assets/images/zippy.png",
