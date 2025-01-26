@@ -5,8 +5,6 @@ import { useNavigation } from '@react-navigation/native';
 import { COLORS } from '../theme/theme';
 import { generalStyles } from '../screens/utils/generatStyles';
 import MyWebView from '../screens/MyWebView';
-import Entypo from 'react-native-vector-icons/Entypo';
-import Deposit from '../screens/Deposit';
 import ArrowBack from '../components/ArrowBack';
 import AllTransactions from '../screens/AllTransactions';
 import AllProperties from '../screens/AllProperties';

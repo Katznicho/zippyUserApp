@@ -9,6 +9,7 @@ import MyNotificationStack from './MyNotificationStack';
 import HomeStack from './HomeStack';
 import SearchStack from './SearchStack';
 import SavedPlaceStack from './SavedPlaceStack';
+import { getFocusedRouteNameFromRoute } from '@react-navigation/native';
 
 
 
@@ -17,6 +18,27 @@ const Tab = createBottomTabNavigator();
 
 
 const TabNavigator = () => {
+
+  const getTabBarStyle = (route: any) => {
+    const routeName = getFocusedRouteNameFromRoute(route) ?? '';
+
+
+    const shownScreens = [
+      'HomeScreen', // 
+      'MyCards',
+      'OrderScreen',
+      'ProfileScreen',
+      'CardDetails',
+    ];
+
+    if (shownScreens.includes(routeName) || routeName === '') {
+      return Platform.OS === 'ios'
+        ? styles.tabBarStyleIos
+        : styles.tabBarStyleAndroid;
+    }
+
+    return { display: 'none' } as any;
+  };
 
   const { isLoggedIn, user } = useSelector(
     (state: RootState) => state.user,
@@ -154,11 +176,12 @@ const styles = StyleSheet.create({
     position: 'absolute',
     backgroundColor: COLORS.primaryOrangeHex,
     borderTopWidth: 0,
-    elevation: 10,
+    // elevation: 10,
     borderTopColor: 'transparent',
-    marginHorizontal: 10,
-    marginVertical: 10,
-    borderRadius: 20,
+    // marginHorizontal: 10,
+    // marginVertical: 10,
+    borderTopLeftRadius: 20,
+    borderTopRightRadius: 20,
   },
   tabBarStyleIos: {
     position: 'absolute',

@@ -475,7 +475,7 @@ const Login = () => {
        }
 
 
-        <TouchableOpacity
+        {/* <TouchableOpacity
           style={styles.socialButton}
           onPress={onGoogleButtonPress}
         >
@@ -497,7 +497,7 @@ const Login = () => {
         >
           <Image source={require('../../assets/app_images/apple.png')} style={styles.socialIcon} />
           <Text style={styles.socialButtonText}>Continue with Apple</Text>
-        </TouchableOpacity>
+        </TouchableOpacity> */}
 
         <Text style={styles.termsText}>By continuing, you agree to the Terms and Conditions.</Text>
 

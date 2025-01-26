@@ -67,7 +67,7 @@ const PropertyDetailsCard = ({ property }: any) => {
                 </View>
 
                 <View style={[{ marginLeft: 3, marginVertical: 2 }]}>
-                    <Text style={[generalStyles.CardSubtitle]}>{limitDescription(property?.description, 10)}</Text>
+                    <Text style={[generalStyles.CardSubtitle]}>{limitDescription(property?.description, 6)}</Text>
                 </View>
 
                 <View style={[generalStyles.flexStyles, { alignItems: "center" }]}>
@@ -156,8 +156,8 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
     container: {
-        width: 220,
-        height: 280,
+        width: 230,
+        height: 290,
         elevation: 10,
         marginHorizontal: 3,
         marginVertical: 10,
@@ -169,6 +169,7 @@ const styles = StyleSheet.create({
         shadowRadius: 4,
         alignContent: 'center',
         alignItems: 'center',
+        // padding:50
     },
     viewStyles: {
         // marginHorizontal: 5,

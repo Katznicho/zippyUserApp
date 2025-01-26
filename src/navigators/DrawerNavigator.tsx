@@ -13,6 +13,7 @@ import PaymentStack from './PaymentStack';
 import BookingStack from './BookingStack';
 import PointStack from './PointStack';
 import PropertyStack from './PropertyStack';
+import MoverStack from './MoverStack';
 
 
 const Drawer = createDrawerNavigator();
@@ -103,6 +104,11 @@ const DrawerNavigator = () => {
       <Drawer.Screen
         name="Support"
         component={SupportStack}
+      />
+
+      <Drawer.Screen
+        name="MoverRequests"
+        component={MoverStack}
       />
 
       <Drawer.Screen

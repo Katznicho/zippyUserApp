@@ -20,6 +20,10 @@ import { DEFAULT_USER_PROFILE, PUBLIC_STORAGE } from '../screens/utils/constants
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { Image } from 'react-native';
 import SearchProperties from '../screens/SearchProperties';
+import RequestDetails from '../screens/movers/RequestDetails';
+import PickupScreen from '../screens/movers/PickupScreen';
+import DestinationScreen from '../screens/movers/DestinationScreen';
+import MoverSummaryScreen from '../screens/movers/MoverSummaryScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -218,7 +222,42 @@ const HomeStack = () => {
                 }}
             />
 
+            {/* move */}
+            <Stack.Screen
+                name="MoveRequest"
+                component={RequestDetails}
+                options={{
+                    headerShown: false
+                }}
+            />
+            <Stack.Screen
+                name="PickupScreen"
+                component={PickupScreen}
+                options={{
+                    headerShown: false
+                }}
+            />
+            <Stack.Screen
+                name="DestinationScreen"
+                component={DestinationScreen}
+                options={{
+                    headerShown: false
+                }}
+            />
+
+
+            <Stack.Screen
+                name="MoverSummaryScreen"
+                component={MoverSummaryScreen}
+                options={{
+                    headerShown: false
+                }}
+            />
+            {/* move */}
+
         </Stack.Navigator>
+
+        
     )
 }
 

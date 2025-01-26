@@ -16,6 +16,13 @@ export const SAVE_DEVICE_INFO = `${BASE_URL}/app-user/saveDeviceInfo`;
 export const REQUEST_CALL = `${BASE_URL}/app-user/requestCall`;
 //app users
 
+//https://dashboard.zippyug.com/api/v1/app-user/createMoveRequest
+//https://dashboard.zippyug.com/api/v1/app-user/getUserMoveRequests
+//move requests
+export const CREATE_REQUEST = `${BASE_URL}/app-user/createMoveRequest`;
+export const GET_MOVE_REQUESTS = `${BASE_URL}/app-user/getUserMoveRequests`;
+//move requests
+
 export const LOGIN = `${BASE_URL}/auth/login`;
 export const REGISTER = `${BASE_URL}/auth/registerCommunity`;
 

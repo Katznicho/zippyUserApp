@@ -281,8 +281,6 @@ const PropertyDetails = () => {
                     });
                 })
                 .catch(error => {
-                    console.log("===================")
-                    console.log(error);
                     setLoading(false);
                 });
 
@@ -324,7 +322,6 @@ const PropertyDetails = () => {
                     showsHorizontalScrollIndicator={false}
                     onScroll={onScroll}
                 >
-
 
                     {data?.property_images?.map((image: string, index: number) => (
 

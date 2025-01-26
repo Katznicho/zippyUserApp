@@ -159,6 +159,33 @@ const DrawerContent = (props: any) => {
                     inactiveTintColor={COLORS.primaryWhiteHex}
                 />
                 <DrawerItem
+                    label="Mover Requests"
+                    icon={() => <MaterialIcons
+                        name="local-shipping"
+                        size={25}
+                        color={selectedItem === 'MoverRequests' ? COLORS.primaryBlackHex : COLORS.primaryWhiteHex}
+                    />}
+                    onPress={() => {
+                        setSelectedItem('MoverRequests');
+                        if (guestUser) {
+                            return handleShowAlert();
+                        } else {
+                            return navigation.navigate('MoverRequests');
+                        }
+                    }}
+                    style={[{
+                        backgroundColor:
+                            selectedItem === 'MoverRequests'
+                                ? COLORS.primaryOrangeHex
+                                : COLORS.primaryBlackHex,
+                    }, styles.tabStyles]}
+                    labelStyle={[styles.labelStyle, { color: selectedItem === 'MoverRequests' ? COLORS.primaryBlackHex : COLORS.primaryWhiteHex }]}
+                    activeBackgroundColor={COLORS.primaryOrangeHex}
+                    activeTintColor={COLORS.primaryWhiteHex}
+                    inactiveBackgroundColor={COLORS.primaryBlackHex}
+                    inactiveTintColor={COLORS.primaryWhiteHex}
+                />
+                <DrawerItem
                     label="My Alerts"
                     icon={() => <Feather
                         name="alert-circle"
