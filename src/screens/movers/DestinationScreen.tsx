@@ -88,7 +88,8 @@ const DestinationScreen = ({ navigation, route }: any) => {
                             backgroundColor: COLORS.primaryBlackHex,
                             borderRadius: 20,
                             marginHorizontal: 20,
-                            marginTop: 20, // Spacing from top of the map
+                            marginTop: 20,
+                            color: '#000', // Spacing from top of the map
                         },
                         textInput: {
                             color: COLORS.primaryWhiteHex,

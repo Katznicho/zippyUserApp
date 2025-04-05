@@ -67,6 +67,7 @@ const ScreenOne = () => {
             <TextInput
                 style={styles.input}
                 placeholder="E.g., Furniture, boxes..."
+                placeholderTextColor={"#ccc"}
                 value={itemDescription}
                 onChangeText={setItemDescription}
             />
@@ -167,6 +168,7 @@ const styles = StyleSheet.create({
         fontSize: 16,
         backgroundColor: '#fff',
         marginBottom: 20,
+        color: '#000',
     },
     timeButton: {
         flexDirection: 'row',

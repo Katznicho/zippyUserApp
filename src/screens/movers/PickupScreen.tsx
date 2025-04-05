@@ -69,6 +69,7 @@ const PickupScreen = ({ navigation, route }) => {
                             backgroundColor: COLORS.primaryBlackHex,
                             borderRadius: 20,
                             marginHorizontal: 20,
+                            color: '#000',
                         },
                         textInput: {
                             color: COLORS.primaryWhiteHex,
@@ -76,6 +77,7 @@ const PickupScreen = ({ navigation, route }) => {
                             fontSize: 16,
                             borderWidth: 0.5,
                             borderColor: COLORS.primaryWhiteHex,
+                            
                         },
                         listView: {
                             backgroundColor: COLORS.primaryBlackHex,

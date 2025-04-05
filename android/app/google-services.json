@@ -1,52 +1,64 @@
 {
   "project_info": {
-    "project_number": "126014043646",
-    "project_id": "zippy-b76d0",
-    "storage_bucket": "zippy-b76d0.appspot.com"
+    "project_number": "84497452650",
+    "project_id": "zippy-real-estate",
+    "storage_bucket": "zippy-real-estate.firebasestorage.app"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:126014043646:android:d1934e42fa71917d3e3caf",
+        "mobilesdk_app_id": "1:84497452650:android:9e8a295d026fb969484413",
         "android_client_info": {
-          "package_name": "com.zippyUser"
+          "package_name": "com.innovil.agent"
         }
       },
-      "oauth_client": [
-        {
-          "client_id": "126014043646-g9521sr1hdo39ghbp6rvd2oggs7tegji.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.zippyUser",
-            "certificate_hash": "72ac11a03591aab9d425080bce07ef6acc26c0f6"
-          }
-        },
-        {
-          "client_id": "126014043646-un1atqlqbv4jsc8n4vpdvn8ud9ej9knj.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.zippyUser",
-            "certificate_hash": "bca6c07b1c849186ab4129148e4549a6854a5117"
-          }
-        },
-        {
-          "client_id": "126014043646-kclsfvqmc7lsjags2iogk2dmga7aahqj.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
+      "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyCpWkWmVrY4ygOZ6brHOh2TNG107X7ctDc"
+          "current_key": "AIzaSyDWM0l449acLMOpTF3pLUWXYdCV2w8DsEw"
         }
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "126014043646-kclsfvqmc7lsjags2iogk2dmga7aahqj.apps.googleusercontent.com",
-              "client_type": 3
-            }
-          ]
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:84497452650:android:f22f963cd160dad7484413",
+        "android_client_info": {
+          "package_name": "com.innovil.owner"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDWM0l449acLMOpTF3pLUWXYdCV2w8DsEw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:84497452650:android:b828d414786bec3e484413",
+        "android_client_info": {
+          "package_name": "com.innovil.zippy"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDWM0l449acLMOpTF3pLUWXYdCV2w8DsEw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
         }
       }
     }

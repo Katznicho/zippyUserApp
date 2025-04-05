@@ -1,4 +1,4 @@
-package com.zippyUser
+package com.innovil.zippy
 
 import android.app.Application
 import com.facebook.react.PackageList
