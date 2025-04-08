@@ -36,7 +36,7 @@ const MoversBanner = () => {
     onPress={() => guestUser ? handleShowAlert() : navigation.navigate('MoveRequest')}
     >
       <Image
-        source={require('../assets/app_images/movers.jpg')} 
+        source={require('../assets/app_images/movers.png')} 
         style={styles.bannerImage}
         resizeMode="cover"
       />
@@ -53,7 +53,7 @@ const styles = StyleSheet.create({
   },
   bannerImage: {
     width: '100%',
-    height: 120,
+    height: 200,
     borderRadius: 8,
   },
   bannerText: {

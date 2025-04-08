@@ -55,8 +55,8 @@ const MoverSummaryScreen = ({ route }: any) => {
     );
 
     const calculatePrice = (distance: number) => {
-        const basePrice = 5000; // Example base price
-        const pricePerKm = 5000; // Price per kilometer
+        const basePrice = 6000; // Example base price
+        const pricePerKm = 5500; // Price per kilometer
         return basePrice + distance * pricePerKm;
     };
 
