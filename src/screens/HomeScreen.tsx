@@ -11,7 +11,7 @@ import ZippyAlertButton from '../components/ZippyAlertButton';
 import { BOTTOM_NOTCH } from './utils/constants/constants';
 import { useSelector } from 'react-redux';
 import { RootState } from '../redux/store/dev';
-import messaging from '@react-native-firebase/messaging';
+// import messaging from '@react-native-firebase/messaging';
 import DeviceInfo from 'react-native-device-info';
 import { SAVE_DEVICE_INFO } from '../screens/utils/constants/routes';
 import MoversBanner from '../components/MoversBanner';
@@ -36,8 +36,9 @@ const HomeScreen = () => {
           const userAgent = await DeviceInfo.getUserAgent();
           const type = DeviceInfo.getDeviceType();
 
-          const devicePushToken = await messaging().getToken();
-          await messaging().registerDeviceForRemoteMessages();
+          // const devicePushToken = await messaging().getToken();
+          const devicePushToken = 'ANFNGGTGTTKGMHMHTH';
+          // await messaging().registerDeviceForRemoteMessages();
 
           if (
             deviceId &&

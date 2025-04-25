@@ -13,7 +13,8 @@ import Entypo from 'react-native-vector-icons/Entypo';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import ImageCropPicker from 'react-native-image-crop-picker';
-import RNFetchBlob from 'rn-fetch-blob';
+// import RNFetchBlob from 'rn-fetch-blob';
+import RNFetchBlob from 'react-native-blob-util'
 import documentPicker from 'react-native-document-picker';
 import { COLORS } from '../theme/theme';
 

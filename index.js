@@ -4,7 +4,7 @@ import App from './App';
 import { name as appName } from './app.json';
 import 'react-native-gesture-handler';
 import notifee, { AndroidImportance } from '@notifee/react-native';
-import messaging from '@react-native-firebase/messaging';
+// import messaging from '@react-native-firebase/messaging';
 
 // Function to display notification using Notifee
 async function displayNotification(message) {
@@ -51,16 +51,16 @@ async function displayNotification(message) {
 }
 
 // Foreground notification handler
-async function onMessageReceived(message) {
-  await displayNotification(message);
-}
+// async function onMessageReceived(message) {
+//   await displayNotification(message);
+// }
 
-// Background notification handler
-messaging().setBackgroundMessageHandler(async (remoteMessage) => {
-  await displayNotification(remoteMessage);
-});
+// // Background notification handler
+// messaging().setBackgroundMessageHandler(async (remoteMessage) => {
+//   await displayNotification(remoteMessage);
+// });
 
-// Register message handlers
-messaging().onMessage(onMessageReceived);
+// // Register message handlers
+// messaging().onMessage(onMessageReceived);
 
 AppRegistry.registerComponent(appName, () => App);

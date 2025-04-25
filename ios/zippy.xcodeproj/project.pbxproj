@@ -9,17 +9,25 @@
 /* Begin PBXBuildFile section */
 		00E356F31AD99517003FC87E /* ZippyTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* ZippyTests.m */; };
 		045B334993C84A63866A1BDC /* Roboto-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F45A2911AC5F4D669D945134 /* Roboto-Light.ttf */; };
-		0C80B921A6F3F58F76C31292 /* libPods-Zippy.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DCACB8F33CDC322A6C60F78 /* libPods-Zippy.a */; };
 		13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.mm */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		15A33ED7AE9C461698EBCE26 /* Roboto-BlackItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1D020A0A4BE447F9B8E6906E /* Roboto-BlackItalic.ttf */; };
+		2AB670E7269C4C108CA617E3 /* google.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 73D297735E854C8DA69DE4A5 /* google.jpeg */; };
+		2C1E0F370A7BA6BB38C21D7B /* libPods-zippy-ZippyTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 45A2E718E6F13E15AAC88785 /* libPods-zippy-ZippyTests.a */; };
 		312E7A13CBEB44269BA607CF /* Roboto-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E9573DA399BD4D9BAC3D5178 /* Roboto-Thin.ttf */; };
+		3B651271FB624640A2B1D5DF /* search.png in Resources */ = {isa = PBXBuildFile; fileRef = D0A3052CF59F41D8986DE0B0 /* search.png */; };
+		4D06878DA9C04A66A7920CB2 /* vector.png in Resources */ = {isa = PBXBuildFile; fileRef = 3AC8E68BFF8F4A1784A8AC4F /* vector.png */; };
+		4DC429EC71C54957B4D2EBE7 /* Artboard 1.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B45439878EB423B91067DF3 /* Artboard 1.png */; };
+		4F08C5814D6D406A9131A657 /* home.png in Resources */ = {isa = PBXBuildFile; fileRef = 666DBD092BF94B2DB10ECF04 /* home.png */; };
+		519F9F83A4C7447D96605BA8 /* notification_bell.png in Resources */ = {isa = PBXBuildFile; fileRef = D680D519F6FA42108417667A /* notification_bell.png */; };
+		52D38F684EB54471ADEFB556 /* like.png in Resources */ = {isa = PBXBuildFile; fileRef = F9B7424626A7472C85C35DF6 /* like.png */; };
 		58A4ABBB2B2D4F98BCCD037C /* Roboto-MediumItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8F1C8A16F7914CCE86A63F88 /* Roboto-MediumItalic.ttf */; };
 		734EB775D4C549F1B1B522EF /* Zippy.png in Resources */ = {isa = PBXBuildFile; fileRef = 32E25206FDD0447EB33CCE64 /* Zippy.png */; };
-		7699B88040F8A987B510C191 /* libPods-Zippy-ZippyTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 19F6CBCC0A4E27FBF8BF4A61 /* libPods-Zippy-ZippyTests.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
+		8C2D8C0F507E4267A7E323FE /* phone.png in Resources */ = {isa = PBXBuildFile; fileRef = B9F9BC40EE1F478BBAA2EDEE /* phone.png */; };
 		94AC20DA388E4292BC104785 /* Roboto-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4331E7A2DF5744D2A4A57B58 /* Roboto-Italic.ttf */; };
+		9ABBB922957C4B10B44E66DE /* handshake.png in Resources */ = {isa = PBXBuildFile; fileRef = 6E881D6FC6744925ABD7FFE4 /* handshake.png */; };
 		9C8842C32BE9E54C0049A918 /* AntDesign.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9C8842AF2BE9E54C0049A918 /* AntDesign.ttf */; };
 		9C8842C42BE9E54C0049A918 /* Entypo.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9C8842B02BE9E54C0049A918 /* Entypo.ttf */; };
 		9C8842C52BE9E54C0049A918 /* EvilIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9C8842B12BE9E54C0049A918 /* EvilIcons.ttf */; };
@@ -41,26 +49,18 @@
 		9C8842D52BE9E54C0049A918 /* Zocial.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9C8842C12BE9E54C0049A918 /* Zocial.ttf */; };
 		A3BF4275D331488F9597DACA /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FBBEF144DAB04D87BF32BA62 /* Roboto-Regular.ttf */; };
 		A65AD3DE0BA74E21956267FA /* Roboto-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E32897B87E1E4483A4AD4E38 /* Roboto-LightItalic.ttf */; };
+		A769845241174F788455FD8A /* email.png in Resources */ = {isa = PBXBuildFile; fileRef = 2EB28BBF6CED4C229FDF635E /* email.png */; };
 		AD59A0406E854E7F919BE526 /* Roboto-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9175B6C8BFA4497BBC1C3922 /* Roboto-Bold.ttf */; };
 		B2768C72854D494184576637 /* Roboto-ThinItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 628F164B01114657977BAE75 /* Roboto-ThinItalic.ttf */; };
 		B8554345BF8D41F59C23C705 /* Roboto-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4A50D9D77EFA4A1FAFCF6EE8 /* Roboto-Black.ttf */; };
+		B8B861053DD9E14E69F430E6 /* libPods-zippy.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 171E161EA9DF01242CEA7332 /* libPods-zippy.a */; };
+		C77B6A013CDE4292A8A856C7 /* notifications.png in Resources */ = {isa = PBXBuildFile; fileRef = C81B2F4867A34BB6A3C418BC /* notifications.png */; };
 		CF2C467D99FF4414B97EEEFE /* Roboto-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A9E24D2732234C9F86413329 /* Roboto-BoldItalic.ttf */; };
+		DBDB2B58E99C4BBEB4F3BE0A /* facebook.png in Resources */ = {isa = PBXBuildFile; fileRef = 011C224C9B574949AD7762A0 /* facebook.png */; };
+		E485AFAF4448408199C83859 /* profile.png in Resources */ = {isa = PBXBuildFile; fileRef = E03901ECDA91467B96F85AB1 /* profile.png */; };
 		EBC552E8E6C14BA38E9FF8AA /* Roboto-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5A07286B5D874E99A872F32B /* Roboto-Medium.ttf */; };
 		F04EDBACFD15F5959ABC647D /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 6CCC8A53264248E42916B287 /* PrivacyInfo.xcprivacy */; };
 		FC7C51BABDF44E3BB8845945 /* apple.png in Resources */ = {isa = PBXBuildFile; fileRef = C51D33D6481A4DA6B002C7C4 /* apple.png */; };
-		A769845241174F788455FD8A /* email.png in Resources */ = {isa = PBXBuildFile; fileRef = 2EB28BBF6CED4C229FDF635E /* email.png */; };
-		DBDB2B58E99C4BBEB4F3BE0A /* facebook.png in Resources */ = {isa = PBXBuildFile; fileRef = 011C224C9B574949AD7762A0 /* facebook.png */; };
-		2AB670E7269C4C108CA617E3 /* google.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 73D297735E854C8DA69DE4A5 /* google.jpeg */; };
-		9ABBB922957C4B10B44E66DE /* handshake.png in Resources */ = {isa = PBXBuildFile; fileRef = 6E881D6FC6744925ABD7FFE4 /* handshake.png */; };
-		519F9F83A4C7447D96605BA8 /* notification_bell.png in Resources */ = {isa = PBXBuildFile; fileRef = D680D519F6FA42108417667A /* notification_bell.png */; };
-		8C2D8C0F507E4267A7E323FE /* phone.png in Resources */ = {isa = PBXBuildFile; fileRef = B9F9BC40EE1F478BBAA2EDEE /* phone.png */; };
-		4DC429EC71C54957B4D2EBE7 /* Artboard 1.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B45439878EB423B91067DF3 /* Artboard 1.png */; };
-		4F08C5814D6D406A9131A657 /* home.png in Resources */ = {isa = PBXBuildFile; fileRef = 666DBD092BF94B2DB10ECF04 /* home.png */; };
-		52D38F684EB54471ADEFB556 /* like.png in Resources */ = {isa = PBXBuildFile; fileRef = F9B7424626A7472C85C35DF6 /* like.png */; };
-		C77B6A013CDE4292A8A856C7 /* notifications.png in Resources */ = {isa = PBXBuildFile; fileRef = C81B2F4867A34BB6A3C418BC /* notifications.png */; };
-		E485AFAF4448408199C83859 /* profile.png in Resources */ = {isa = PBXBuildFile; fileRef = E03901ECDA91467B96F85AB1 /* profile.png */; };
-		3B651271FB624640A2B1D5DF /* search.png in Resources */ = {isa = PBXBuildFile; fileRef = D0A3052CF59F41D8986DE0B0 /* search.png */; };
-		4D06878DA9C04A66A7920CB2 /* vector.png in Resources */ = {isa = PBXBuildFile; fileRef = 3AC8E68BFF8F4A1784A8AC4F /* vector.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,37 +69,48 @@
 			containerPortal = 83CBB9F71A601CBA00E9B192 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 13B07F861A680F5B00A75B9A;
-			remoteInfo = "Zippy";
+			remoteInfo = Zippy;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		00E356EE1AD99517003FC87E /* ZippyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "ZippyTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		00E356EE1AD99517003FC87E /* ZippyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ZippyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		00E356F21AD99517003FC87E /* ZippyTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "ZippyTests.m"; sourceTree = "<group>"; };
-		13B07F961A680F5B00A75B9A /* Zippy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Zippy.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = "Zippy/AppDelegate.h"; sourceTree = "<group>"; };
-		13B07FB01A68108700A75B9A /* AppDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = AppDelegate.mm; path = "Zippy/AppDelegate.mm"; sourceTree = "<group>"; };
-		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = "Zippy/Images.xcassets"; sourceTree = "<group>"; };
-		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = "Zippy/Info.plist"; sourceTree = "<group>"; };
-		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = "Zippy/main.m"; sourceTree = "<group>"; };
+		00E356F21AD99517003FC87E /* ZippyTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZippyTests.m; sourceTree = "<group>"; };
+		011C224C9B574949AD7762A0 /* facebook.png */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = facebook.png; path = ../src/assets/app_images/facebook.png; sourceTree = "<group>"; };
+		0CE79A2EE54A604C95404C1E /* Pods-zippy-ZippyTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-zippy-ZippyTests.debug.xcconfig"; path = "Target Support Files/Pods-zippy-ZippyTests/Pods-zippy-ZippyTests.debug.xcconfig"; sourceTree = "<group>"; };
+		13B07F961A680F5B00A75B9A /* Zippy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Zippy.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = Zippy/AppDelegate.h; sourceTree = "<group>"; };
+		13B07FB01A68108700A75B9A /* AppDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = AppDelegate.mm; path = Zippy/AppDelegate.mm; sourceTree = "<group>"; };
+		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = Zippy/Images.xcassets; sourceTree = "<group>"; };
+		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Zippy/Info.plist; sourceTree = "<group>"; };
+		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = Zippy/main.m; sourceTree = "<group>"; };
 		13B07FB81A68108700A75B9A /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = PrivacyInfo.xcprivacy; path = Zippy/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
-		19F6CBCC0A4E27FBF8BF4A61 /* libPods-Zippy-ZippyTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Zippy-ZippyTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		171E161EA9DF01242CEA7332 /* libPods-zippy.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-zippy.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1D020A0A4BE447F9B8E6906E /* Roboto-BlackItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Roboto-BlackItalic.ttf"; path = "../src/assets/fonts/Roboto-BlackItalic.ttf"; sourceTree = "<group>"; };
+		2EB28BBF6CED4C229FDF635E /* email.png */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = email.png; path = ../src/assets/app_images/email.png; sourceTree = "<group>"; };
 		32E25206FDD0447EB33CCE64 /* Zippy.png */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Zippy.png; path = ../src/assets/images/Zippy.png; sourceTree = "<group>"; };
+		3AC8E68BFF8F4A1784A8AC4F /* vector.png */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = vector.png; path = ../src/assets/images/vector.png; sourceTree = "<group>"; };
 		3B4392A12AC88292D35C810B /* Pods-Zippy.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Zippy.debug.xcconfig"; path = "Target Support Files/Pods-Zippy/Pods-Zippy.debug.xcconfig"; sourceTree = "<group>"; };
+		3C2D958EB83A0FC0855EF0ED /* Pods-zippy.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-zippy.debug.xcconfig"; path = "Target Support Files/Pods-zippy/Pods-zippy.debug.xcconfig"; sourceTree = "<group>"; };
 		4331E7A2DF5744D2A4A57B58 /* Roboto-Italic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Roboto-Italic.ttf"; path = "../src/assets/fonts/Roboto-Italic.ttf"; sourceTree = "<group>"; };
+		45A2E718E6F13E15AAC88785 /* libPods-zippy-ZippyTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-zippy-ZippyTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4A50D9D77EFA4A1FAFCF6EE8 /* Roboto-Black.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Roboto-Black.ttf"; path = "../src/assets/fonts/Roboto-Black.ttf"; sourceTree = "<group>"; };
 		5709B34CF0A7D63546082F79 /* Pods-Zippy.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Zippy.release.xcconfig"; path = "Target Support Files/Pods-Zippy/Pods-Zippy.release.xcconfig"; sourceTree = "<group>"; };
 		5A07286B5D874E99A872F32B /* Roboto-Medium.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Roboto-Medium.ttf"; path = "../src/assets/fonts/Roboto-Medium.ttf"; sourceTree = "<group>"; };
+		5B45439878EB423B91067DF3 /* Artboard 1.png */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Artboard 1.png"; path = "../src/assets/images/Artboard 1.png"; sourceTree = "<group>"; };
 		5B7EB9410499542E8C5724F5 /* Pods-Zippy-ZippyTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Zippy-ZippyTests.debug.xcconfig"; path = "Target Support Files/Pods-Zippy-ZippyTests/Pods-Zippy-ZippyTests.debug.xcconfig"; sourceTree = "<group>"; };
-		5DCACB8F33CDC322A6C60F78 /* libPods-Zippy.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Zippy.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		628F164B01114657977BAE75 /* Roboto-ThinItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Roboto-ThinItalic.ttf"; path = "../src/assets/fonts/Roboto-ThinItalic.ttf"; sourceTree = "<group>"; };
+		666DBD092BF94B2DB10ECF04 /* home.png */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = home.png; path = ../src/assets/images/home.png; sourceTree = "<group>"; };
+		6C34D266F5DAF2F244635D45 /* Pods-zippy-ZippyTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-zippy-ZippyTests.release.xcconfig"; path = "Target Support Files/Pods-zippy-ZippyTests/Pods-zippy-ZippyTests.release.xcconfig"; sourceTree = "<group>"; };
 		6CCC8A53264248E42916B287 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xml; name = PrivacyInfo.xcprivacy; path = Zippy/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
-		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = "Zippy/LaunchScreen.storyboard"; sourceTree = "<group>"; };
+		6E881D6FC6744925ABD7FFE4 /* handshake.png */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = handshake.png; path = ../src/assets/app_images/handshake.png; sourceTree = "<group>"; };
+		73D297735E854C8DA69DE4A5 /* google.jpeg */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = google.jpeg; path = ../src/assets/app_images/google.jpeg; sourceTree = "<group>"; };
+		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = Zippy/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		89C6BE57DB24E9ADA2F236DE /* Pods-Zippy-ZippyTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Zippy-ZippyTests.release.xcconfig"; path = "Target Support Files/Pods-Zippy-ZippyTests/Pods-Zippy-ZippyTests.release.xcconfig"; sourceTree = "<group>"; };
 		8F1C8A16F7914CCE86A63F88 /* Roboto-MediumItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Roboto-MediumItalic.ttf"; path = "../src/assets/fonts/Roboto-MediumItalic.ttf"; sourceTree = "<group>"; };
 		9175B6C8BFA4497BBC1C3922 /* Roboto-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Roboto-Bold.ttf"; path = "../src/assets/fonts/Roboto-Bold.ttf"; sourceTree = "<group>"; };
+		96DC9B52B2FA9C95672366BE /* Pods-zippy.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-zippy.release.xcconfig"; path = "Target Support Files/Pods-zippy/Pods-zippy.release.xcconfig"; sourceTree = "<group>"; };
 		9C8842AF2BE9E54C0049A918 /* AntDesign.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AntDesign.ttf; sourceTree = "<group>"; };
 		9C8842B02BE9E54C0049A918 /* Entypo.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Entypo.ttf; sourceTree = "<group>"; };
 		9C8842B12BE9E54C0049A918 /* EvilIcons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = EvilIcons.ttf; sourceTree = "<group>"; };
@@ -120,25 +131,18 @@
 		9C8842C02BE9E54C0049A918 /* SimpleLineIcons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = SimpleLineIcons.ttf; sourceTree = "<group>"; };
 		9C8842C12BE9E54C0049A918 /* Zocial.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Zocial.ttf; sourceTree = "<group>"; };
 		A9E24D2732234C9F86413329 /* Roboto-BoldItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Roboto-BoldItalic.ttf"; path = "../src/assets/fonts/Roboto-BoldItalic.ttf"; sourceTree = "<group>"; };
+		B9F9BC40EE1F478BBAA2EDEE /* phone.png */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = phone.png; path = ../src/assets/app_images/phone.png; sourceTree = "<group>"; };
+		C51D33D6481A4DA6B002C7C4 /* apple.png */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = apple.png; path = ../src/assets/app_images/apple.png; sourceTree = "<group>"; };
+		C81B2F4867A34BB6A3C418BC /* notifications.png */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = notifications.png; path = ../src/assets/images/notifications.png; sourceTree = "<group>"; };
+		D0A3052CF59F41D8986DE0B0 /* search.png */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = search.png; path = ../src/assets/images/search.png; sourceTree = "<group>"; };
+		D680D519F6FA42108417667A /* notification_bell.png */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = notification_bell.png; path = ../src/assets/app_images/notification_bell.png; sourceTree = "<group>"; };
+		E03901ECDA91467B96F85AB1 /* profile.png */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = profile.png; path = ../src/assets/images/profile.png; sourceTree = "<group>"; };
 		E32897B87E1E4483A4AD4E38 /* Roboto-LightItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Roboto-LightItalic.ttf"; path = "../src/assets/fonts/Roboto-LightItalic.ttf"; sourceTree = "<group>"; };
 		E9573DA399BD4D9BAC3D5178 /* Roboto-Thin.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Roboto-Thin.ttf"; path = "../src/assets/fonts/Roboto-Thin.ttf"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		F45A2911AC5F4D669D945134 /* Roboto-Light.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Roboto-Light.ttf"; path = "../src/assets/fonts/Roboto-Light.ttf"; sourceTree = "<group>"; };
+		F9B7424626A7472C85C35DF6 /* like.png */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = like.png; path = ../src/assets/images/like.png; sourceTree = "<group>"; };
 		FBBEF144DAB04D87BF32BA62 /* Roboto-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Roboto-Regular.ttf"; path = "../src/assets/fonts/Roboto-Regular.ttf"; sourceTree = "<group>"; };
-		C51D33D6481A4DA6B002C7C4 /* apple.png */ = {isa = PBXFileReference; name = "apple.png"; path = "../src/assets/app_images/apple.png"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		2EB28BBF6CED4C229FDF635E /* email.png */ = {isa = PBXFileReference; name = "email.png"; path = "../src/assets/app_images/email.png"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		011C224C9B574949AD7762A0 /* facebook.png */ = {isa = PBXFileReference; name = "facebook.png"; path = "../src/assets/app_images/facebook.png"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		73D297735E854C8DA69DE4A5 /* google.jpeg */ = {isa = PBXFileReference; name = "google.jpeg"; path = "../src/assets/app_images/google.jpeg"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		6E881D6FC6744925ABD7FFE4 /* handshake.png */ = {isa = PBXFileReference; name = "handshake.png"; path = "../src/assets/app_images/handshake.png"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		D680D519F6FA42108417667A /* notification_bell.png */ = {isa = PBXFileReference; name = "notification_bell.png"; path = "../src/assets/app_images/notification_bell.png"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		B9F9BC40EE1F478BBAA2EDEE /* phone.png */ = {isa = PBXFileReference; name = "phone.png"; path = "../src/assets/app_images/phone.png"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		5B45439878EB423B91067DF3 /* Artboard 1.png */ = {isa = PBXFileReference; name = "Artboard 1.png"; path = "../src/assets/images/Artboard 1.png"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		666DBD092BF94B2DB10ECF04 /* home.png */ = {isa = PBXFileReference; name = "home.png"; path = "../src/assets/images/home.png"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		F9B7424626A7472C85C35DF6 /* like.png */ = {isa = PBXFileReference; name = "like.png"; path = "../src/assets/images/like.png"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		C81B2F4867A34BB6A3C418BC /* notifications.png */ = {isa = PBXFileReference; name = "notifications.png"; path = "../src/assets/images/notifications.png"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		E03901ECDA91467B96F85AB1 /* profile.png */ = {isa = PBXFileReference; name = "profile.png"; path = "../src/assets/images/profile.png"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		D0A3052CF59F41D8986DE0B0 /* search.png */ = {isa = PBXFileReference; name = "search.png"; path = "../src/assets/images/search.png"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		3AC8E68BFF8F4A1784A8AC4F /* vector.png */ = {isa = PBXFileReference; name = "vector.png"; path = "../src/assets/images/vector.png"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -146,7 +150,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7699B88040F8A987B510C191 /* libPods-Zippy-ZippyTests.a in Frameworks */,
+				2C1E0F370A7BA6BB38C21D7B /* libPods-zippy-ZippyTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -154,7 +158,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0C80B921A6F3F58F76C31292 /* libPods-Zippy.a in Frameworks */,
+				B8B861053DD9E14E69F430E6 /* libPods-zippy.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -167,7 +171,7 @@
 				00E356F21AD99517003FC87E /* ZippyTests.m */,
 				00E356F01AD99517003FC87E /* Supporting Files */,
 			);
-			path = "ZippyTests";
+			path = ZippyTests;
 			sourceTree = "<group>";
 		};
 		00E356F01AD99517003FC87E /* Supporting Files */ = {
@@ -178,7 +182,7 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		13B07FAE1A68108700A75B9A /* Zippy */ = {
+		13B07FAE1A68108700A75B9A /* zippy */ = {
 			isa = PBXGroup;
 			children = (
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
@@ -190,15 +194,15 @@
 				13B07FB81A68108700A75B9A /* PrivacyInfo.xcprivacy */,
 				6CCC8A53264248E42916B287 /* PrivacyInfo.xcprivacy */,
 			);
-			name = "zippy";
+			name = zippy;
 			sourceTree = "<group>";
 		};
 		2D16E6871FA4F8E400B85C8A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
-				5DCACB8F33CDC322A6C60F78 /* libPods-Zippy.a */,
-				19F6CBCC0A4E27FBF8BF4A61 /* libPods-Zippy-ZippyTests.a */,
+				171E161EA9DF01242CEA7332 /* libPods-zippy.a */,
+				45A2E718E6F13E15AAC88785 /* libPods-zippy-ZippyTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -248,7 +252,7 @@
 			isa = PBXGroup;
 			children = (
 				9C8842C22BE9E54C0049A918 /* Fonts */,
-				13B07FAE1A68108700A75B9A /* Zippy */,
+				13B07FAE1A68108700A75B9A /* zippy */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				00E356EF1AD99517003FC87E /* ZippyTests */,
 				83CBBA001A601CBA00E9B192 /* Products */,
@@ -304,6 +308,10 @@
 				5709B34CF0A7D63546082F79 /* Pods-Zippy.release.xcconfig */,
 				5B7EB9410499542E8C5724F5 /* Pods-Zippy-ZippyTests.debug.xcconfig */,
 				89C6BE57DB24E9ADA2F236DE /* Pods-Zippy-ZippyTests.release.xcconfig */,
+				3C2D958EB83A0FC0855EF0ED /* Pods-zippy.debug.xcconfig */,
+				96DC9B52B2FA9C95672366BE /* Pods-zippy.release.xcconfig */,
+				0CE79A2EE54A604C95404C1E /* Pods-zippy-ZippyTests.debug.xcconfig */,
+				6C34D266F5DAF2F244635D45 /* Pods-zippy-ZippyTests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -327,14 +335,13 @@
 			dependencies = (
 				00E356F51AD99517003FC87E /* PBXTargetDependency */,
 			);
-			name = "ZippyTests";
-			productname = "ZippyTests";
+			name = ZippyTests;
 			productReference = 00E356EE1AD99517003FC87E /* ZippyTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		13B07F861A680F5B00A75B9A /* Zippy */ = {
+		13B07F861A680F5B00A75B9A /* zippy */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "Zippy" */;
+			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "zippy" */;
 			buildPhases = (
 				C38B50BA6285516D6DCD4F65 /* [CP] Check Pods Manifest.lock */,
 				13B07F871A680F5B00A75B9A /* Sources */,
@@ -348,8 +355,8 @@
 			);
 			dependencies = (
 			);
-			name = "zippy";
-			productName = "zippy";
+			name = zippy;
+			productName = zippy;
 			productReference = 13B07F961A680F5B00A75B9A /* Zippy.app */;
 			productType = "com.apple.product-type.application";
 		};
@@ -370,7 +377,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "Zippy" */;
+			buildConfigurationList = 83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "zippy" */;
 			compatibilityVersion = "Xcode 12.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -383,7 +390,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				13B07F861A680F5B00A75B9A /* Zippy */,
+				13B07F861A680F5B00A75B9A /* zippy */,
 				00E356ED1AD99517003FC87E /* ZippyTests */,
 			);
 		};
@@ -478,15 +485,15 @@
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Zippy/Pods-Zippy-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-zippy/Pods-zippy-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Zippy/Pods-Zippy-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-zippy/Pods-zippy-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Zippy/Pods-Zippy-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-zippy/Pods-zippy-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		A55EABD7B0C7F3A422A6CC61 /* [CP] Check Pods Manifest.lock */ = {
@@ -504,7 +511,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Zippy-ZippyTests-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-zippy-ZippyTests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -526,7 +533,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Zippy-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-zippy-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -539,15 +546,15 @@
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Zippy-ZippyTests/Pods-Zippy-ZippyTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-zippy-ZippyTests/Pods-zippy-ZippyTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Zippy-ZippyTests/Pods-Zippy-ZippyTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-zippy-ZippyTests/Pods-zippy-ZippyTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Zippy-ZippyTests/Pods-Zippy-ZippyTests-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-zippy-ZippyTests/Pods-zippy-ZippyTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		E235C05ADACE081382539298 /* [CP] Copy Pods Resources */ = {
@@ -556,15 +563,15 @@
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Zippy/Pods-Zippy-resources-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-zippy/Pods-zippy-resources-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Zippy/Pods-Zippy-resources-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-zippy/Pods-zippy-resources-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Zippy/Pods-Zippy-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-zippy/Pods-zippy-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		F6A41C54EA430FDDC6A6ED99 /* [CP] Copy Pods Resources */ = {
@@ -573,15 +580,15 @@
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Zippy-ZippyTests/Pods-Zippy-ZippyTests-resources-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-zippy-ZippyTests/Pods-zippy-ZippyTests-resources-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Zippy-ZippyTests/Pods-Zippy-ZippyTests-resources-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-zippy-ZippyTests/Pods-zippy-ZippyTests-resources-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Zippy-ZippyTests/Pods-Zippy-ZippyTests-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-zippy-ZippyTests/Pods-zippy-ZippyTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -609,7 +616,7 @@
 /* Begin PBXTargetDependency section */
 		00E356F51AD99517003FC87E /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 13B07F861A680F5B00A75B9A /* Zippy */;
+			target = 13B07F861A680F5B00A75B9A /* zippy */;
 			targetProxy = 00E356F41AD99517003FC87E /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -617,14 +624,14 @@
 /* Begin XCBuildConfiguration section */
 		00E356F61AD99517003FC87E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5B7EB9410499542E8C5724F5 /* Pods-Zippy-ZippyTests.debug.xcconfig */;
+			baseConfigurationReference = 0CE79A2EE54A604C95404C1E /* Pods-zippy-ZippyTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = "ZippyTests/Info.plist";
+				INFOPLIST_FILE = ZippyTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -636,7 +643,7 @@
 					"-lc++",
 					"$(inherited)",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.innovil.zippy";
+				PRODUCT_BUNDLE_IDENTIFIER = com.innovil.zippy;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Zippy.app/Zippy";
 			};
@@ -644,11 +651,11 @@
 		};
 		00E356F71AD99517003FC87E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 89C6BE57DB24E9ADA2F236DE /* Pods-Zippy-ZippyTests.release.xcconfig */;
+			baseConfigurationReference = 6C34D266F5DAF2F244635D45 /* Pods-zippy-ZippyTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
-				INFOPLIST_FILE = "ZippyTests/Info.plist";
+				INFOPLIST_FILE = ZippyTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -660,7 +667,7 @@
 					"-lc++",
 					"$(inherited)",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.innovil.zippy";
+				PRODUCT_BUNDLE_IDENTIFIER = com.innovil.zippy;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Zippy.app/Zippy";
 			};
@@ -668,15 +675,15 @@
 		};
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3B4392A12AC88292D35C810B /* Pods-Zippy.debug.xcconfig */;
+			baseConfigurationReference = 3C2D958EB83A0FC0855EF0ED /* Pods-zippy.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = TKQ48N6KND;
 				ENABLE_BITCODE = NO;
-				INFOPLIST_FILE = "Zippy/Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = "zippy";
+				INFOPLIST_FILE = Zippy/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = zippy;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -687,9 +694,9 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.innovil.zippy";
+				PRODUCT_BUNDLE_IDENTIFIER = com.innovil.zippy;
 				"PRODUCT_BUNDLE_IDENTIFIER[sdk=iphoneos*]" = org.reactjs.native.example.zippyUser;
-				PRODUCT_NAME = "zippy";
+				PRODUCT_NAME = zippy;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -698,14 +705,14 @@
 		};
 		13B07F951A680F5B00A75B9A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5709B34CF0A7D63546082F79 /* Pods-Zippy.release.xcconfig */;
+			baseConfigurationReference = 96DC9B52B2FA9C95672366BE /* Pods-zippy.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = TKQ48N6KND;
-				INFOPLIST_FILE = "Zippy/Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = "zippy";
+				INFOPLIST_FILE = Zippy/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = zippy;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -716,9 +723,9 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.innovil.zippy";
+				PRODUCT_BUNDLE_IDENTIFIER = com.innovil.zippy;
 				"PRODUCT_BUNDLE_IDENTIFIER[sdk=iphoneos*]" = org.reactjs.native.example.zippyUser;
-				PRODUCT_NAME = "zippy";
+				PRODUCT_NAME = zippy;
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
@@ -895,7 +902,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "Zippy" */ = {
+		13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "zippy" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				13B07F941A680F5B00A75B9A /* Debug */,
@@ -904,7 +911,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "Zippy" */ = {
+		83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "zippy" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				83CBBA201A601CBA00E9B192 /* Debug */,
